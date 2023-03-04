@@ -6,14 +6,13 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 import "hardhat/console.sol";
 
-contract Organ is ERC721URIStorage{
+contract Organ is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds; //unique token ids
     address contractAddress;
 
-    constructor(address cmoAddress) ERC721("Organ token identifiers", "ORG"){
+    constructor(address cmoAddress) ERC721("Organ token identifiers", "ORG") {
         contractAddress = cmoAddress;
-
     }
 
     function createToken(string memory tokenURI) public returns (uint) {
@@ -21,12 +20,9 @@ contract Organ is ERC721URIStorage{
         uint256 newItemId = _tokenIds.current();
 
         _mint(msg.sender, newItemId);
-        _setTokenURI(newItemId,tokenURI);
-        setApprovalForAll(contractAddress,true);
+        _setTokenURI(newItemId, tokenURI);
+        setApprovalForAll(contractAddress, true);
 
         return newItemId;
-
     }
-
-
 }
