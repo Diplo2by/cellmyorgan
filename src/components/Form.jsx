@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Test = () => {
+const RegistrationForm = () => {
   return (
     <div className='font-bold items-center flex flex-col h-screen my-auto'>
       <h1 className='pb-10'>Donor Registration Card</h1>
@@ -179,4 +179,4 @@ const Test = () => {
   )
 }
 
-export default Test
+export default RegistrationForm
