@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Button from './Button';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 const Nav = () => {
     let Links =[
       {name:"HOME",link:"/"},
-      {name:"ABOUT",link:"/"},
+      {name:"ABOUT",link:"/about"},
       {name:"EVENTS",link:"/"},
       {name:"GALLERY",link:"/"},
       {name:"CONTACT",link:"/"},
@@ -13,7 +14,7 @@ const Nav = () => {
     ];
     let [open,setOpen]=useState(false);
   return (
-    <div className='shadow-md w-full fixed top-0 left-0'>
+    <div className='shadow-md w-full sticky top-0 left-0'>
       <div className='md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7'>
         <div className='font-bold text-2xl cursor-pointer flex items-center text-gray-800'>
             cellmyorgan
@@ -27,16 +28,16 @@ const Nav = () => {
         {
           Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-7'>
-              <a href={link.link} className='text-gray-800 hover:text-gray-200 duration-500'>{link.name}</a>
+              <Link href={link.link} className='text-gray-800 hover:text-gray-200 duration-500'>{link.name}</Link>
             </li>
           ))
         }
         {/* <Button onClick={event =>  window.location.href='/register'}> */}
         {/* </Button> */}
         <button className='bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200'>
-          <a href='/register'>
+          <Link href='/register'>
             Register
-          </a>
+          </Link>
         </button>
 
       </ul>
