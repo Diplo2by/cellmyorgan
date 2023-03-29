@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from './Button';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 const Nav = () => {
     let Links =[
@@ -27,16 +28,17 @@ const Nav = () => {
         {
           Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-7'>
-              <a href={link.link} className='text-gray-800 hover:text-gray-200 duration-500'>{link.name}</a>
+              <Link href={link.link} className='text-gray-800 hover:text-gray-200 duration-500'>{link.name}</Link>
             </li>
           ))
         }
         {/* <Button onClick={event =>  window.location.href='/register'}> */}
         {/* </Button> */}
         <button className='bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200'>
-          <a href='/register'>
-            Register
-          </a>
+          <Link href='/register'>
+            register
+          </Link>
+          
         </button>
 
       </ul>
