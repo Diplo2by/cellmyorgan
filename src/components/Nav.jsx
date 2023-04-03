@@ -6,8 +6,8 @@ import Link from 'next/link';
 const Nav = () => {
     let Links =[
       {name:"HOME",link:"/"},
-      {name:"ABOUT",link:"/"},
-      {name:"EVENTS",link:"/"},
+      {name:"ABOUT",link:"/About"},
+      {name:"EVENTS",link:"/about2"},
       {name:"GALLERY",link:"/"},
       {name:"CONTACT",link:"/"},
       {name:"FAQs",link:"/"},

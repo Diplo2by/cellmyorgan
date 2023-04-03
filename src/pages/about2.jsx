@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import Image from "next/image";
-import Heart from "../../../public/images/heart.avif"
 
-function About() {
+function About2() {
   return (
     <>
       <Head>
@@ -15,7 +14,7 @@ function About() {
         <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
           <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
             <div className="w-1/2 md:5/12 lg:w-3/12">
-              <Image src={Heart} alt="image" loading="lazy" />
+              <Image src='/images/heart.avif' alt="image" width='200' height='200' loading="lazy" />
             </div>
             <div className="md:7/12 lg:w-6/12">
               <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
@@ -68,4 +67,4 @@ function About() {
   );
 }
 
-export default About;
+export default About2;
