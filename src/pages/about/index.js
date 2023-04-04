@@ -15,8 +15,8 @@ const About = () => {
 
                         <p className='font-bold text-lg'>The mission of Jeevasarthakathe is:</p>
                         <ul className='list-disc'>
-                            <li> To establish effective deceased donor (cadaver) organ procurement and just distribution of organs.</li>
-                            <li> To set up organ sharing by minimizing wastage of organs.</li>
+                            <li>To establish effective deceased donor (cadaver) organ procurement and just distribution of organs.</li>
+                            <li>To set up organ sharing by minimizing wastage of organs.</li>
                             <li>To assure quality control by collection, analysis and publications of data on organ donation, procurement and transplantation. </li>
                             <li>To increase public awareness.</li>
                             <li>Jeevasarthakathe works through a team effort of participating hospitals for the achievement of a sustained cadaveric transplant programme.</li>
