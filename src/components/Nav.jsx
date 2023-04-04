@@ -14,7 +14,7 @@ const Nav = () => {
   ];
   let [open, setOpen] = useState(false);
   return (
-    <div className='shadow-md w-full sticky top-0 left-0'>
+    <div className='shadow-md w-full sticky top-0 left-0 z-9999'>
       <div className='md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7'>
         <div className='font-bold text-2xl cursor-pointer flex items-center text-gray-800'>
           cellmyorgan
@@ -36,7 +36,7 @@ const Nav = () => {
           {/* </Button> */}
           <button className='bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200'>
             <Link href='/register'>
-              register
+              REGISTER
             </Link>
 
           </button>
