@@ -1,8 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
+import Head from 'next/head'
 const About = () => {
     return (
         <>
+            <Head>
+                <title>About US</title>
+            </Head>
             <div className="bg-white dark:bg-gray-900">
                 <div className="gap-16 items-center py-8 px-5 mx-auto max-w-screen-2xl lg:grid lg:grid-cols-2 lg:py-16 lg:pl-10">
                     <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
