@@ -1,7 +1,6 @@
 import React from 'react'
 import taluk from '../../json/data.json';
 
-// const fetcher = (url) => fetch(url).then((res) => res.json());
 const RegistrationForm = () => {
   const [districtValue, setDistrictValue] = React.useState("Belagavi");
   const onDistrictChange = (event) => {
@@ -12,7 +11,7 @@ const RegistrationForm = () => {
   return (
     <div className='font-bold items-center flex flex-col h-screen my-auto'>
       <h1 className='pb-10'>Donor Registration Card</h1>
-      <form className="w-full max-w-lg">
+      <form action='/api/form' method='post' className="w-full max-w-lg">
         <p className='text-2xl font-bold tracking-tight text-gray-900'>Personal Details</p>
         <hr className="w-52 h-1 my-2 bg-gray-100 border-0 rounded md:my-2 dark:bg-gray-700"></hr>
         <div className="flex flex-wrap -mx-3 mb-6 mt-6">
@@ -85,7 +84,7 @@ const RegistrationForm = () => {
                   Select District
                 </option>
                 {
-                  Object.keys(taluk).map(key => <option value={key} >{key}</option>)
+                  Object.keys(taluk).map(key => <option key={key} value={key} >{key}</option>)
                 }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -103,7 +102,7 @@ const RegistrationForm = () => {
                   Select Taluk
                 </option>
                 {
-                  taluk[districtValue].Taluk.map(key => <option value={key} >{key}</option>)
+                  taluk[districtValue].Taluk.map(key => <option key={key} value={key} >{key}</option>)
                 }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
