@@ -8,7 +8,7 @@ const Nav = () => {
     { name: "HOME", link: "/" },
     { name: "ABOUT", link: "/about" },
     { name: "EVENTS", link: "/events" },
-    { name: "GALLERY", link: "/" },
+    { name: "GALLERY", link: "/gallery" },
     { name: "CONTACT", link: "/contact" },
     { name: "FAQs", link: "/" },
   ];
