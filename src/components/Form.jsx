@@ -126,7 +126,7 @@ const RegistrationForm = () => {
               District
             </label>
             <div className="relative">
-              <select onChange={onDistrictChange} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+              <select onChange = {(e) => {handle(e); onDistrictChange}} id="district" value={data.district} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option defaultValue disabled>
                   Select District
                 </option>
@@ -144,12 +144,12 @@ const RegistrationForm = () => {
               Taluk
             </label>
             <div className="relative">
-              <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+              <select onChange = {(e) => handle(e)} id="taluk" value={data.taluk} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option defaultValue disabled>
                   Select Taluk
                 </option>
                 {
-                  taluk[districtValue].Taluk.map(key => <option key={key} value={key} >{key}</option>)
+                  taluk[data.district].Taluk.map(key => <option key={key} value={key} >{key}</option>)
                 }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
