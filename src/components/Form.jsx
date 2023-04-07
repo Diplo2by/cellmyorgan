@@ -10,30 +10,28 @@ const RegistrationForm = () => {
   };
 
   function handleSubmit(e) {
-    // event.preventDefault();
-    // const fname = event.target.fname.value;
-    // console.log(fname);
-    axios.post("https://localhost:3000/api/form", 
-    {
-      fname: data.fname,
-      lname: data.lname,
-      address: data.address,
-      sex: data.sex,
-      dob: data.dob,
-      city: data.city,
-      zip: data.zip,
-      district: data.district,
-      taluk: data.taluk,
-      email: data.email,
-      emgmob: data.emgmob,
-      mob: data.mob,
+      e.preventDefault();
+      axios.post("/api/form", 
+      {
+        fname: data.fname,
+        lname: data.lname,
+        address: data.address,
+        sex: data.sex,
+        dob: data.dob,
+        city: data.city,
+        zip: data.zip,
+        district: data.district,
+        taluk: data.taluk,
+        email: data.email,
+        emgmob: data.emgmob,
+        mob: data.mob,
 
-    })
-    .then(res =>{
-      console.log(res.data)
-    });
+      })
+      .then(res =>{
+        console.log(res.data)
+      });
   }
-
+  
   const [data, setData] = useState({
     fname: "",
     lname: "",
