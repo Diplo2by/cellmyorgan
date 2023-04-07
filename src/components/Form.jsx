@@ -9,11 +9,29 @@ const RegistrationForm = () => {
     setDistrictValue(value);
   };
 
-  const handleSubmit = (event) => {
+  function handleSubmit(e) {
     // event.preventDefault();
-    const fname = event.target.fname.value;
-    console.log(fname);
-    axios.post("/api/form", {fname});
+    // const fname = event.target.fname.value;
+    // console.log(fname);
+    axios.post("https://localhost:3000/api/form", 
+    {
+      fname: data.fname,
+      lname: data.lname,
+      address: data.address,
+      sex: data.sex,
+      dob: data.dob,
+      city: data.city,
+      zip: data.zip,
+      district: data.district,
+      taluk: data.taluk,
+      email: data.email,
+      emgmob: data.emgmob,
+      mob: data.mob,
+
+    })
+    .then(res =>{
+      console.log(res.data)
+    });
   }
 
   const [data, setData] = useState({
@@ -32,14 +50,17 @@ const RegistrationForm = () => {
   })
 
   function handle(e) {
-    
+    const newData = {...data}
+    newData[e.target.id] = e.target.value
+    setData(newData)
+    console.log(newData)
   }
 
   return (
     <div className='font-bold items-center flex flex-col h-screen my-auto'>
       <h1 className='pb-10'>Donor Registration Card</h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
-      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+      <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">
         <p className='text-2xl font-bold tracking-tight text-gray-900'>Personal Details</p>
         <hr className="w-52 h-1 my-2 bg-gray-100 border-0 rounded md:my-2 dark:bg-gray-700"></hr>
         <div className="flex flex-wrap -mx-3 mb-6 mt-6">
@@ -62,7 +83,7 @@ const RegistrationForm = () => {
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="address">
               Address
             </label>
-            <textarea onChange = {(e) => handle(e)} id="fname" value={data.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="57, Brigade Road, Ashok Nagar" />
+            <textarea onChange = {(e) => handle(e)} id="address" value={data.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="57, Brigade Road, Ashok Nagar" />
             {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
           </div>
         </div>
@@ -176,7 +197,7 @@ const RegistrationForm = () => {
             {/* <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
              
             </label> */}
-            <button className="appearance-none block w-full py-3 px-4 leading-tight bg-gray-500 hover:bg-slate-800 text-white font-base rounded">
+            <button disabled className="appearance-none block w-full py-3 px-4 leading-tight bg-gray-500 hover:bg-slate-800 text-white font-base rounded">
               Get OTP
             </button>
           </div>
@@ -211,7 +232,7 @@ const RegistrationForm = () => {
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-6 mt-10">
-          <button className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded" type='submit'>
+          <button className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded" type="submit">
             Submit
           </button>
         </div>
