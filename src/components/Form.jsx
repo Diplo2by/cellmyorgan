@@ -31,7 +31,7 @@ const RegistrationForm = () => {
         console.log(res.data)
       });
   }
-  
+
   const [data, setData] = useState({
     fname: "",
     lname: "",
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
     dob: "",
     city: "",
     zip: "",
-    district: "",
+    district: districtValue,
     taluk: "",
     email: "",
     emgmob: "",
