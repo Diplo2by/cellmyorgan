@@ -1,2 +1,2 @@
-export const organAddress = ""
-export const organListingAddress =""
+export const organAddress = "";
+export const organListingAddress = "";

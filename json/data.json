@@ -1,1 +1,345 @@
-{"Belagavi":{"Taluk":["Chikkodi","Athani","Raibag","Gokak","Hukkeri","Belagavi","Khanapur","Savadatti","Bailhongal","Ramadurg","Kitthuru","Nippani","Kagavada","Mudalagi","Yaragatti"]},"Bagalkot":{"Taluk":["Jamakhandi","Bilagi","Mudhol","Badami","Bagalkote","Hungund","Guledagudda","Ilkal","Rabakavi Banahatti"]},"Vijayapura":{"Taluk":["Bijapur","Indi","Sindagi","Basavan Bagewadi","Muddebihal","Nidagundi","Babaleshwara","Chadachana","Talikote","Tikota","Kolhara","Devara Hipparagi","Alamela"]},"Kalburgi":{"Taluk":["Aland","Afzalpur","Gulbarga","Chincholi","Sedam","Chittapur","Jevargi","Kalagi","Kamalapura","Yadrami","Shahbadha"]},"Bidar":{"Taluk":["Basavakalyan","Bhalki","Aurad","Bidar","Humnabad","Chittaguppa","Kamalanagara","Hulasuru"]},"Raichur":{"Taluk":["Lingasugur","Devdurga","Raichur","Manvi","Sindhanur","Maski","Sirivara"]},"Koppal":{"Taluk":["Yelburga","Kushtagi","Gangavathi","Koppal","Karatagi","Kukanuru","Kanakagiri"]},"Gadag":{"Taluk":["Naragund","Rona","Gadag","Shirahatti","Mundargi","Gajendragad","Laxmeshwar"]},"Dharwad":{"Taluk":["Dharwad","Navalgund","Hubli","Kalgatgi","Kundgol","Hubballi Nagara","Alnavara","Annigere"]},"Uttara Kannada":{"Taluk":["Karwar","Joida","Haliyal","Yellapur","Mundgod","Sirsi","Ankola","Kumta","Siddapur","Honnavar","Bhatkal","Dandelli"]},"Haveri":{"Taluk":["Shiggaon","Savanur","Hangal","Haveri","Byadagi","Hirekerur","Ranebennur","Ratteehalli"]},"Ballari":{"Taluk":["Siraguppa","Ballari","Sonduru","Kurugodu","Kampli"]},"Chitradurga":{"Taluk":["Molakalmuru","Challakere","Chitradurga","Holalkere","Hosadurga","Hiriyur"]},"Davanagere":{"Taluk":["Harihar","Jagaluru","Davanagere","Honnali","Channagiri","Nyamati"]},"Shivamogga":{"Taluk":["Sagara","Soraba","Shikaripura","Hosanagar","Thirthahalli","Shimoga","Bhadravathi"]},"Udupi":{"Taluk":["Kundapur","Udupi","Karkala","Bynduru","Bramhavara","Kapu","Hebri"]},"Chikkamagaluru":{"Taluk":["Sringeri","Koppa","Narasimharajapura","Tarikere","Kadur","Chikmagalur","Mudigere","Ajjampura","Kalasa"]},"Tumakuru":{"Taluk":["Chiknayakanahalli","Sira","Pavagada","Madhugiri","Koratagere","Tumkur","Gubbi","Tiptur","Turuvekere","Kunigal"]},"Kolara":{"Taluk":["Srinivaspura","Kolar","Malur","Bangarpet","Mulabagilu","K.G.F"]},"Bengaluru (Urban)":{"Taluk":["Bangalore (North)","Bangalore-South","Anekal","Bangalore-East","Yelahanka"]},"Bengaluru (Rural)":{"Taluk":["Nelamangala","Doddaballapura","Devanahalli","Hoskote"]},"Mandya":{"Taluk":["Krishnarajpet","Nagamangala","Pandavpura","Srirangapatna","Mandya","Maddur","Malavalli"]},"Hassan":{"Taluk":["Sakleshpura","Belur","Arsikere","Hassan","Alur","Arkalgud","Holenarasipura","Channarayapatna"]},"Dakshina Kannada":{"Taluk":["Mangalore","Bantwal","Belthangady","Puttur","Sulya","Mudabidri","Kadaba","Mulki","Ullala"]},"Kodagu":{"Taluk":["Madikeri","Somavarapete","Virajpet","Ponnampete","Kushalanagara"]},"Mysuru":{"Taluk":["Piriyapatna","Hunsur","K.R.Nagar","Mysuru","Heggadadevanakote","Nanjangud","T.Narasipura","Saraguru","Saligrama"]},"Chamarajanagara":{"Taluk":["Gundlupet","Chamarajanagara","Yalandur","Kollegala","Kollegala(Hanur)"]},"Chikkaballapura":{"Taluk":["Gauribidanur","Chikballapur","Gudibande","Bagepalli","Shidlagatta","Chinthamani"]},"Ramanagara":{"Taluk":["Magadi","Ramanagar","Channapatna","Kanakpura","Harohalli"]},"Yadgir":{"Taluk":["Yadgir","Shahapur","Shorapur","Gurumithakala","Vadagera","Hunisigi"]},"Vijayanagara":{"Taluk":["Hospet","Kudligi","Hagaribommanahalli","Harapanahalli","Kotturu","Hadagali"]}}
+{
+  "Belagavi": {
+    "Taluk": [
+      "Chikkodi",
+      "Athani",
+      "Raibag",
+      "Gokak",
+      "Hukkeri",
+      "Belagavi",
+      "Khanapur",
+      "Savadatti",
+      "Bailhongal",
+      "Ramadurg",
+      "Kitthuru",
+      "Nippani",
+      "Kagavada",
+      "Mudalagi",
+      "Yaragatti"
+    ]
+  },
+  "Bagalkot": {
+    "Taluk": [
+      "Jamakhandi",
+      "Bilagi",
+      "Mudhol",
+      "Badami",
+      "Bagalkote",
+      "Hungund",
+      "Guledagudda",
+      "Ilkal",
+      "Rabakavi Banahatti"
+    ]
+  },
+  "Vijayapura": {
+    "Taluk": [
+      "Bijapur",
+      "Indi",
+      "Sindagi",
+      "Basavan Bagewadi",
+      "Muddebihal",
+      "Nidagundi",
+      "Babaleshwara",
+      "Chadachana",
+      "Talikote",
+      "Tikota",
+      "Kolhara",
+      "Devara Hipparagi",
+      "Alamela"
+    ]
+  },
+  "Kalburgi": {
+    "Taluk": [
+      "Aland",
+      "Afzalpur",
+      "Gulbarga",
+      "Chincholi",
+      "Sedam",
+      "Chittapur",
+      "Jevargi",
+      "Kalagi",
+      "Kamalapura",
+      "Yadrami",
+      "Shahbadha"
+    ]
+  },
+  "Bidar": {
+    "Taluk": [
+      "Basavakalyan",
+      "Bhalki",
+      "Aurad",
+      "Bidar",
+      "Humnabad",
+      "Chittaguppa",
+      "Kamalanagara",
+      "Hulasuru"
+    ]
+  },
+  "Raichur": {
+    "Taluk": [
+      "Lingasugur",
+      "Devdurga",
+      "Raichur",
+      "Manvi",
+      "Sindhanur",
+      "Maski",
+      "Sirivara"
+    ]
+  },
+  "Koppal": {
+    "Taluk": [
+      "Yelburga",
+      "Kushtagi",
+      "Gangavathi",
+      "Koppal",
+      "Karatagi",
+      "Kukanuru",
+      "Kanakagiri"
+    ]
+  },
+  "Gadag": {
+    "Taluk": [
+      "Naragund",
+      "Rona",
+      "Gadag",
+      "Shirahatti",
+      "Mundargi",
+      "Gajendragad",
+      "Laxmeshwar"
+    ]
+  },
+  "Dharwad": {
+    "Taluk": [
+      "Dharwad",
+      "Navalgund",
+      "Hubli",
+      "Kalgatgi",
+      "Kundgol",
+      "Hubballi Nagara",
+      "Alnavara",
+      "Annigere"
+    ]
+  },
+  "Uttara Kannada": {
+    "Taluk": [
+      "Karwar",
+      "Joida",
+      "Haliyal",
+      "Yellapur",
+      "Mundgod",
+      "Sirsi",
+      "Ankola",
+      "Kumta",
+      "Siddapur",
+      "Honnavar",
+      "Bhatkal",
+      "Dandelli"
+    ]
+  },
+  "Haveri": {
+    "Taluk": [
+      "Shiggaon",
+      "Savanur",
+      "Hangal",
+      "Haveri",
+      "Byadagi",
+      "Hirekerur",
+      "Ranebennur",
+      "Ratteehalli"
+    ]
+  },
+  "Ballari": {
+    "Taluk": ["Siraguppa", "Ballari", "Sonduru", "Kurugodu", "Kampli"]
+  },
+  "Chitradurga": {
+    "Taluk": [
+      "Molakalmuru",
+      "Challakere",
+      "Chitradurga",
+      "Holalkere",
+      "Hosadurga",
+      "Hiriyur"
+    ]
+  },
+  "Davanagere": {
+    "Taluk": [
+      "Harihar",
+      "Jagaluru",
+      "Davanagere",
+      "Honnali",
+      "Channagiri",
+      "Nyamati"
+    ]
+  },
+  "Shivamogga": {
+    "Taluk": [
+      "Sagara",
+      "Soraba",
+      "Shikaripura",
+      "Hosanagar",
+      "Thirthahalli",
+      "Shimoga",
+      "Bhadravathi"
+    ]
+  },
+  "Udupi": {
+    "Taluk": [
+      "Kundapur",
+      "Udupi",
+      "Karkala",
+      "Bynduru",
+      "Bramhavara",
+      "Kapu",
+      "Hebri"
+    ]
+  },
+  "Chikkamagaluru": {
+    "Taluk": [
+      "Sringeri",
+      "Koppa",
+      "Narasimharajapura",
+      "Tarikere",
+      "Kadur",
+      "Chikmagalur",
+      "Mudigere",
+      "Ajjampura",
+      "Kalasa"
+    ]
+  },
+  "Tumakuru": {
+    "Taluk": [
+      "Chiknayakanahalli",
+      "Sira",
+      "Pavagada",
+      "Madhugiri",
+      "Koratagere",
+      "Tumkur",
+      "Gubbi",
+      "Tiptur",
+      "Turuvekere",
+      "Kunigal"
+    ]
+  },
+  "Kolara": {
+    "Taluk": [
+      "Srinivaspura",
+      "Kolar",
+      "Malur",
+      "Bangarpet",
+      "Mulabagilu",
+      "K.G.F"
+    ]
+  },
+  "Bengaluru (Urban)": {
+    "Taluk": [
+      "Bangalore (North)",
+      "Bangalore-South",
+      "Anekal",
+      "Bangalore-East",
+      "Yelahanka"
+    ]
+  },
+  "Bengaluru (Rural)": {
+    "Taluk": ["Nelamangala", "Doddaballapura", "Devanahalli", "Hoskote"]
+  },
+  "Mandya": {
+    "Taluk": [
+      "Krishnarajpet",
+      "Nagamangala",
+      "Pandavpura",
+      "Srirangapatna",
+      "Mandya",
+      "Maddur",
+      "Malavalli"
+    ]
+  },
+  "Hassan": {
+    "Taluk": [
+      "Sakleshpura",
+      "Belur",
+      "Arsikere",
+      "Hassan",
+      "Alur",
+      "Arkalgud",
+      "Holenarasipura",
+      "Channarayapatna"
+    ]
+  },
+  "Dakshina Kannada": {
+    "Taluk": [
+      "Mangalore",
+      "Bantwal",
+      "Belthangady",
+      "Puttur",
+      "Sulya",
+      "Mudabidri",
+      "Kadaba",
+      "Mulki",
+      "Ullala"
+    ]
+  },
+  "Kodagu": {
+    "Taluk": [
+      "Madikeri",
+      "Somavarapete",
+      "Virajpet",
+      "Ponnampete",
+      "Kushalanagara"
+    ]
+  },
+  "Mysuru": {
+    "Taluk": [
+      "Piriyapatna",
+      "Hunsur",
+      "K.R.Nagar",
+      "Mysuru",
+      "Heggadadevanakote",
+      "Nanjangud",
+      "T.Narasipura",
+      "Saraguru",
+      "Saligrama"
+    ]
+  },
+  "Chamarajanagara": {
+    "Taluk": [
+      "Gundlupet",
+      "Chamarajanagara",
+      "Yalandur",
+      "Kollegala",
+      "Kollegala(Hanur)"
+    ]
+  },
+  "Chikkaballapura": {
+    "Taluk": [
+      "Gauribidanur",
+      "Chikballapur",
+      "Gudibande",
+      "Bagepalli",
+      "Shidlagatta",
+      "Chinthamani"
+    ]
+  },
+  "Ramanagara": {
+    "Taluk": ["Magadi", "Ramanagar", "Channapatna", "Kanakpura", "Harohalli"]
+  },
+  "Yadgir": {
+    "Taluk": [
+      "Yadgir",
+      "Shahapur",
+      "Shorapur",
+      "Gurumithakala",
+      "Vadagera",
+      "Hunisigi"
+    ]
+  },
+  "Vijayanagara": {
+    "Taluk": [
+      "Hospet",
+      "Kudligi",
+      "Hagaribommanahalli",
+      "Harapanahalli",
+      "Kotturu",
+      "Hadagali"
+    ]
+  }
+}
