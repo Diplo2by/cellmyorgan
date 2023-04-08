@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import taluk from '../../json/data.json';
+import { resolve } from 'styled-jsx/css';
 
 const RegistrationForm = () => {
   const [districtValue, setDistrictValue] = React.useState("Belagavi");
@@ -8,6 +9,30 @@ const RegistrationForm = () => {
     const value = event.target.value;
     setDistrictValue(value);
   };
+
+  // const [photo, setImage] = useState('')
+  const onImageChange = async (e) => {
+    let base64 = await convertBase64(e.target.files[0]);
+    // setImage(base64);
+    const copy = { ...data };
+    copy.photo = base64;
+    setData(copy);
+    // console.log(photo);
+  }
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      }
+      
+      fileReader.onerror = (err) => {
+        reject(err);
+      }
+    })
+  }
 
   function handleSubmit(e) {
       e.preventDefault();
@@ -25,7 +50,7 @@ const RegistrationForm = () => {
         email: data.email,
         emgmob: data.emgmob,
         mob: data.mob,
-
+        photo: data.photo
       })
       .then(res =>{
         console.log(res.data)
@@ -45,9 +70,10 @@ const RegistrationForm = () => {
     email: "",
     emgmob: "",
     mob: "",
+    photo: "",
   })
 
-  function handle(e) {
+  async function handle(e) {
     const newData = {...data}
     newData[e.target.id] = e.target.value
     setData(newData)
@@ -180,10 +206,10 @@ const RegistrationForm = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="photo">
               Photo
             </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" placeholder="9845125385" />
+            <input onChange = {(e) => {onImageChange(e)}}  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" />
           </div>
           <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
