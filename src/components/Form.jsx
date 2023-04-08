@@ -10,6 +10,20 @@ const RegistrationForm = () => {
     setDistrictValue(value);
   };
 
+
+  const onOrganChange = (e) => {
+    const copy = { ...data };
+    if(e.target.checked) {
+      copy.organs.push(e.target.value);
+      setData(copy);
+    } else {
+      copy.organs = copy.organs.filter((value) => (value !== e.target.value))
+      setData(copy);
+    }
+    console.log(data.organs);
+  }
+
+
   // const [photo, setImage] = useState('')
   const onImageChange = async (e) => {
     let base64 = await convertBase64(e.target.files[0]);
@@ -50,7 +64,8 @@ const RegistrationForm = () => {
         email: data.email,
         emgmob: data.emgmob,
         mob: data.mob,
-        photo: data.photo
+        photo: data.photo,
+        organ: data.organs
       })
       .then(res =>{
         console.log(res.data)
@@ -71,6 +86,7 @@ const RegistrationForm = () => {
     emgmob: "",
     mob: "",
     photo: "",
+    organs: [],
   })
 
   async function handle(e) {
@@ -231,27 +247,27 @@ const RegistrationForm = () => {
 
         <div className="flex flex-wrap -mx-3 mb-6 mt-6">
           <div className="w-full md:w-1/3 px-3 md:mb-3">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="cornea" />
             <label className="ml-2 mb-0.5 text-base font-medium">Corneas(eyes)</label>
           </div>
           <div className="w-full md:w-1/3 px-3 md:mb-0">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="pancreas" />
             <label className="ml-2 mb-0.5 text-base font-medium">Pancreas</label>
           </div>
           <div className="w-full md:w-1/3 px-3 md:mb-0 ">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="liver" />
             <label className="ml-2 mb-0.5 text-base font-medium">Liver</label>
           </div>
           <div className="w-full md:w-1/3 px-3 md:mb-0">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="lung" />
             <label className="ml-2 mb-0.5 text-base font-medium">Lungs</label>
           </div>
           <div className="w-full md:w-1/3 px-3 md:mb-0">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="kidney" />
             <label className="ml-2 mb-0.5 text-base font-medium">Kidneys</label>
           </div>
           <div className="w-full md:w-1/3 px-3 md:mb-0">
-            <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" />
+            <input onChange = {onOrganChange} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0" value="heart" />
             <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
           </div>
         </div>
