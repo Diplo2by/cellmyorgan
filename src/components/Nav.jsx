@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { ethers } from 'ethers'
-import Web3Modal from 'web3modal' 
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
 
 async function connectWallet() {
   try {
-    const web3modal = new Web3Modal()
-    const conn = await web3modal.connect()
-    const provider = new ethers.providers.Web3Provider(conn)
-    const signer = provider.getSigner()
-    console.log('Connection successfull Signer :')
-  }
-  catch(e){
-    console.log(e)
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const signer = provider.getSigner();
+    console.log("Connection successfull Signer :");
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -29,8 +28,8 @@ const Nav = () => {
   return (
     <div className="shadow-md w-full sticky top-0 left-0 z-9999">
       <div className="md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7">
-        <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          cellmyorgan
+        <div className="font-bold text-3xl cursor-pointer flex items-center text-gray-800">
+          cellmyorgan.
         </div>
 
         <div
@@ -41,8 +40,9 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
-            }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 " : "top-[-490px]"
+          }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
@@ -59,7 +59,10 @@ const Nav = () => {
           <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
             <Link href="/register">Register now to be a Donor</Link>
           </button>
-          <button onClick={connectWallet} className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
+          <button
+            onClick={connectWallet}
+            className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
+          >
             Connect Wallet
           </button>
         </ul>
