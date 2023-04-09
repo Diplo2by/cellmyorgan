@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     return;
   }
   const link = await ipfsPin(body)
-  // console.log(link)
+  console.log(link)
   res.status(200).json({ data: "recieved", body: body, url: link });
 
 }
