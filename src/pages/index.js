@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
 
 // import Organ from '../../artifacts/contracts/Organ.sol'
 // import OrganListing from '../../artifacts/contracts/OrganListing.sol'
