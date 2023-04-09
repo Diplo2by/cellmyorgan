@@ -59,8 +59,8 @@ const Nav = () => {
           <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
             <Link href="/register">Register now to be a Donor</Link>
           </button>
-          <button onClick={connectWallet} className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200">
-            CONNECT WALLET
+          <button onClick={connectWallet} className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
+            Connect Wallet
           </button>
         </ul>
       </div>
