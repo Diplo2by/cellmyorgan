@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 const index = () => {
     return (
         <>
@@ -50,7 +51,7 @@ const index = () => {
                                     <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
                                         Are there any religious objections to organ donations?
                                     </summary>
-                                    <span className="px-4 py-2">
+                                    <span>
                                         Most of the religious groups support the concept of organ donation. However if you have any doubt you can discuss it with your spiritual or religious leader.
                                     </span>
                                 </details>
@@ -58,7 +59,7 @@ const index = () => {
                                     <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
                                         How does the brain death occur?
                                     </summary>
-                                    <span className="px-4 py-2">
+                                    <span>
                                         Brain death usually results from a severe brain injury or brain haemorrhage which causes all the brain activity to stop. This can happen after a major road accident or a bleeding in the brain due to stroke.
                                     </span>
                                 </details>
@@ -66,11 +67,13 @@ const index = () => {
                                     <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
                                         What is brain death?
                                     </summary>
-                                    <span className="px-4 py-2">
+                                    <span>
                                         Normally the death is said to occur when heart stops. But with modern technology the heart and lungs can be made to function through mechanical support even when brain function has completely and permanently ceased. Thus once brain death occurs; the person becomes a cadaver with a beating heart.
                                     </span>
                                 </details>
                             </div>
+                        </div>
+                        <div className='text-center text-xl'> <p>For more queries feel free to  <Link href="/contact" className='text-gray-800 underline'>Contact us</Link></p>
                         </div>
                     </div>
                 </section>
