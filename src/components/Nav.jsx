@@ -44,8 +44,8 @@ const Nav = () => {
           ))}
           {/* <Button onClick={event =>  window.location.href='/register'}> */}
           {/* </Button> */}
-          <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200">
-            <Link href="/register">REGISTER</Link>
+          <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
+            <Link href="/register">Register now to be a Donor</Link>
           </button>
         </ul>
       </div>

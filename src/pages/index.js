@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import Form from "@/components/Form";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
 
 import { organAddress, organListingAddress } from "../../config";
 import axios from "axios";
@@ -16,6 +18,8 @@ export default function Home() {
         <title>Organ Donation Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Hero></Hero>
+      <Footer></Footer>
     </>
   );
 }
