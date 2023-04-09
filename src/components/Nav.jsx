@@ -1,7 +1,20 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import { redirect } from "next/navigation";
 import Link from "next/link";
+import { ethers } from 'ethers'
+import Web3Modal from 'web3modal' 
+
+async function connectWallet() {
+  try {
+    const web3modal = new Web3Modal()
+    const conn = await web3modal.connect()
+    const provider = new ethers.providers.Web3Provider(conn)
+    const signer = provider.getSigner()
+    console.log('Connection successfull Signer :')
+  }
+  catch(e){
+    console.log(e)
+  }
+}
 
 const Nav = () => {
   let Links = [
@@ -10,7 +23,7 @@ const Nav = () => {
     { name: "EVENTS", link: "/events" },
     { name: "GALLERY", link: "/gallery" },
     { name: "CONTACT", link: "/contact" },
-    { name: "FAQs", link: "/" },
+    { name: "FAQs", link: "/faq" },
   ];
   let [open, setOpen] = useState(false);
   return (
@@ -28,9 +41,8 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 " : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
+            }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
@@ -46,6 +58,9 @@ const Nav = () => {
           {/* </Button> */}
           <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200">
             <Link href="/register">REGISTER</Link>
+          </button>
+          <button onClick={connectWallet} className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200">
+            CONNECT WALLET
           </button>
         </ul>
       </div>
