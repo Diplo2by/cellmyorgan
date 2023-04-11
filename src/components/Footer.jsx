@@ -12,7 +12,7 @@ const Footer = () => {
   //   return (
   //     <div className="max-w-screen mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 bg-slate-900">
   //       <div>
-  //         <h1 className="w-full text-3xl font-bold text-white">cellmyorgan.</h1>
+  //         <h1 className="w-full text-3xl font-bold text-white">donorblock.</h1>
   //         <p className="py-4">
   //           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit
   //           ullam iste repellat consequatur libero reiciendis, blanditiis
@@ -73,7 +73,7 @@ const Footer = () => {
           <div class="mb-6 md:mb-0">
             <Link class="flex items-center" href="#">
               <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
-                cellmyorgan.
+                donorblock.
               </span>
             </Link>
           </div>
