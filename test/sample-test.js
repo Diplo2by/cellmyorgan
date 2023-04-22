@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+// const { expect } = require("chai");
 //const { ethers} = require("ethers")
 
 describe("OrganDonation", function () {
@@ -19,9 +19,9 @@ describe("OrganDonation", function () {
     await organ.createToken("SellMyOrgan.org2");
     await organ.createToken("SellMyOrgan.org3");
 
-    await dono.ListOrgan(organContractAddress, 1, "Kidney");
-    await dono.ListOrgan(organContractAddress, 2, "Liver");
-    await dono.ListOrgan(organContractAddress, 3, "Heart");
+    await dono.ListOrgan(organContractAddress, 1, "Kidney","A+");
+    await dono.ListOrgan(organContractAddress, 2, "Liver","B+");
+    await dono.ListOrgan(organContractAddress, 3, "Heart","C+");
 
     const [_, recepientAddress] = await ethers.getSigners();
 
