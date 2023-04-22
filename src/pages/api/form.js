@@ -1,5 +1,11 @@
 //WIP
 import { create as ipfsHttpClient } from 'ipfs-http-client'
+import { ethers } from 'ethers'
+import { organAddress, organListingAddress } from 'config'
+
+import Organ from '../../../artifacts/contracts/Organ.sol/Organ'
+import OrganListing from '../../../artifacts/contracts/OrganListing.sol/OrganListing'
+
 
 const auth = 'Basic ' + Buffer.from(process.env.INFURA_PROJECT_ID + ':' + process.env.INFURA_API_KEY).toString('base64')
 
@@ -23,6 +29,11 @@ async function ipfsPin(data) {
   }
 
 }
+
+async function listOrgan() {
+  
+}
+
 export default async function handler(req, res) {
   const body = req.body;
   if (req.method !== "POST") {

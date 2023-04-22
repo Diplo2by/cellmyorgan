@@ -18,6 +18,8 @@ contract OrganListing is ReentrancyGuard {
         address recipient;
         bool allocated;
         string organType;
+        string bloodGroup;
+        uint256 unixTime;
     }
 
     mapping(uint256 => ListedOrgan) idToListedOrgan;
@@ -29,13 +31,16 @@ contract OrganListing is ReentrancyGuard {
         address donor,
         address recipient,
         bool allocated,
-        string organType
+        string organType,
+        string bloodGroup,
+        uint256 unixTime
     );
 
     function ListOrgan(
         address cmoAddress,
         uint256 tokenId,
-        string memory organType
+        string memory organType,
+        string memory bloodGroup
     ) public nonReentrant {
         _organIds.increment();
         uint256 organId = _organIds.current();
@@ -47,7 +52,9 @@ contract OrganListing is ReentrancyGuard {
             msg.sender,
             address(0),
             false,
-            organType
+            organType,
+            bloodGroup,
+            block.timestamp
         );
         IERC721(cmoAddress).transferFrom(msg.sender, address(this), tokenId);
 
@@ -58,7 +65,9 @@ contract OrganListing is ReentrancyGuard {
             msg.sender,
             address(0),
             false,
-            organType
+            organType,
+            bloodGroup,
+            block.timestamp
         );
     }
 

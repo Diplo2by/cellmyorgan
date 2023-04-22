@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react'
 import Head from "next/head";
-import article from "@/components/Article";
 import Article from "@/components/Article";
 
-const events = () => {
+const index = () => {
   return (
     <div>
-      <Head>
+        <Head>
         <title>Events and Updates</title>
       </Head>
       <div className="bg-white py-10 sm:py-15">
@@ -49,7 +48,7 @@ const events = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default events;
+export default index
