@@ -29,7 +29,7 @@ const Nav = () => {
     <div className="shadow-md w-full sticky top-0 left-0 z-9999">
       <div className="md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7">
         <div className="font-bold text-3xl cursor-pointer flex items-center text-gray-800">
-          DonorBlock.
+          donorblock.
         </div>
 
         <div
@@ -40,9 +40,8 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 " : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
+            }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
