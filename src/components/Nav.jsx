@@ -29,7 +29,7 @@ const Nav = () => {
     <div className="shadow-md w-full sticky top-0 left-0 z-9999">
       <div className="md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7">
         <div className="font-bold text-3xl cursor-pointer flex items-center text-gray-800">
-          donorblock.
+          DonorBlock.
         </div>
 
         <div
