@@ -12,8 +12,8 @@ export default function Home() {
         <title>Organ Donation Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Hero></Hero>
-      <Footer></Footer>
+      <Hero/>
+      <Footer/>
     </>
   );
 }
