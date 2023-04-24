@@ -2,7 +2,11 @@ import React, { useState } from "react"
 import axios from "axios"
 import taluk from "../../json/data.json"
 import { resolve } from "styled-jsx/css"
-import { DropdownFormElement, InputFormElement } from "./FormElements"
+import {
+	MainFormElement,
+	DropdownFormElement,
+	InputFormElement,
+} from "./FormElements"
 
 const RegistrationForm = () => {
 	const [districtValue, setDistrictValue] = React.useState("Belagavi")
@@ -179,7 +183,7 @@ const RegistrationForm = () => {
 					</div>
 				</div>
 				<div className="flex flex-wrap -mx-3 mb-6">
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="sex">
@@ -204,8 +208,8 @@ const RegistrationForm = () => {
 								</svg>
 							</div>
 						</div>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="dob">
@@ -218,8 +222,8 @@ const RegistrationForm = () => {
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							type="date"
 						/>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="city">
@@ -233,10 +237,10 @@ const RegistrationForm = () => {
 							type="text"
 							placeholder="Bengaluru"
 						/>
-					</div>
+					</MainFormElement>
 				</div>
 				<div className="flex flex-wrap -mx-3 mb-6">
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="zip">
@@ -250,8 +254,8 @@ const RegistrationForm = () => {
 							type="text"
 							placeholder="80215"
 						/>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="district">
@@ -288,8 +292,8 @@ const RegistrationForm = () => {
 								</svg>
 							</div>
 						</div>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="taluk">
@@ -323,11 +327,11 @@ const RegistrationForm = () => {
 								</svg>
 							</div>
 						</div>
-					</div>
+					</MainFormElement>
 				</div>
 
 				<div className="flex flex-wrap -mx-3 mb-6">
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="email">
@@ -341,8 +345,8 @@ const RegistrationForm = () => {
 							type="text"
 							placeholder="v@darsh.com"
 						/>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="emgmob">
@@ -356,8 +360,8 @@ const RegistrationForm = () => {
 							type="text"
 							placeholder="9845125385"
 						/>
-					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					</MainFormElement>
+					<MainFormElement>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="mob">
@@ -371,7 +375,7 @@ const RegistrationForm = () => {
 							type="text"
 							placeholder="9845125385"
 						/>
-					</div>
+					</MainFormElement>
 				</div>
 				<div className="flex flex-wrap -mx-3 mb-6">
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
