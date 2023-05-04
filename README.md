@@ -7,3 +7,7 @@ axios
 @nomicfoundation/hardhat-toolbox
 
 CellMyOrgan is an experimental blockchain based organ donation site.
+
+To run locally:
+- `npm install --force` 
+- `npm run dev`
