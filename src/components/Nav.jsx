@@ -8,8 +8,8 @@ async function connectWallet() {
     const web3modal = new Web3Modal();
     const conn = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(conn);
-    const signer = provider.getSigner();
-    console.log("Connection successfull Signer :");
+    const signer =provider.getSigner();
+    console.log("Connection successfull Signer");
   } catch (e) {
     console.log(e);
   }
