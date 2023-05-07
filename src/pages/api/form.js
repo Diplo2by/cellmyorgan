@@ -4,8 +4,6 @@ import { ethers } from 'ethers'
 import { organAddress, organListingAddress } from 'config'
 import Organ from '../../../artifacts/contracts/Organ.sol/Organ'
 import OrganListing from '../../../artifacts/contracts/OrganListing.sol/OrganListing'
-// import Web3Modal from "web3modal";
-
 
 
 const auth = 'Basic ' + Buffer.from(process.env.INFURA_PROJECT_ID + ':' + process.env.INFURA_API_KEY).toString('base64')
@@ -31,20 +29,8 @@ async function ipfsPin(data) {
 
 }
 
-// async function connectWallet() {
-//   try {
-//     const web3modal = new Web3Modal();
-//     const conn = await web3modal.connect();
-//     const provider = new ethers.providers.Web3Provider(conn);
-//     const signer =provider.getSigner();
-//     console.log("Connection successfull Signer ");
-//     return signer
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
 
-async function listOrgan(url) {
+async function listOrgan(url, signer) {
   try {
     let contract = new ethers.Contract(organAddress, Organ.abi, signer)
     let transaction = await contract.createToken(url)
@@ -73,8 +59,8 @@ export default async function handler(req, res) {
     return;
   }
   const link = await ipfsPin(body)
-  //const txn = await listOrgan(link)
-  //console.log(txn)
-  res.status(200).json({ data: "recieved", body: body, url: link });
+  // const txn = await listOrgan(link,body.signer)
+  // console.log(txn)
+  res.status(200).json({ data: "recieved", body: body.signer, url: link });
 
 }

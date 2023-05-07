@@ -1,12 +1,40 @@
+import Web3Modal from "web3modal";
 import React, { useState } from "react"
 import axios from "axios"
+import { ethers } from "ethers";
 import taluk from "../../json/data.json"
 import { resolve } from "styled-jsx/css"
+import { organAddress, organListingAddress } from 'config'
+import Organ from '../../artifacts/contracts/Organ.sol/Organ'
+import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing'
+
 import {
 	MainFormElement,
 	DropdownFormElement,
 	InputFormElement,
 } from "./FormElements"
+
+async function listOrgan(url, signer) {
+	try {
+		let contract = new ethers.Contract(organAddress, Organ.abi, signer)
+		let transaction = await contract.createToken(url)
+		let tx = await transaction.wait()
+
+		let event = tx.events[0]
+		let value = event.args[2]
+		let tokenId = Number(value)
+
+		contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer)
+		transaction = await contract.ListOrgan(organAddress, tokenId, 'Kidney', 'A+')
+
+		return transaction
+	}
+	catch (e) {
+		console.log('imma start cryin frfr')
+		console.log(e)
+	}
+
+}
 
 const RegistrationForm = () => {
 	const [districtValue, setDistrictValue] = React.useState("Belagavi")
@@ -14,7 +42,6 @@ const RegistrationForm = () => {
 		const value = event.target.value
 		setDistrictValue(value)
 	}
-
 	const onOrganChange = (e) => {
 		const copy = { ...data }
 		if (e.target.checked) {
@@ -53,7 +80,7 @@ const RegistrationForm = () => {
 		})
 	}
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault()
 		axios
 			.post("/api/form", {
@@ -72,8 +99,14 @@ const RegistrationForm = () => {
 				photo: data.photo,
 				organ: data.organs,
 			})
-			.then((res) => {
-				console.log(res.data)
+			.then(async (res) => {
+				// console.log(res.data.url)
+				const web3modal = new Web3Modal();
+				const conn = await web3modal.connect();
+				const provider = new ethers.providers.Web3Provider(conn);
+				const signer = provider.getSigner();
+				const txn = await listOrgan(res.data.url, signer)
+				console.log(txn)
 			})
 	}
 

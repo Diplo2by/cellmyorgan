@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-
 async function connectWallet() {
   try {
     const web3modal = new Web3Modal();
