@@ -1,10 +1,5 @@
-//WIP
-import { create as ipfsHttpClient } from 'ipfs-http-client'
-import { ethers } from 'ethers'
-import { organAddress, organListingAddress } from 'config'
-import Organ from '../../../artifacts/contracts/Organ.sol/Organ'
-import OrganListing from '../../../artifacts/contracts/OrganListing.sol/OrganListing'
 
+import { create as ipfsHttpClient } from 'ipfs-http-client'
 
 const auth = 'Basic ' + Buffer.from(process.env.INFURA_PROJECT_ID + ':' + process.env.INFURA_API_KEY).toString('base64')
 
@@ -29,28 +24,6 @@ async function ipfsPin(data) {
 
 }
 
-
-async function listOrgan(url, signer) {
-  try {
-    let contract = new ethers.Contract(organAddress, Organ.abi, signer)
-    let transaction = await contract.createToken(url)
-    let tx = await transaction.wait()
-
-    let event = tx.events[0]
-    let value = event.args[2]
-    let tokenId = Number(value)
-
-    contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer)
-    transaction = await contract.ListOrgan(organAddress, tokenId, 'Kidney', 'A+')
-
-    return transaction
-  }
-  catch (e) {
-    console.log('imma start cryin frfr')
-    console.log(e)
-  }
-
-}
 
 export default async function handler(req, res) {
   const body = req.body;
