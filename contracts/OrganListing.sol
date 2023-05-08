@@ -103,6 +103,12 @@ contract OrganListing is ReentrancyGuard {
         return items;
     }
 
+    function Testfun() public  returns (uint) {
+        uint num = 1;
+        return num;
+    }
+    
+
     //Fetch my Organ function is not required at this point of time
 
     // function fetchOrgansReceived() public view returns (ListedOrgan[] memory) {

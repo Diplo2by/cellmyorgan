@@ -5,8 +5,8 @@ import { ethers } from "ethers";
 import taluk from "../../json/data.json"
 import { resolve } from "styled-jsx/css"
 import { organAddress, organListingAddress } from 'config'
-import Organ from '../../artifacts/contracts/Organ.sol/Organ'
-import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing'
+import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
+import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
 
 import {
 	MainFormElement,
@@ -14,20 +14,22 @@ import {
 	InputFormElement,
 } from "./FormElements"
 
-async function listOrgan(url, signer) {
+async function listOrgan(url, signer,provider) {
 	try {
-		let contract = new ethers.Contract(organAddress, Organ.abi, signer)
-		let transaction = await contract.createToken(url)
+		let organ = new ethers.Contract(organAddress, Organ.abi, signer)
+		let transaction = await organ.createToken(url)
 		let tx = await transaction.wait()
 
 		let event = tx.events[0]
 		let value = event.args[2]
-		let tokenId = Number(value)
+		let tokenId = Number(value)	
+		//console.log(tokenId)
 
-		contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer)
-		transaction = await contract.ListOrgan(organAddress, tokenId, 'Kidney', 'A+')
-
-		return transaction
+		let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
+		transaction = await contract.ListOrgan(organAddress, tokenId, 'liver', 'C+');
+		await transaction.wait()
+		transaction = await contract.fetchOrganItems();
+		return(transaction)
 	}
 	catch (e) {
 		console.log('imma start cryin frfr')
@@ -105,7 +107,7 @@ const RegistrationForm = () => {
 				const conn = await web3modal.connect();
 				const provider = new ethers.providers.Web3Provider(conn);
 				const signer = provider.getSigner();
-				const txn = await listOrgan(res.data.url, signer)
+				const txn = await listOrgan(res.data.url, signer,provider)
 				console.log(txn)
 			})
 	}
