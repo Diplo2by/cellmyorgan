@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
+
 async function connectWallet() {
   try {
     const web3modal = new Web3Modal();
     const conn = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(conn);
-    const signer =provider.getSigner();
+    const signer = provider.getSigner();
     console.log("Connection successfull Signer");
   } catch (e) {
     console.log(e);
   }
 }
 
-const Nav = () => {
+const Nav = (showConnect = false) => {
   let Links = [
     { name: "HOME", link: "/" },
     { name: "ABOUT", link: "/about" },
@@ -39,8 +40,9 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
-            }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 " : "top-[-490px]"
+          }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
@@ -52,14 +54,14 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          {/* <Button onClick={event =>  window.location.href='/register'}> */}
-          {/* </Button> */}
           <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
             <Link href="/register">Register now to be a Donor</Link>
           </button>
+
           <button
             onClick={connectWallet}
             className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
+            style={{ display: showConnect.showConnect ? "block" : "none" }}
           >
             Connect Wallet
           </button>
