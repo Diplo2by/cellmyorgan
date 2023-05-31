@@ -5,6 +5,27 @@ import { useEffect, useState } from "react";
 // import { getAllTransactions } from "../shared/Transaction";
 // import { useGlobalState } from "../store";
 
+import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
+import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
+import { organAddress, organListingAddress } from 'config'
+import Web3Modal from "web3modal";
+import { ethers } from 'ethers'
+import axios from 'axios'
+
+async function loadOrgans() {
+  const web3modal = new Web3Modal()
+  const conn = await web3modal.connect()
+  const provider = new ethers.providers.Web3Provider(conn)
+  const signer = provider.getSigner()
+
+  const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
+  const organContract = new ethers.Contract(organAddress,Organ.abi,signer);
+  const data = await organListingContract.fetchOrganItems();
+  console.log(data)
+  
+}
+
+
 const Tabular = () => {
   const [transactionsStore] = useState("transactions");
   const [transactionCount] = useState("transactionCount");
@@ -142,6 +163,9 @@ const Tabular = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <button onClick={loadOrgans}> Show Organs</button>
         </div>
       </section>
     </>
