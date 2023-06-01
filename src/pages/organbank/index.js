@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Tabular from "@/components/Tabular";
 
-function Testhtml() {
+function OrganBank() {
   return (
     <>
       <Head>
@@ -12,4 +12,4 @@ function Testhtml() {
   );
 }
 
-export default Testhtml;
+export default OrganBank;

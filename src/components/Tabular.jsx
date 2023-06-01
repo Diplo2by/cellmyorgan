@@ -14,11 +14,11 @@ import axios from 'axios'
 
 
 function isAllocated(item) {
-  if(item){
+  if (item) {
     return <div className="text-red-500">True</div>
   }
-  else{
-    return<div className="text-green-500">False</div>
+  else {
+    return <div className="text-green-500">False</div>
   }
 }
 
