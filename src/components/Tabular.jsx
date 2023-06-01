@@ -13,12 +13,16 @@ import { ethers } from 'ethers'
 import axios from 'axios'
 
 
-
-
+function isAllocated(item) {
+  if(item){
+    return <div className="text-red-500">True</div>
+  }
+  else{
+    return<div className="text-green-500">False</div>
+  }
+}
 
 const Tabular = () => {
-  
-
   const [organs, setOrgans] = useState([])
   useEffect(() => {
     loadOrgans()
@@ -29,31 +33,33 @@ const Tabular = () => {
     const conn = await web3modal.connect()
     const provider = new ethers.providers.Web3Provider(conn)
     const signer = provider.getSigner()
-  
+
     const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, provider);
     const organContract = new ethers.Contract(organAddress, Organ.abi, provider);
     const data = await organListingContract.fetchOrganItems();
     console.log(data)
-  
+
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await organContract.tokenURI(i.tokenId)
-      const metadata = await axios.get(tokenUri)
+      // const metadata = await axios.get(tokenUri)
+      const contents = (await axios.get(tokenUri)).data;
       let item = {
         organId: Number(i.organId),
-        allocated: i.allocated,
+        allocated: Number(i.allocated),
         organType: i.organType,
         tokenId: Number(i.tokenId),
         bloodGroup: i.bloodGroup,
         timeExtracted: Date(i.unixTime),
         dateExtracted: Date(i.unixTime),
         donor: i.donor,
-        recipient: i.recipient
+        recipient: i.recipient,
+        url: contents
       }
       return item
     }))
     setOrgans(items)
     setLoadingState('loaded')
-  
+
   }
 
   const [loadingState, setLoadingState] = useState('not-loaded')
@@ -94,7 +100,7 @@ const Tabular = () => {
                         <div className="font-semibold text-left">Timestamp</div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">Remark</div>
+                        <div className="font-semibold text-center">Allocation</div>
                       </th>
                     </tr>
                   </thead>
@@ -114,43 +120,24 @@ const Tabular = () => {
                             </div>
                             <div className="font-medium text-gray-800">
                               {/* {faker.name.findName()} */}
-                              Shrivardan Kumar
+                              {index.tokenId}
                             </div>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
-                            <a
-                              href={`https://ropsten.etherscan.io/address/${item.donor}`}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="hover:text-blue-500"
-                            >
-                              {/* {shortenAddress(item.sender)} */}
-                              {shortenAddress(item.donor)}
-                            </a>
+                            {/* {shortenAddress(item.sender)} */}
+                            {shortenAddress(item.donor)}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
-                            <a
-                              href={`https://ropsten.etherscan.io/address/${item.recipient}`}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="hover:text-blue-500"
-                            >
-                              {shortenAddress(item.recipient)}
-                            </a>
+                            {shortenAddress(item.recipient)}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex flex-row justify-center items-center text-left font-medium">
-                            {/* <img
-                              className="w-3 h-3 object-contain cursor-pointer mr-1"
-                              src={ethLogo}
-                              alt="Etherium Logo"
-                            /> */}
-                            <span className="text-green-500">{item.organType}</span>
+                            <span className="text-green-500">{item.bloodGroup}</span>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
@@ -159,7 +146,9 @@ const Tabular = () => {
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">{item.allocated}</div>
+                          <div className="text-sm text-center">
+                            {isAllocated(item.allocated)}
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -169,9 +158,9 @@ const Tabular = () => {
             </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <button onClick={loadOrgans}> Show Organs</button>
-        </div>
+        </div> */}
       </section>
     </>
   );
