@@ -11,49 +11,31 @@ const About = () => {
         <div className="gap-16 items-center py-8 px-5 mx-auto max-w-screen-2xl lg:grid lg:grid-cols-2 lg:py-16 lg:pl-10">
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              About CellMyOrgan
+              About donorblock
             </h2>
             <div className="mb-4 text-base">
-              The Jeevasarthakathe has been constituted by the Government of
-              Karnataka for a sustained deceased donor (Cadaver) transplantation
-              programme in the state of Karnataka. Jeevasarthakathe is the body
-              appointed to oversee the implementation of the Transplantation of
-              Human Organs Act of 1994. The organization aims to coordinate the
-              deceased donor transplantation activities and also educate the
-              public on organ donation. The functions of Jeevasarthakathe
-              include, involving the hospitals for active participation of the
-              deceased donor (Cadaver) program through promotional activities,
-              seminars, workshops and educational programmes. The public
-              awareness programme takes place through hospitals, educational
-              institutions, corporates and non-governmental organizations along
-              with media participation.
+              Welcome to donorBlock - Empowering Lives through Organ Donation!
+              <br></br>
+              At donorBlock, we believe in the incredible power of organ donation to transform lives and create a lasting impact in society. Our mission is to raise awareness, educate, and facilitate the organ donation process in India, fostering a culture of giving and saving lives.
+              About donorBlock:
+              At donorBlock, we understand that organ transplantation is a life-saving procedure that can provide hope and a second chance to those in need. Unfortunately, in India, the demand for organs far outweighs the supply, leading to a significant gap and prolonged waiting periods for patients in need.
+              Our platform aims to bridge this gap by connecting organ donors with individuals awaiting transplantation. Through our comprehensive and user-friendly website, we strive to simplify and streamline the organ donation process, making it easier for individuals to become donors and save lives.
             </div>
 
             <p className="font-bold text-lg">
-              The mission of Jeevasarthakathe is:
+              What sets donorBlock apart:
             </p>
-            <ul className="list-disc">
+            <ul className="list-disc text-sm">
               <li>
-                To establish effective deceased donor (cadaver) organ
-                procurement and just distribution of organs.
+                Accessibility: We are committed to making organ donation accessible to everyone. Our platform provides a simple, intuitive interface that allows individuals to register as donors with just a few clicks. We also offer multilingual support to ensure inclusivity across diverse communities.
               </li>
-              <li>To set up organ sharing by minimizing wastage of organs.</li>
+              <li>Education and Awareness: We believe that knowledge is the key to overcoming misconceptions and increasing organ donation rates. We provide extensive educational resources, informative articles, and FAQs to empower individuals with accurate information about organ transplantation.</li>
               <li>
-                To assure quality control by collection, analysis and
-                publications of data on organ donation, procurement and
-                transplantation.{" "}
+                Privacy and Security: We prioritize the privacy and security of our users`&apos;` information. We adhere to strict data protection protocols and maintain confidentiality throughout the registration and donation process.
               </li>
-              <li>To increase public awareness.</li>
+              <li>Community Engagement: donorBlock aims to build a strong and supportive community of donors, recipients, and their families. We organize awareness campaigns, support groups, and events to foster connections and encourage dialogue around organ donation.</li>
               <li>
-                Jeevasarthakathe works through a team effort of participating
-                hospitals for the achievement of a sustained cadaveric
-                transplant programme.
-              </li>
-              <li>
-                Jeevasarthakathe will be entirely responsible for managing the
-                Karnataka State Organ and Tissue Sharing System and any other
-                activity entrusted to it by the Health and Family Welfare
-                Department of the State Government.
+                Collaboration: We actively collaborate with hospitals, medical professionals, and NGOs to ensure a smooth and efficient organ donation process. By fostering partnerships, we can maximize the impact of our platform and create a network that benefits all stakeholders.
               </li>
             </ul>
           </div>
