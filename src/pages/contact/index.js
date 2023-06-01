@@ -155,20 +155,20 @@ const contact = () => {
             </button>
           </div>
           <div className="mt-10 leading-9">
-            <p className="font-bold">JEEVASARTHAKATHE</p>
+            <p className="font-bold">donorblock</p>
 
             <div className="leading-6">
-              Health and family welfare department, Office of the Joint Director
-              (Medical) Arogya soudha 6th floor, 1st cross Magadi Road,
-              Bangalore-560023
+              123 Main Street
+              Cityville, State
+              Country-12345
             </div>
             <hr />
             <div>
-              <p>Mobile: +91 98450 06768</p>
-              Ph: 080 - 26295636
+              <p>Mobile: +91 98765 43210</p>
+              Ph: +1 (555) 123-4567
               <br />
-              Ph: 080 - 23295637
-              <br />E - mail ID : jeevasarthakathe@gmail.com
+              Ph: +1 (555) 123-4567
+              <br />E - mail ID : contact@donorblock.com
             </div>
           </div>
         </form>
