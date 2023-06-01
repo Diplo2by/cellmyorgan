@@ -12,51 +12,57 @@ import Web3Modal from "web3modal";
 import { ethers } from 'ethers'
 import axios from 'axios'
 
-async function loadOrgans() {
-  const web3modal = new Web3Modal()
-  const conn = await web3modal.connect()
-  const provider = new ethers.providers.Web3Provider(conn)
-  const signer = provider.getSigner()
 
-  const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-  const organContract = new ethers.Contract(organAddress,Organ.abi,signer);
-  const data = await organListingContract.fetchOrganItems();
-  console.log(data)
-  
-}
+
 
 
 const Tabular = () => {
-  const [transactionsStore] = useState("transactions");
-  const [transactionCount] = useState("transactionCount");
-  const [transactions, setTransaction] = useState([]);
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(6);
+  
 
-//   const makeImage = (address) => {
-//     const data = new Identicon(address, 400).toString();
-//     return `data:image/png;base64,${data}`;
-//   };
+  const [organs, setOrgans] = useState([])
+  useEffect(() => {
+    loadOrgans()
+  }, [])
 
-  const loadMoreTransactions = () => {
-    setTransaction((prevState) => [
-      ...prevState,
-      ...transactionsStore.slice(start, end),
-    ]);
-    setStart(end);
-    setEnd(end * 2);
-  };
+  async function loadOrgans() {
+    const web3modal = new Web3Modal()
+    const conn = await web3modal.connect()
+    const provider = new ethers.providers.Web3Provider(conn)
+    const signer = provider.getSigner()
+  
+    const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, provider);
+    const organContract = new ethers.Contract(organAddress, Organ.abi, provider);
+    const data = await organListingContract.fetchOrganItems();
+    console.log(data)
+  
+    const items = await Promise.all(data.map(async i => {
+      const tokenUri = await organContract.tokenURI(i.tokenId)
+      const metadata = await axios.get(tokenUri)
+      let item = {
+        organId: Number(i.organId),
+        allocated: i.allocated,
+        organType: i.organType,
+        tokenId: Number(i.tokenId),
+        bloodGroup: i.bloodGroup,
+        timeExtracted: Date(i.unixTime),
+        dateExtracted: Date(i.unixTime),
+        donor: i.donor,
+        recipient: i.recipient
+      }
+      return item
+    }))
+    setOrgans(items)
+    setLoadingState('loaded')
+  
+  }
+
+  const [loadingState, setLoadingState] = useState('not-loaded')
+
+
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
-  useEffect(() => {
-    // getAllTransactions().then((data) => {
-    //   setTransaction([...data.slice(start, end)]);
-      setStart(end);
-      setEnd(end * 2);
-    // });
-  }, []);
 
   return (
     <>
@@ -65,7 +71,6 @@ const Tabular = () => {
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
               <h2 className="font-semibold text-gray-800 text-center">
-                Total Transactions({transactionCount})
               </h2>
             </header>
             <div className="p-3">
@@ -94,14 +99,14 @@ const Tabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {transactions.map((tx, index) => (
+                    {organs.map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
                               {/* <img
                                 className="rounded-full"
-                                src={makeImage(tx.sender)}
+                                src={makeImage(item.sender)}
                                 width="40"
                                 height="40"
                                 alt="Alex Shatov"
@@ -116,25 +121,25 @@ const Tabular = () => {
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
                             <a
-                              href={`https://ropsten.etherscan.io/address/${tx.sender}`}
+                              href={`https://ropsten.etherscan.io/address/${item.donor}`}
                               target="_blank"
                               rel="noreferrer"
                               className="hover:text-blue-500"
                             >
-                              {/* {shortenAddress(tx.sender)} */}
-                              { shortenAddress("0x006edb7dee9873aa4bf765b42a66db84fd775de10039332c2ec0e837c3110448") }
+                              {/* {shortenAddress(item.sender)} */}
+                              {shortenAddress(item.donor)}
                             </a>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
                             <a
-                              href={`https://ropsten.etherscan.io/address/${tx.receiver}`}
+                              href={`https://ropsten.etherscan.io/address/${item.recipient}`}
                               target="_blank"
                               rel="noreferrer"
                               className="hover:text-blue-500"
                             >
-                              {shortenAddress(tx.receiver)}
+                              {shortenAddress(item.recipient)}
                             </a>
                           </div>
                         </td>
@@ -145,16 +150,16 @@ const Tabular = () => {
                               src={ethLogo}
                               alt="Etherium Logo"
                             /> */}
-                            <span className="text-green-500">{tx.amount}</span>
+                            <span className="text-green-500">{item.organType}</span>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
-                            {tx.timestamp}
+                            {item.timeExtracted}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">{tx.remark}</div>
+                          <div className="text-sm text-center">{item.allocated}</div>
                         </td>
                       </tr>
                     ))}

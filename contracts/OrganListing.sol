@@ -103,7 +103,7 @@ contract OrganListing is ReentrancyGuard {
         return items;
     }
 
-    function Testfun() public  returns (uint) {
+    function Testfun() public pure returns (uint) {
         uint num = 1;
         return num;
     }
