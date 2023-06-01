@@ -23,6 +23,7 @@ const WaitingListForm = () => {
     const value = event.target.value;
     setDistrictValue(value);
   };
+
   const onOrganChange = (e) => {
     const copy = { ...data };
     if (e.target.checked) {
@@ -33,6 +34,18 @@ const WaitingListForm = () => {
       setData(copy);
     }
     console.log(data.organs);
+  };
+
+  const onConditionChange = (e) => {
+    const copy = { ...data };
+    if (e.target.checked) {
+      copy.conditions.push(e.target.value);
+      setData(copy);
+    } else {
+      copy.conditions = copy.conditions.filter((value) => value !== e.target.value);
+      setData(copy);
+    }
+    console.log(data.conditions);
   };
 
   // const [photo, setImage] = useState('')
@@ -82,6 +95,9 @@ const WaitingListForm = () => {
       bloodtype: data.bloodtype,
       primarydoc: data.primarydoc,
       hospital: data.hospital,
+      conditions: data.conditions,
+      regfee: data.regfee,
+      aadhaar: data.aadhaar,
     });
   }
 
@@ -91,25 +107,6 @@ const WaitingListForm = () => {
     address: "",
     sex: "",
     dob: "",
-    height: "",
-    weight: "",
-    bmi: "",
-    bloodtype: "",
-    hla: "",
-    angina: "",
-    hypertension: "",
-    cva: "",
-    peripheral_v_disease: "",
-    copd: "",
-    previous_malignancy: "",
-    recent_dvt_pe: "",
-    hbs_ag: "",
-    hepatitis_c: "",
-    hiv: "",
-    primarydoc: "",
-    hospital: "",
-    aadhar: "",
-    phone_no: "",
     city: "",
     zip: "",
     district: districtValue,
@@ -119,6 +116,15 @@ const WaitingListForm = () => {
     mob: "",
     photo: "",
     organs: [],
+    height: "",
+    weight: "",
+    bmi: "",
+    bloodtype: "",
+    primarydoc: "",
+    hospital: "",
+    conditions: [],
+    regfee: "",
+    aadhaar: "",
   });
 
   async function handle(e) {
@@ -645,6 +651,166 @@ const WaitingListForm = () => {
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 type="text"
                 placeholder="Koshys"
+              />
+            </div>
+          </div>
+          <p className="text-2xl font-bold tracking-tight text-gray-900">
+            Condition Checklist
+          </p>
+          <hr className="w-52 h-1 my-2 bg-gray-100 border-0 rounded md:my-2 dark:bg-gray-700"></hr>
+
+          <div className="flex flex-wrap -mx-3 mb-6 mt-6">
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="hla"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Human leukocyte antigen(HLA)
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="angina"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Angina
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0 ">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="hypertension"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Hypertension
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="cva"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Cerebrovascular accident
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="pvd"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Peripheral Vascular disease
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="copd"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Chronic obstructive pulmonary disease
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="premalignancy"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Previous malignancy
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="dvtpe"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Recent DVT/PE
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="hbsag"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">HbsAg</label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="hepatitisc"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">
+                Hepatitis C
+              </label>
+            </div>
+            <div className="w-full px-3 md:mb-0">
+              <input
+                onChange={onConditionChange}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                value="hiv"
+              />
+              <label className="ml-2 mb-0.5 text-base font-medium">HIV</label>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="w-full md:w-1/2 pr-3">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="regfee"
+              >
+                Resistration Fees Paid
+              </label>
+              <input
+                onChange={(e) => handle(e)}
+                id="regfee"
+                value={data.regfee}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                type="number"
+                min="1"
+                step="0.01"
+                placeholder="500.00"
+              />
+            </div>
+            <div className="w-full md:w-1/2 pr-3">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="aadhaar"
+              >
+                Aadhaar Card Number
+              </label>
+              <input
+                onChange={(e) => handle(e)}
+                id="aadhaar"
+                value={data.aadhaar}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                type="text"
+                placeholder="12345657890"
               />
             </div>
           </div>
