@@ -5,7 +5,7 @@ function OrganBank() {
   return (
     <>
       <Head>
-        <title>Test</title>
+        <title>Organ Bank</title>
       </Head>
       <Tabular></Tabular>
     </>
