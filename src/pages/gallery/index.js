@@ -16,7 +16,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/214.JPEG"
+                  src="https://images.unsplash.com/photo-1593113630400-ea4288922497"
                 />
               </div>
             </div>
@@ -25,7 +25,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/220.JPEG"
+                  src="https://images.unsplash.com/photo-1591901206004-1b3cc4ffbe3c"
                 />
               </div>
             </div>
@@ -34,7 +34,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/219.JPEG"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c"
                 />
               </div>
             </div>
@@ -43,7 +43,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/217.JPEG"
+                  src="https://images.unsplash.com/photo-1504813184591-01572f98c85f"
                 />
               </div>
             </div>
@@ -52,7 +52,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/221.JPEG"
+                  src="https://images.unsplash.com/photo-1584515933487-779824d29309"
                 />
               </div>
             </div>
@@ -61,7 +61,7 @@ const index = () => {
                 <img
                   alt="gallery"
                   className="block h-full w-full rounded-lg object-cover object-center hover:scale-110"
-                  src="/gallery/215.JPEG"
+                  src="https://images.unsplash.com/photo-1538108149393-fbbd81895907"
                 />
               </div>
             </div>
