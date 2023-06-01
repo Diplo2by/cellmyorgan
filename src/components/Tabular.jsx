@@ -37,12 +37,12 @@ const Tabular = () => {
     const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, provider);
     const organContract = new ethers.Contract(organAddress, Organ.abi, provider);
     const data = await organListingContract.fetchOrganItems();
-    console.log(data)
 
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await organContract.tokenURI(i.tokenId)
       // const metadata = await axios.get(tokenUri)
       const contents = (await axios.get(tokenUri)).data;
+      // console.log(contents)
       let item = {
         organId: Number(i.organId),
         allocated: Number(i.allocated),
@@ -53,7 +53,7 @@ const Tabular = () => {
         dateExtracted: Date(i.unixTime),
         donor: i.donor,
         recipient: i.recipient,
-        url: contents
+        url: i.url
       }
       return item
     }))
@@ -102,6 +102,12 @@ const Tabular = () => {
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-center">Allocation</div>
                       </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-center">Organ Type</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-center">Report</div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
@@ -120,7 +126,7 @@ const Tabular = () => {
                             </div>
                             <div className="font-medium text-gray-800">
                               {/* {faker.name.findName()} */}
-                              {index.tokenId}
+                              {item.tokenId}
                             </div>
                           </div>
                         </td>
@@ -148,6 +154,16 @@ const Tabular = () => {
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
                             {isAllocated(item.allocated)}
+                          </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-sm text-center font-bold">
+                            {(item.organType).toUpperCase()}
+                          </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-sm text-center">
+                            <a href={item.url} target="blank">🗎</a>
                           </div>
                         </td>
                       </tr>
