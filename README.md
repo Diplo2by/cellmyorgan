@@ -9,5 +9,7 @@ axios
 CellMyOrgan is an experimental blockchain based organ donation site.
 
 To run locally:
-- `npm install --force` 
+
+- `npm install --force`
 - `npm run dev`
+- `npm run launch`

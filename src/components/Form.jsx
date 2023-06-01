@@ -14,7 +14,7 @@ import {
 	InputFormElement,
 } from "./FormElements"
 
-async function listOrgan(url, signer,provider) {
+async function listOrgan(organs, url, signer) {
 	try {
 		let organ = new ethers.Contract(organAddress, Organ.abi, signer)
 		let transaction = await organ.createToken(url)
@@ -26,7 +26,7 @@ async function listOrgan(url, signer,provider) {
 		//console.log(tokenId)
 
 		let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-		transaction = await contract.ListOrgan(organAddress, tokenId, 'liver', 'C+');
+		transaction = await contract.ListOrgan(organAddress,tokenId, organs[0], 'C+',url);
 		await transaction.wait()
 		transaction = await contract.fetchOrganItems();
 		return(transaction)
@@ -107,7 +107,7 @@ const RegistrationForm = () => {
 				const conn = await web3modal.connect();
 				const provider = new ethers.providers.Web3Provider(conn);
 				const signer = provider.getSigner();
-				const txn = await listOrgan(res.data.url, signer,provider)
+				const txn = await listOrgan(data.organs,res.data.url, signer)
 				console.log(txn)
 			})
 	}
