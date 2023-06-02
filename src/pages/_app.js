@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head></Head>
-      {console.log(router.route)}
+      {/* {console.log(router.route)} */}
       {router.route == "/register" || router.route == "/doctor" ? (
         <Nav showConnect />
       ) : (

@@ -206,7 +206,7 @@ const WaitingListForm = () => {
               >
                 Sex
               </label>
-              <div className="relative">
+              <div>
                 <select
                   onChange={(e) => handle(e)}
                   id="sex"
@@ -217,15 +217,7 @@ const WaitingListForm = () => {
                   <option>Female</option>
                   <option>Other</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
+                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
@@ -284,7 +276,7 @@ const WaitingListForm = () => {
               >
                 District
               </label>
-              <div className="relative">
+              <div>
                 <select
                   onChange={(e) => {
                     handle(e);
@@ -303,15 +295,7 @@ const WaitingListForm = () => {
                     </option>
                   ))}
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
+                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
@@ -321,7 +305,7 @@ const WaitingListForm = () => {
               >
                 Taluk
               </label>
-              <div className="relative">
+              <div>
                 <select
                   onChange={(e) => handle(e)}
                   id="taluk"
@@ -337,15 +321,6 @@ const WaitingListForm = () => {
                     </option>
                   ))}
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
               </div>
             </div>
           </div>
@@ -589,7 +564,7 @@ const WaitingListForm = () => {
               >
                 Blood Group
               </label>
-              <div className="relative">
+              <div>
                 <select
                   onChange={(e) => handle(e)}
                   id="bloodtype"
@@ -610,15 +585,7 @@ const WaitingListForm = () => {
                   <option>O Unknown</option>
                   <option>Unknown</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
+                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
