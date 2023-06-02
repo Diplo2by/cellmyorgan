@@ -73,11 +73,10 @@ const Tabular = () => {
   return (
     <>
       <section className="antialiased rounded-xl text-gray-600 p-5">
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-screen">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-semibold text-gray-800 text-center">
-              </h2>
+              <h2 className="font-semibold text-gray-800 text-center"></h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
@@ -94,16 +93,22 @@ const Tabular = () => {
                         <div className="font-semibold text-left">Recipient</div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-left">Blood Type</div>
+                        <div className="font-semibold text-left">
+                          Blood Type
+                        </div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-left">Timestamp</div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">Allocation</div>
+                        <div className="font-semibold text-center">
+                          Allocation
+                        </div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">Organ Type</div>
+                        <div className="font-semibold text-center">
+                          Organ Type
+                        </div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-center">Report</div>
@@ -111,7 +116,7 @@ const Tabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {organs.map((item, index) => (
+                    {organs?.map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
@@ -143,7 +148,9 @@ const Tabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex flex-row justify-center items-center text-left font-medium">
-                            <span className="text-green-500">{item.bloodGroup}</span>
+                            <span className="text-green-500">
+                              {item.bloodGroup}
+                            </span>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
@@ -158,12 +165,14 @@ const Tabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center font-bold">
-                            {(item.organType).toUpperCase()}
+                            {item.organType.toUpperCase()}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
-                            <a href={item.url} target="blank">🗎</a>
+                            <a href={item.url} target="blank">
+                              🗎
+                            </a>
                           </div>
                         </td>
                       </tr>
