@@ -135,7 +135,7 @@ const WaitingListForm = () => {
   }
 
   return (
-    <div className="font-bold items-center flex flex-col h-screen my-auto">
+    <div className="font-bold items-center flex flex-col h-screen my-auto mb-[20rem]">
       <h1 className="pt-10">Waiting List Form</h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
       <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">
