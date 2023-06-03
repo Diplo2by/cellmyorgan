@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Tabular from "@/components/Tabular";
+import OrganTabular from "@/components/OrganTabular";
 
 function OrganBank() {
   return (
@@ -7,7 +7,7 @@ function OrganBank() {
       <Head>
         <title>Organ Bank</title>
       </Head>
-      <Tabular></Tabular>
+      <OrganTabular/>
     </>
   );
 }

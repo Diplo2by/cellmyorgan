@@ -5,70 +5,74 @@ import { useEffect, useState } from "react";
 // import { getAllTransactions } from "../shared/Transaction";
 // import { useGlobalState } from "../store";
 
-import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
-import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
-import { organAddress, organListingAddress } from 'config'
+import Organ from "../../artifacts/contracts/Organ.sol/Organ.json";
+import OrganListing from "../../artifacts/contracts/OrganListing.sol/OrganListing.json";
+import { organAddress, organListingAddress } from "config";
 import Web3Modal from "web3modal";
-import { ethers } from 'ethers'
-import axios from 'axios'
-
+import { ethers } from "ethers";
+import axios from "axios";
 
 function isAllocated(item) {
   if (item) {
-    return <div className="text-red-500">True</div>
-  }
-  else {
-    return <div className="text-green-500">False</div>
+    return <div className="text-red-500">True</div>;
+  } else {
+    return <div className="text-green-500">False</div>;
   }
 }
 
 const Tabular = () => {
-  const [organs, setOrgans] = useState([])
+  const [organs, setOrgans] = useState([]);
   useEffect(() => {
-    loadOrgans()
-  }, [])
+    loadOrgans();
+  }, []);
 
   async function loadOrgans() {
-    const web3modal = new Web3Modal()
-    const conn = await web3modal.connect()
-    const provider = new ethers.providers.Web3Provider(conn)
-    const signer = provider.getSigner()
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const signer = provider.getSigner();
 
-    const organListingContract = new ethers.Contract(organListingAddress, OrganListing.abi, provider);
-    const organContract = new ethers.Contract(organAddress, Organ.abi, provider);
+    const organListingContract = new ethers.Contract(
+      organListingAddress,
+      OrganListing.abi,
+      provider
+    );
+    const organContract = new ethers.Contract(
+      organAddress,
+      Organ.abi,
+      provider
+    );
     const data = await organListingContract.fetchOrganItems();
 
-    const items = await Promise.all(data.map(async i => {
-      const tokenUri = await organContract.tokenURI(i.tokenId)
-      // const metadata = await axios.get(tokenUri)
-      const contents = (await axios.get(tokenUri)).data;
-      // console.log(contents)
-      let item = {
-        organId: Number(i.organId),
-        allocated: Number(i.allocated),
-        organType: i.organType,
-        tokenId: Number(i.tokenId),
-        bloodGroup: i.bloodGroup,
-        timeExtracted: Date(i.unixTime),
-        dateExtracted: Date(i.unixTime),
-        donor: i.donor,
-        recipient: i.recipient,
-        url: i.url
-      }
-      return item
-    }))
-    setOrgans(items)
-    setLoadingState('loaded')
-
+    const items = await Promise.all(
+      data.map(async (i) => {
+        const tokenUri = await organContract.tokenURI(i.tokenId);
+        // const metadata = await axios.get(tokenUri)
+        const contents = (await axios.get(tokenUri)).data;
+        // console.log(contents)
+        let item = {
+          organId: Number(i.organId),
+          allocated: Number(i.allocated),
+          organType: i.organType,
+          tokenId: Number(i.tokenId),
+          bloodGroup: i.bloodGroup,
+          timeExtracted: Date(i.unixTime),
+          dateExtracted: Date(i.unixTime),
+          donor: i.donor,
+          recipient: i.recipient,
+          url: i.url,
+        };
+        return item;
+      })
+    );
+    setOrgans(items);
+    setLoadingState("loaded");
   }
 
-  const [loadingState, setLoadingState] = useState('not-loaded')
-
-
+  const [loadingState, setLoadingState] = useState("not-loaded");
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
-
 
   return (
     <>
