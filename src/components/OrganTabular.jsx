@@ -120,7 +120,7 @@ const Tabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {organs?.map((item, index) => (
+                    {organs.map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">

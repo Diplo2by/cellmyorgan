@@ -1,8 +1,62 @@
 import { useEffect, useState } from "react";
+import Web3Modal from "web3modal";
+import { ethers } from "ethers";
+import { patientAddress } from "config";
+import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
+
+
 
 const WaitListTabular = () => {
+  const [patients, setPatients] = useState([]);
+  useEffect(() => {
+    loadPatients();
+  }, [])
+  const [loadingState, setLoadingState] = useState("not-loaded");
+
+
+
+
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
+
+  async function loadPatients() {
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const patientContract = new ethers.Contract(patientAddress, Patient.abi, provider);
+
+    const data = await patientContract.getAllPatients();
+
+    const items = await Promise.all(
+      data.map(async (i) => {
+        let item = {
+          address: i.patientAddress,
+          url: i.url,
+          name: i.patientName,
+          age: Number(i.patientAge),
+          tokenId: Number(i.patientNumber),
+          time: Date(i.unixTime),
+          allocated: Number(i.allocated)
+        }
+        return item;
+
+      })
+    )
+    setPatients(items);
+    setLoadingState("loaded");
+
+
+  }
+  function isAllocated(item) {
+    if (item) {
+      return <div className="text-red-500">True</div>;
+    } else {
+      return <div className="text-green-500">False</div>;
+    }
+  }
+
+
+
   return (
     <>
       <section className="antialiased rounded-xl text-gray-600 p-5">
@@ -49,7 +103,7 @@ const WaitListTabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {organs?.map((item, index) => (
+                    {patients.map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
@@ -70,25 +124,25 @@ const WaitListTabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
-                            {/* {shortenAddress(item.sender)} */}
-                            {shortenAddress(item.donor)}
+                            {item.name}
+                            { }
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
-                            {shortenAddress(item.recipient)}
+                            {item.age}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex flex-row justify-center items-center text-left font-medium">
                             <span className="text-green-500">
-                              {item.bloodGroup}
+                              {item.address}
                             </span>
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
-                            {item.timeExtracted}
+                            {item.time}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
@@ -98,7 +152,7 @@ const WaitListTabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center font-bold">
-                            {item.organType.toUpperCase()}
+                            {"kidney"}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
