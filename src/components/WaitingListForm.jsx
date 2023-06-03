@@ -19,9 +19,9 @@ async function listPatient(url) {
     const provider = new ethers.providers.Web3Provider(conn);
     const signer = provider.getSigner();
     const patientContract = new ethers.Contract(patientAddress, Patient.abi, signer)
-    let transaction = await patientContract.listNewPatient(signer.getAddress(), url, 'Dinesh', 69)
+    let transaction = await patientContract.listNewPatient(signer.getAddress(), url, 'Dinesh', 69,"heart")
     await transaction.wait()
-    let txn = await patientContract.getAllPatients();
+    let txn = await patientContract.getAllAddress();
     return (txn);
   }
   catch (e) {
