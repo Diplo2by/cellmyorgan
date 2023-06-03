@@ -100,6 +100,7 @@ const RegistrationForm = () => {
 				mob: data.mob,
 				photo: data.photo,
 				organ: data.organs,
+        bloodtype: data.bloodtype,
 			})
 			.then(async (res) => {
 				// console.log(res.data.url)
@@ -127,6 +128,7 @@ const RegistrationForm = () => {
 		mob: "",
 		photo: "",
 		organs: [],
+    bloodtype:"",
 	})
 
 	async function handle(e) {
@@ -218,7 +220,6 @@ const RegistrationForm = () => {
                 <option>Female</option>
                 <option>Other</option>
               </select>
-              
             </div>
           </MainFormElement>
           <MainFormElement>
@@ -296,7 +297,6 @@ const RegistrationForm = () => {
                   </option>
                 ))}
               </select>
-              
             </div>
           </MainFormElement>
           <MainFormElement>
@@ -322,7 +322,6 @@ const RegistrationForm = () => {
                   </option>
                 ))}
               </select>
-              
             </div>
           </MainFormElement>
         </div>
@@ -377,7 +376,7 @@ const RegistrationForm = () => {
             />
           </MainFormElement>
         </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="flex flex-wrap -mx-3 mb-6 pb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -392,6 +391,36 @@ const RegistrationForm = () => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="file"
             />
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="bloodtype"
+            >
+              Blood Group
+            </label>
+            <div>
+              <select
+                onChange={(e) => handle(e)}
+                id="bloodtype"
+                value={data.bloodtype}
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              >
+                <option>A Positive</option>
+                <option>A Negative</option>
+                <option>A Unknown</option>
+                <option>B Positive</option>
+                <option>B Negative</option>
+                <option>B Unknown</option>
+                <option>AB Positive</option>
+                <option>AB Negative</option>
+                <option>AB Unknown</option>
+                <option>O Positive</option>
+                <option>O Negative</option>
+                <option>O Unknown</option>
+                <option>Unknown</option>
+              </select>
+            </div>
           </div>
           <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
             <label
