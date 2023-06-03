@@ -55,5 +55,55 @@ contract Patient {
         return patientIndex[index];
     }
 
-    
+    function listNewPatient(
+        address patientAddress,
+        string memory url,
+        string memory name,
+        uint age
+    ) public {
+        patientDetails[patientAddress].url = url;
+        patientDetails[patientAddress].patientName = name;
+        patientDetails[patientAddress].patientAge = age;
+        patientDetails[patientAddress].unixTime = block.timestamp;
+        patientDetails[patientAddress].allocated = false;
+        patientIndex.push(patientAddress);
+        patientDetails[patientAddress].patientNumber = patientIndex.length - 1;
+
+        emit NewPatientListed(
+            patientAddress,
+            url,
+            name,
+            age,
+            patientIndex.length - 1,
+            block.timestamp,
+            false
+        );
+    }
+
+    function getPatient(
+        address patientAddress
+    )
+        public
+        view
+        returns (
+            string memory url,
+            string memory patientName,
+            uint patientAge,
+            uint patientNumber,
+            uint256 unixTime,
+            bool allocated
+        )
+    {
+        if (!isPatient(patientAddress)) {
+            revert("Patient Doesnt exist");
+        }
+        return (
+            patientDetails[patientAddress].url,
+            patientDetails[patientAddress].patientName,
+            patientDetails[patientAddress].patientAge,
+            patientDetails[patientAddress].patientNumber,
+            patientDetails[patientAddress].unixTime,
+            patientDetails[patientAddress].allocated
+        );
+    }
 }
