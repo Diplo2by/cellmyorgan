@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ethers } from "ethers";
 import taluk from "../../json/data.json";
+import { patientAddress } from "config";
+import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
 
 import {
   MainFormElement,
@@ -10,11 +12,29 @@ import {
   InputFormElement,
 } from "./FormElements";
 
+async function listPatient(url) {
+  try {
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const signer = provider.getSigner();
+    const patientContract = new ethers.Contract(patientAddress, Patient.abi, signer)
+    let transaction = await patientContract.listNewPatient(signer.getAddress(), url, 'Dinesh', 69)
+    await transaction.wait()
+    let txn = await patientContract.getAllPatients();
+    return (txn);
+  }
+  catch (e) {
+    console.log('Imma cri')
+    console.log(e)
+  }
+}
+
 const togglePage = () => {
-    let page1 = document.getElementsByClassName("firstpage")[0];
-    let page2 = document.getElementsByClassName("secondpage")[0];
-    page1.style.display = (page1.style.display == "none") ? "block" : "none";
-    page2.style.display = (page1.style.display == "none") ? "block" : "none";
+  let page1 = document.getElementsByClassName("firstpage")[0];
+  let page2 = document.getElementsByClassName("secondpage")[0];
+  page1.style.display = (page1.style.display == "none") ? "block" : "none";
+  page2.style.display = (page1.style.display == "none") ? "block" : "none";
 }
 
 const WaitingListForm = () => {
@@ -94,7 +114,14 @@ const WaitingListForm = () => {
       conditions: data.conditions,
       regfee: data.regfee,
       aadhaar: data.aadhaar,
-    });
+    })
+      .then(async (res) => {
+        console.log(res.data.url)
+        //console.log(signer.address)
+        const transac = await listPatient(res.data.url)
+        console.log(transac)
+
+      });
   }
 
   const [data, setData] = useState({
