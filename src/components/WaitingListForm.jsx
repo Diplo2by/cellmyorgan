@@ -19,22 +19,18 @@ const togglePage = () => {
 
 const WaitingListForm = () => {
   const [districtValue, setDistrictValue] = React.useState("Belagavi");
+
   const onDistrictChange = (event) => {
     const value = event.target.value;
     setDistrictValue(value);
   };
 
-  const onOrganChange = (e) => {
-    const copy = { ...data };
-    if (e.target.checked) {
-      copy.organs.push(e.target.value);
-      setData(copy);
-    } else {
-      copy.organs = copy.organs.filter((value) => value !== e.target.value);
-      setData(copy);
-    }
-    console.log(data.organs);
-  };
+  const onRadioChange = (e) => {
+    const newData = { ...data };
+    newData[e.target.name] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  }
 
   const onConditionChange = (e) => {
     const copy = { ...data };
@@ -115,7 +111,7 @@ const WaitingListForm = () => {
     emgmob: "",
     mob: "",
     photo: "",
-    organs: [],
+    organs: "",
     height: "",
     weight: "",
     bmi: "",
@@ -217,7 +213,6 @@ const WaitingListForm = () => {
                   <option>Female</option>
                   <option>Other</option>
                 </select>
-                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
@@ -295,7 +290,6 @@ const WaitingListForm = () => {
                     </option>
                   ))}
                 </select>
-                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
@@ -424,10 +418,11 @@ const WaitingListForm = () => {
           <div className="flex flex-wrap -mx-3 mb-6 mt-6">
             <div className="w-full md:w-1/3 px-3 md:mb-3">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="cornea"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">
                 Corneas(eyes)
@@ -435,10 +430,11 @@ const WaitingListForm = () => {
             </div>
             <div className="w-full md:w-1/3 px-3 md:mb-0">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="pancreas"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">
                 Pancreas
@@ -446,28 +442,31 @@ const WaitingListForm = () => {
             </div>
             <div className="w-full md:w-1/3 px-3 md:mb-0 ">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="liver"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">Liver</label>
             </div>
             <div className="w-full md:w-1/3 px-3 md:mb-0">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="lung"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">Lungs</label>
             </div>
             <div className="w-full md:w-1/3 px-3 md:mb-0">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="kidney"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">
                 Kidneys
@@ -475,10 +474,11 @@ const WaitingListForm = () => {
             </div>
             <div className="w-full md:w-1/3 px-3 md:mb-0">
               <input
-                onChange={onOrganChange}
-                type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
+                onChange={onRadioChange}
+                type="radio"
+                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
                 value="heart"
+                name="organs"
               />
               <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
             </div>
@@ -585,7 +585,6 @@ const WaitingListForm = () => {
                   <option>O Unknown</option>
                   <option>Unknown</option>
                 </select>
-                
               </div>
             </div>
             <div className="w-full md:w-1/3 px-3">
