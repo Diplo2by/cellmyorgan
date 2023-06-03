@@ -12,9 +12,15 @@ async function main() {
   await organ.deployed();
   console.log("Organ contract deployed to:", organ.address);
 
+  const Patient = await hre.ethers.getContractFactory("Patient");
+  const patient = await Patient.deploy();
+  await patient.deployed();
+  console.log("Patient contract deployed to:",patient.address);
+
   fs.writeFileSync('./config.js', `
   export const organListingAddress = "${organListing.address}";
-  export const organAddress = "${organ.address}"
+  export const organAddress = "${organ.address}";
+  export const patientAddress = "${patient.address}";
   `)
 }
 
