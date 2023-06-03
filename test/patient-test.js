@@ -4,16 +4,15 @@ describe.only('PatientListing', () => {
         const pat = await Patient.deploy();
         await pat.deployed()
         const contractAddress = pat.address
-        console.log(contractAddress)
+        //console.log(contractAddress)
 
-        await pat.listNewPatient(contractAddress, ".xyz", "Gopi", 69);
-        await pat.listNewPatient(contractAddress, ".xyz", "Gopal", 74);
-        await pat.listNewPatient(contractAddress, ".xyz", "Govind", 89);
-        let count = await pat.getPatientCount();
-        console.log(Number(count));
-
-        let val = await pat.getPatientAtIndex(2)
-        console.log(val)
+        const [_,signer] = await ethers.getSigners()
+        const senderAddress= await signer.address
+        await pat.listNewPatient(senderAddress, ".xyz", "Gopi", 69);
+        
+        console.log(Number(await pat.getPatientCount()))
+        console.log(await pat.getAllAddress())
+        console.log(await pat.getAllPatients())
 
     })
 })
