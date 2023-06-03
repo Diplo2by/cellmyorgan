@@ -9,134 +9,132 @@ import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
 import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
 
 import {
-	MainFormElement,
-	DropdownFormElement,
-	InputFormElement,
+  MainFormElement,
+  DropdownFormElement,
+  InputFormElement,
 } from "./FormElements"
 
-async function listOrgan(organs, url, signer) {
-	try {
-		let organ = new ethers.Contract(organAddress, Organ.abi, signer)
-		let transaction = await organ.createToken(url)
-		let tx = await transaction.wait()
+async function listOrgan(organs, url) {
+  try {
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const signer = provider.getSigner();
+    let organ = new ethers.Contract(organAddress, Organ.abi, signer)
+    let transaction = await organ.createToken(url)
+    let tx = await transaction.wait()
 
-		let event = tx.events[0]
-		let value = event.args[2]
-		let tokenId = Number(value)	
-		//console.log(tokenId)
+    let event = tx.events[0]
+    let value = event.args[2]
+    let tokenId = Number(value)
+    //console.log(tokenId)
 
-		let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-		transaction = await contract.ListOrgan(organAddress,tokenId, organs[0], 'C+',url);
-		await transaction.wait()
-		transaction = await contract.fetchOrganItems();
-		return(transaction)
-	}
-	catch (e) {
-		console.log('imma start cryin frfr')
-		console.log(e)
-	}
+    let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
+    transaction = await contract.ListOrgan(organAddress, tokenId, organs[0], 'C+', url);
+    //await transaction.wait()
+    transaction = await contract.fetchOrganItems();
+    return (transaction)
+  }
+  catch (e) {
+    console.log('imma start cryin frfr')
+    console.log(e)
+  }
 
 }
 
 const RegistrationForm = () => {
-	const [districtValue, setDistrictValue] = React.useState("Belagavi")
-	const onDistrictChange = (event) => {
-		const value = event.target.value
-		setDistrictValue(value)
-	}
-	const onOrganChange = (e) => {
-		const copy = { ...data }
-		if (e.target.checked) {
-			copy.organs.push(e.target.value)
-			setData(copy)
-		} else {
-			copy.organs = copy.organs.filter(
-				(value) => value !== e.target.value
-			)
-			setData(copy)
-		}
-		console.log(data.organs)
-	}
+  const [districtValue, setDistrictValue] = React.useState("Belagavi")
+  const onDistrictChange = (event) => {
+    const value = event.target.value
+    setDistrictValue(value)
+  }
+  const onOrganChange = (e) => {
+    const copy = { ...data }
+    if (e.target.checked) {
+      copy.organs.push(e.target.value)
+      setData(copy)
+    } else {
+      copy.organs = copy.organs.filter(
+        (value) => value !== e.target.value
+      )
+      setData(copy)
+    }
+    console.log(data.organs)
+  }
 
-	// const [photo, setImage] = useState('')
-	const onImageChange = async (e) => {
-		let base64 = await convertBase64(e.target.files[0])
-		// setImage(base64);
-		const copy = { ...data }
-		copy.photo = base64
-		setData(copy)
-		// console.log(photo);
-	}
+  // const [photo, setImage] = useState('')
+  const onImageChange = async (e) => {
+    let base64 = await convertBase64(e.target.files[0])
+    // setImage(base64);
+    const copy = { ...data }
+    copy.photo = base64
+    setData(copy)
+    // console.log(photo);
+  }
 
-	const convertBase64 = (file) => {
-		return new Promise((resolve, reject) => {
-			const fileReader = new FileReader()
-			fileReader.readAsDataURL(file)
-			fileReader.onload = () => {
-				resolve(fileReader.result)
-			}
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      }
 
-			fileReader.onerror = (err) => {
-				reject(err)
-			}
-		})
-	}
+      fileReader.onerror = (err) => {
+        reject(err)
+      }
+    })
+  }
 
-	async function handleSubmit(e) {
-		e.preventDefault()
-		axios
-			.post("/api/form", {
-				fname: data.fname,
-				lname: data.lname,
-				address: data.address,
-				sex: data.sex,
-				dob: data.dob,
-				city: data.city,
-				zip: data.zip,
-				district: data.district,
-				taluk: data.taluk,
-				email: data.email,
-				emgmob: data.emgmob,
-				mob: data.mob,
-				photo: data.photo,
-				organ: data.organs,
-        bloodtype: data.bloodtype,
-			})
-			.then(async (res) => {
-				// console.log(res.data.url)
-				const web3modal = new Web3Modal();
-				const conn = await web3modal.connect();
-				const provider = new ethers.providers.Web3Provider(conn);
-				const signer = provider.getSigner();
-				const txn = await listOrgan(data.organs,res.data.url, signer)
-				console.log(txn)
-			})
-	}
+  async function handleSubmit(e) {
+    e.preventDefault()
+    axios
+      .post("/api/form", {
+        fname: data.fname,
+        lname: data.lname,
+        address: data.address,
+        sex: data.sex,
+        dob: data.dob,
+        city: data.city,
+        zip: data.zip,
+        district: data.district,
+        taluk: data.taluk,
+        email: data.email,
+        emgmob: data.emgmob,
+        mob: data.mob,
+        photo: data.photo,
+        organ: data.organs,
+      })
+      .then(async (res) => {
+        // console.log(res.data.url)
+        const txn = await listOrgan(data.organs, res.data.url)
+        console.log(txn)
+      })
+  }
 
-	const [data, setData] = useState({
-		fname: "",
-		lname: "",
-		address: "",
-		sex: "",
-		dob: "",
-		city: "",
-		zip: "",
-		district: districtValue,
-		taluk: "",
-		email: "",
-		emgmob: "",
-		mob: "",
-		photo: "",
-		organs: [],
-    bloodtype:"",
-	})
+  const [data, setData] = useState({
+    fname: "",
+    lname: "",
+    address: "",
+    sex: "",
+    dob: "",
+    city: "",
+    zip: "",
+    district: districtValue,
+    taluk: "",
+    email: "",
+    emgmob: "",
+    mob: "",
+    photo: "",
+    organs: [],
+  })
 
-	async function handle(e) {
-		const newData = { ...data }
-		newData[e.target.id] = e.target.value
-		setData(newData)
-		console.log(newData)
-	}
+  async function handle(e) {
+    const newData = { ...data }
+    newData[e.target.id] = e.target.value
+    setData(newData)
+    console.log(newData)
+  }
 
 	return (
     <div className="font-bold items-center flex flex-col h-auto my-auto mb-auto">

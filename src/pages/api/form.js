@@ -1,4 +1,3 @@
-
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 
 const auth = 'Basic ' + Buffer.from(process.env.INFURA_PROJECT_ID + ':' + process.env.INFURA_API_KEY).toString('base64')
