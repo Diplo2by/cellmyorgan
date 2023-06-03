@@ -104,6 +104,7 @@ const RegistrationForm = () => {
         mob: data.mob,
         photo: data.photo,
         organ: data.organs,
+        bloodtype: data.bloodtype,
       })
       .then(async (res) => {
         // console.log(res.data.url)
@@ -127,6 +128,7 @@ const RegistrationForm = () => {
     mob: "",
     photo: "",
     organs: [],
+    bloodtype: "",
   })
 
   async function handle(e) {
