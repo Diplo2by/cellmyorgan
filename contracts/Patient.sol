@@ -25,6 +25,8 @@ contract Patient {
         bool allocated
     );
 
+
+    // Yet to be implemented
     event UpdatePatientListing(
         address indexed patientAddress,
         string url,
@@ -105,5 +107,25 @@ contract Patient {
             patientDetails[patientAddress].unixTime,
             patientDetails[patientAddress].allocated
         );
+    }
+
+    function getAllPatients() public view returns (patientDetail[] memory) {
+        uint patientCount = getPatientCount();
+
+        patientDetail[] memory items = new patientDetail[](patientCount);
+        for (uint i = 0; i < patientIndex.length; i++) {
+            address currentAddress = patientIndex[i];
+            items[i] = patientDetails[currentAddress];
+        }
+
+        return items;
+    }
+
+    function getAllAddress() public view returns (address[] memory) {
+        address[] memory items = new address[](patientIndex.length);
+        for (uint i = 0; i < patientIndex.length; i++) {
+            items[i] = patientIndex[i];
+        }
+        return items;
     }
 }
