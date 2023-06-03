@@ -3,12 +3,14 @@ pragma solidity ^0.8.9;
 
 contract Patient {
     struct patientDetail {
+        address patientAddress;
         string url;
         string patientName;
         uint patientAge;
         uint patientNumber;
         uint256 unixTime;
         bool allocated;
+        string organType;
     }
 
     mapping(address => patientDetail) private patientDetails;
@@ -22,7 +24,8 @@ contract Patient {
         uint patientAge,
         uint indexed patientNumber,
         uint256 unixTime,
-        bool allocated
+        bool allocated,
+        string organType
     );
 
 
@@ -34,7 +37,8 @@ contract Patient {
         uint patientAge,
         uint indexed patientNumber,
         uint256 unixTime,
-        bool allocated
+        bool allocated,
+        string organType
     );
 
     function isPatient(
@@ -61,8 +65,10 @@ contract Patient {
         address patientAddress,
         string memory url,
         string memory name,
-        uint age
+        uint age,
+        string memory organType
     ) public {
+        patientDetails[patientAddress].patientAddress = patientAddress;
         patientDetails[patientAddress].url = url;
         patientDetails[patientAddress].patientName = name;
         patientDetails[patientAddress].patientAge = age;
@@ -70,6 +76,7 @@ contract Patient {
         patientDetails[patientAddress].allocated = false;
         patientIndex.push(patientAddress);
         patientDetails[patientAddress].patientNumber = patientIndex.length - 1;
+        patientDetails[patientAddress].organType = organType;
 
         emit NewPatientListed(
             patientAddress,
@@ -78,7 +85,8 @@ contract Patient {
             age,
             patientIndex.length - 1,
             block.timestamp,
-            false
+            false,
+            organType
         );
     }
 
@@ -93,7 +101,8 @@ contract Patient {
             uint patientAge,
             uint patientNumber,
             uint256 unixTime,
-            bool allocated
+            bool allocated,
+            string memory
         )
     {
         if (!isPatient(patientAddress)) {
@@ -105,7 +114,8 @@ contract Patient {
             patientDetails[patientAddress].patientAge,
             patientDetails[patientAddress].patientNumber,
             patientDetails[patientAddress].unixTime,
-            patientDetails[patientAddress].allocated
+            patientDetails[patientAddress].allocated,
+            patientDetails[patientAddress].organType
         );
     }
 
