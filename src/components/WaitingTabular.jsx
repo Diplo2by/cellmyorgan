@@ -136,7 +136,7 @@ const WaitListTabular = () => {
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex flex-row justify-center items-center text-left font-medium">
                             <span className="text-green-500">
-                              {item.address}
+                              {shortenAddress(item.address)}
                             </span>
                           </div>
                         </td>
