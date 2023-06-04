@@ -12,14 +12,14 @@ import {
   InputFormElement,
 } from "./FormElements";
 
-async function listPatient(url) {
+async function listPatient(url,name,age,organType) {
   try {
     const web3modal = new Web3Modal();
     const conn = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(conn);
     const signer = provider.getSigner();
     const patientContract = new ethers.Contract(patientAddress, Patient.abi, signer)
-    let transaction = await patientContract.listNewPatient(signer.getAddress(), url, 'Dinesh', 69,"heart")
+    let transaction = await patientContract.listNewPatient(signer.getAddress(), url,name,age,organType)
     await transaction.wait()
     let txn = await patientContract.getAllAddress();
     return (txn);
@@ -118,7 +118,7 @@ const WaitingListForm = () => {
       .then(async (res) => {
         console.log(res.data.url)
         //console.log(signer.address)
-        const transac = await listPatient(res.data.url)
+        const transac = await listPatient(res.data.url,(data.fname + data.lname),"69",data.organs)
         console.log(transac)
 
       });

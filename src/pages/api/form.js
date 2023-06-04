@@ -33,6 +33,6 @@ export default async function handler(req, res) {
   const link = await ipfsPin(body)
   // const txn = await listOrgan(link,body.signer)
   // console.log(txn)
-  res.status(200).json({ data: "recieved", body: body.signer, url: link });
+  res.status(200).json({ data: "recieved", url: link });
 
 }
