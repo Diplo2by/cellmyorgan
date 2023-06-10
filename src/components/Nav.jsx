@@ -30,7 +30,7 @@ const Nav = (showConnect = false) => {
       <div className="md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7">
         <div className="font-bold text-3xl cursor-pointer flex items-center text-gray-800">
           <Link href="/">
-            donorblock.
+            IOPTN
           </Link>
         </div>
         <div

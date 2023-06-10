@@ -11,31 +11,30 @@ const About = () => {
         <div className="gap-16 items-center py-8 px-5 mx-auto max-w-screen-2xl lg:grid lg:grid-cols-2 lg:py-16 lg:pl-10">
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              About donorblock
+              About IOPTN
             </h2>
             <div className="mb-6 text-md font-normal">
-              Welcome to donorblock - Empowering Lives through Organ Donation!
-              <br></br>
-              At donorblock, we believe in the incredible power of organ
-              donation to transform lives and create a lasting impact in
-              society. Our mission is to raise awareness, educate, and
-              facilitate the organ donation process in India, fostering a
-              culture of giving and saving lives. About donorblock: At
-              donorblock, we understand that organ transplantation is a
-              life-saving procedure that can provide hope and a second chance to
-              those in need. Unfortunately, in India, the demand for organs far
-              outweighs the supply, leading to a significant gap and prolonged
-              waiting periods for patients in need. Our platform aims to bridge
-              this gap by connecting organ donors with individuals awaiting
-              transplantation. Through our comprehensive and user-friendly
-              website, we strive to simplify and streamline the organ donation
-              process, making it easier for individuals to become donors and
-              save lives.
+              <b>Indian Organ Procurement and Transplantation
+              Network</b>
+              <br/>
+              <br/>
+              At IOPTN, we believe in the incredible power of organ donation to
+              transform lives and create a lasting impact in society. Our
+              mission is to raise awareness, educate, and facilitate the organ
+              donation process in India, fostering a culture of giving and
+              saving lives. About IOPTN: At IOPTN, we understand that organ
+              transplantation is a life-saving procedure that can provide hope
+              and a second chance to those in need. Unfortunately, in India, the
+              demand for organs far outweighs the supply, leading to a
+              significant gap and prolonged waiting periods for patients in
+              need. Our platform aims to bridge this gap by connecting organ
+              donors with individuals awaiting transplantation. Through our
+              comprehensive and user-friendly website, we strive to simplify and
+              streamline the organ donation process, making it easier for
+              individuals to become donors and save lives.
             </div>
 
-            <p className="font-bold text-lg mb-2">
-              What sets donorblock apart:
-            </p>
+            <p className="font-bold text-lg mb-2">What sets IOPTN apart:</p>
             <ul className="list-disc text-base font-normal">
               <li className="mb-4">
                 <b>Accessibility</b>: We are committed to making organ donation
@@ -58,11 +57,10 @@ const About = () => {
                 throughout the registration and donation process.
               </li>
               <li className="mb-4">
-                <b>Community Engagement</b>: donorblock aims to build a strong
-                and supportive community of donors, recipients, and their
-                families. We organize awareness campaigns, support groups, and
-                events to foster connections and encourage dialogue around organ
-                donation.
+                <b>Community Engagement</b>: IOPTN aims to build a strong and
+                supportive community of donors, recipients, and their families.
+                We organize awareness campaigns, support groups, and events to
+                foster connections and encourage dialogue around organ donation.
               </li>
               <li className="mb-4">
                 <b>Collaboration</b>: We actively collaborate with hospitals,

@@ -168,7 +168,7 @@ const contact = () => {
               Ph: +1 (555) 123-4567
               <br />
               Ph: +1 (555) 123-4567
-              <br />E - mail ID : contact@donorblock.com
+              <br />E - mail ID : contact@IOPTNcom
             </div>
           </div>
         </form>

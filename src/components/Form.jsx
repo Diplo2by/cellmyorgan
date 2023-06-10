@@ -48,19 +48,26 @@ const RegistrationForm = () => {
     const value = event.target.value
     setDistrictValue(value)
   }
-  const onOrganChange = (e) => {
-    const copy = { ...data }
-    if (e.target.checked) {
-      copy.organs.push(e.target.value)
-      setData(copy)
-    } else {
-      copy.organs = copy.organs.filter(
-        (value) => value !== e.target.value
-      )
-      setData(copy)
-    }
-    console.log(data.organs)
-  }
+  // const onOrganChange = (e) => {
+  //   const copy = { ...data }
+  //   if (e.target.checked) {
+  //     copy.organs.push(e.target.value)
+  //     setData(copy)
+  //   } else {
+  //     copy.organs = copy.organs.filter(
+  //       (value) => value !== e.target.value
+  //     )
+  //     setData(copy)
+  //   }
+  //   console.log(data.organs)
+  // }
+
+  const onRadioChange = (e) => {
+    const newData = { ...data };
+    newData[e.target.name] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  };
 
   // const [photo, setImage] = useState('')
   const onImageChange = async (e) => {
@@ -127,7 +134,7 @@ const RegistrationForm = () => {
     emgmob: "",
     mob: "",
     photo: "",
-    organs: [],
+    organs: "",
     bloodtype: "",
   })
 
@@ -452,7 +459,7 @@ const RegistrationForm = () => {
         </p>
         <hr className="w-52 h-1 my-2 bg-gray-100 border-0 rounded md:my-2 dark:bg-gray-700"></hr>
 
-        <div className="flex flex-wrap -mx-3 mb-6 mt-6">
+        {/* <div className="flex flex-wrap -mx-3 mb-6 mt-6">
           <div className="w-full md:w-1/3 px-3 md:mb-3">
             <input
               onChange={onOrganChange}
@@ -511,7 +518,74 @@ const RegistrationForm = () => {
             />
             <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
           </div>
+        </div> */}
+        <div className="flex flex-wrap -mx-3 mb-6 mt-6">
+          <div className="w-full md:w-1/3 px-3 md:mb-3">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="cornea"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">
+              Corneas(eyes)
+            </label>
+          </div>
+          <div className="w-full md:w-1/3 px-3 md:mb-0">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="pancreas"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">
+              Pancreas
+            </label>
+          </div>
+          <div className="w-full md:w-1/3 px-3 md:mb-0 ">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="liver"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">Liver</label>
+          </div>
+          <div className="w-full md:w-1/3 px-3 md:mb-0">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="lung"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">Lungs</label>
+          </div>
+          <div className="w-full md:w-1/3 px-3 md:mb-0">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="kidney"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">Kidneys</label>
+          </div>
+          <div className="w-full md:w-1/3 px-3 md:mb-0">
+            <input
+              onChange={onRadioChange}
+              type="radio"
+              className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+              value="heart"
+              name="organs"
+            />
+            <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
+          </div>
         </div>
+        
         <div className="flex flex-wrap -mx-3 mb-6 mt-10">
           <button
             className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded"
