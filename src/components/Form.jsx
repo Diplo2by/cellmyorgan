@@ -147,7 +147,7 @@ const RegistrationForm = () => {
 
   return (
     <div className="font-bold items-center flex flex-col h-auto my-auto mb-auto">
-      <h1 className="pb-10">Donor Registration Card</h1>
+      <h1 className="pb-10">Patient Registration Card</h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
       <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">
         <p className="text-2xl font-bold tracking-tight text-gray-900">

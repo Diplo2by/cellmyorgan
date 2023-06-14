@@ -55,16 +55,16 @@ const Nav = (showConnect = false) => {
             </li>
           ))}
           <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
-            <Link href="/register">Register now to be a Donor</Link>
+            <Link href="/register">To be menu</Link>
           </button>
 
-          <button
+          {/* <button
             onClick={connectWallet}
             className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
             style={{ display: showConnect.showConnect ? "block" : "none" }}
           >
             Connect Wallet
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>
