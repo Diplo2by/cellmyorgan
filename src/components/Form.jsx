@@ -27,10 +27,10 @@ async function listOrgan(organs, url) {
     let event = tx.events[0]
     let value = event.args[2]
     let tokenId = Number(value)
-    //console.log(tokenId)
+    console.log(organs)
 
     let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-    transaction = await contract.ListOrgan(organAddress, tokenId, organs[0], 'C+', url);
+    transaction = await contract.ListOrgan(organAddress, tokenId, organs, 'C+', url);
     //await transaction.wait()
     transaction = await contract.fetchOrganItems();
     return (transaction)
