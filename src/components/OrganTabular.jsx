@@ -10,7 +10,7 @@ import OrganListing from "../../artifacts/contracts/OrganListing.sol/OrganListin
 import { organAddress, organListingAddress } from "config";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
-import axios from "axios";
+import axios from "@/pages/api/axios";
 
 function isAllocated(item) {
   if (item) {

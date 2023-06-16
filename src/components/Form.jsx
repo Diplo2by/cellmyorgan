@@ -1,6 +1,6 @@
 import Web3Modal from "web3modal";
 import React, { useState } from "react"
-import axios from "axios"
+import axios from "@/pages/api/axios";
 import { ethers } from "ethers";
 import taluk from "../../json/data.json"
 import { resolve } from "styled-jsx/css"

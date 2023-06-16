@@ -1,0 +1,12 @@
+[
+  {
+    "regid": "14511",
+    "name" : "Chandru",
+    "role": "admin"
+  },
+  {
+    "regid": "14500",
+    "name" : "Chimpoo",
+    "role": "user"
+  }
+]

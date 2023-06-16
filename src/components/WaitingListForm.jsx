@@ -1,6 +1,6 @@
 import Web3Modal from "web3modal";
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "@/pages/api/axios";
 import { ethers } from "ethers";
 import taluk from "../../json/data.json";
 import { patientAddress } from "config";
@@ -88,39 +88,51 @@ const WaitingListForm = () => {
     });
   };
 
+  function calculate_age(dateString) {
+    var birthday = +new Date(dateString);
+    return ~~((Date.now() - birthday) / 31557600000);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    axios.post("/api/form", {
-      fname: data.fname,
-      lname: data.lname,
-      address: data.address,
-      sex: data.sex,
-      dob: data.dob,
-      city: data.city,
-      zip: data.zip,
-      district: data.district,
-      taluk: data.taluk,
-      email: data.email,
-      emgmob: data.emgmob,
-      mob: data.mob,
-      photo: data.photo,
-      organ: data.organs,
-      height: data.height,
-      weight: data.weight,
-      bmi: data.bmi,
-      bloodtype: data.bloodtype,
-      primarydoc: data.primarydoc,
-      hospital: data.hospital,
-      conditions: data.conditions,
-      regfee: data.regfee,
-      aadhaar: data.aadhaar,
-    })
+    var age = await calculate_age(data.dob);
+    axios
+      .post("/api/form", {
+        fname: data.fname,
+        lname: data.lname,
+        address: data.address,
+        sex: data.sex,
+        dob: data.dob,
+        city: data.city,
+        zip: data.zip,
+        district: data.district,
+        taluk: data.taluk,
+        email: data.email,
+        emgmob: data.emgmob,
+        mob: data.mob,
+        photo: data.photo,
+        organ: data.organs,
+        height: data.height,
+        weight: data.weight,
+        bmi: data.bmi,
+        bloodtype: data.bloodtype,
+        primarydoc: data.primarydoc,
+        hospital: data.hospital,
+        conditions: data.conditions,
+        regfee: data.regfee,
+        aadhaar: data.aadhaar,
+        age: age,
+      })
       .then(async (res) => {
-        console.log(res.data.url)
+        console.log(res.data.url);
         //console.log(signer.address)
-        const transac = await listPatient(res.data.url,(data.fname + data.lname),"69",data.organs)
-        console.log(transac)
-
+        const transac = await listPatient(
+          res.data.url,
+          data.fname + data.lname,
+          "69",
+          data.organs
+        );
+        console.log(transac);
       });
   }
 
