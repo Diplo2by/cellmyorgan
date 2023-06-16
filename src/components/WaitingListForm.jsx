@@ -12,6 +12,7 @@ import {
   InputFormElement,
 } from "./FormElements";
 
+let g_age = 0;
 async function listPatient(url,name,age,organType) {
   try {
     const web3modal = new Web3Modal();
@@ -95,7 +96,8 @@ const WaitingListForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    var age = await calculate_age(data.dob);
+    let age = await calculate_age(data.dob);
+    g_age= age;
     axios
       .post("/api/form", {
         fname: data.fname,
@@ -129,7 +131,7 @@ const WaitingListForm = () => {
         const transac = await listPatient(
           res.data.url,
           data.fname + data.lname,
-          "69",
+          g_age,
           data.organs
         );
         console.log(transac);
