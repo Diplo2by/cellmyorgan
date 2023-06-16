@@ -14,7 +14,7 @@ import {
   InputFormElement,
 } from "./FormElements"
 
-async function listOrgan(organs, url) {
+async function listOrgan(organs, url,bloodgroup) {
   try {
     const web3modal = new Web3Modal();
     const conn = await web3modal.connect();
@@ -27,10 +27,10 @@ async function listOrgan(organs, url) {
     let event = tx.events[0]
     let value = event.args[2]
     let tokenId = Number(value)
-    console.log(organs)
+    console.log(bloodgroup)
 
     let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-    transaction = await contract.ListOrgan(organAddress, tokenId, organs, 'C+', url);
+    transaction = await contract.ListOrgan(organAddress, tokenId, organs, bloodgroup, url);
     //await transaction.wait()
     transaction = await contract.fetchOrganItems();
     return (transaction)
@@ -122,7 +122,7 @@ const RegistrationForm = () => {
       })
       .then(async (res) => {
         // console.log(res.data.url)
-        const txn = await listOrgan(data.organs, res.data.url)
+        const txn = await listOrgan(data.organs, res.data.url,data.bloodtype)
         console.log(txn)
       })
   }
@@ -249,6 +249,7 @@ const RegistrationForm = () => {
               value={data.dob}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="date"
+              required
             />
           </MainFormElement>
           <MainFormElement>
