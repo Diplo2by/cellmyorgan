@@ -93,8 +93,14 @@ const RegistrationForm = () => {
     })
   }
 
+  function calculate_age(dateString) {
+    var birthday = +new Date(dateString);
+    return ~~((Date.now() - birthday) / 31557600000);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
+    var age = await calculate_age(data.dob); 
     axios
       .post("/api/form", {
         fname: data.fname,
@@ -112,6 +118,7 @@ const RegistrationForm = () => {
         photo: data.photo,
         organ: data.organs,
         bloodtype: data.bloodtype,
+        age: age,
       })
       .then(async (res) => {
         // console.log(res.data.url)
