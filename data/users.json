@@ -1,12 +1,17 @@
 [
   {
     "regid": "14511",
-    "name" : "Chandru",
+    "name": "Chandru",
     "role": "admin"
   },
   {
     "regid": "14500",
-    "name" : "Chimpoo",
+    "name": "Chimpoo",
     "role": "user"
+  },
+  {
+    "regid": "696969",
+    "name": "Samuel",
+    "role": "admin"
   }
 ]
