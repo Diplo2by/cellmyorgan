@@ -25,7 +25,7 @@ function AdminPage() {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
-  if(!session) {
+  if(!session || session.user.role != 'admin') {
     return {
       redirect: {
         destination: '/403',
