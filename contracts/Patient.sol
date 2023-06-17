@@ -40,6 +40,8 @@ contract Patient {
         string organType
     );
 
+    // Yet to be implemented
+
     // function isPatient(
     //     address patientAddress
     // ) public view returns (bool isIndeed) {
@@ -53,6 +55,8 @@ contract Patient {
     function getPatientCount() public view returns (uint count) {
         return patientIndex.length;
     }
+
+    // Yet to be implemented
 
     // function getPatientAtIndex(
     //     uint index
@@ -89,6 +93,8 @@ contract Patient {
             organType
         );
     }
+
+    // Yet to be implemented
 
     // function getPatient(
     //     address patientAddress
