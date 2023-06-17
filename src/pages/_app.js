@@ -9,14 +9,14 @@ import { getToken } from "next-auth/jwt";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const protectedRoutes = ['/admin'];
-  if (protectedRoutes.includes(router.route)) {
-    const token = getToken()
-    console.log(token);
-    //check token
-  } else {
-    // redirect
-  }
+  // const protectedRoutes = ['/admin'];
+  // if (protectedRoutes.includes(router.route)) {
+  //   const token = getToken()
+  //   console.log(token);
+  //   //check token
+  // } else {
+  //   // redirect
+  // }
 
   return (
     <>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { getSession } from "next-auth/react";
 
 function AdminPage() {
   return (
@@ -22,6 +23,20 @@ function AdminPage() {
   );
 }
 
-
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if(!session) {
+    return {
+      redirect: {
+        destination: '/403',
+        permanent: false,
+      },
+    } 
+  }
+  console.log(session)
+  return {
+    props: { session } 
+  }
+}
 
 export default AdminPage;
