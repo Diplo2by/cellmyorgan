@@ -4,9 +4,7 @@ import useComponentVisible from "../hooks/useComponentVisible";
 
 const DropDown = ({ options }) => {
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-    const [showOptions, setShowOptions] = useState(false);
     const toggle = () => {
-        // setShowOptions(!showOptions);
         setIsComponentVisible(!isComponentVisible);
     }
 
@@ -18,7 +16,6 @@ const DropDown = ({ options }) => {
               <button
                 type="button"
                 onClick={toggle}
-                // className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 className="inline-flex w-full justify-center gap-x-1.5 rounded bg-gray-800 px-3 py-2 text-lg font-bold text-white hover:bg-gray-600 duration-200"
                 id="menu-button"
                 aria-expanded="true"
