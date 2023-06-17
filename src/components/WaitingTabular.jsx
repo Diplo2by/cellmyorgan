@@ -6,15 +6,12 @@ import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
 
 
 
-const WaitListTabular = () => {
+const WaitListTabular = ({ organfilter = "liver" }) => {
   const [patients, setPatients] = useState([]);
   useEffect(() => {
     loadPatients();
   }, [])
   const [loadingState, setLoadingState] = useState("not-loaded");
-
-
-
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
@@ -37,7 +34,7 @@ const WaitListTabular = () => {
           tokenId: Number(i.patientNumber),
           time: Date(i.unixTime),
           allocated: Number(i.allocated),
-          organType : i.organType
+          organType: i.organType
         }
         return item;
 
@@ -104,7 +101,7 @@ const WaitListTabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {patients.sort((a,b)=>a.age-b.age).map((item, index) => (
+                    {patients.filter((i) => i.organType == organfilter).sort((a, b) => a.age - b.age).map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
