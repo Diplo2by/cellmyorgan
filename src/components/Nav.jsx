@@ -18,17 +18,14 @@ async function connectWallet() {
 
 const options = [
   {
-    id: 1,
     name: "Add Patient Organ",
     href: "/register"
   },
   {
-    id: 2,
     name: "Add Waiting List",
     href: "/doctor"
   },
   {
-    id: 3,
     name: "Login",
     href: "/login"
   },
