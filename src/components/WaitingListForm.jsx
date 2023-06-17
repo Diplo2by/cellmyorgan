@@ -130,7 +130,7 @@ const WaitingListForm = () => {
         //console.log(signer.address)
         const transac = await listPatient(
           res.data.url,
-          data.fname + data.lname,
+          data.fname +" "+ data.lname,
           g_age,
           data.organs
         );

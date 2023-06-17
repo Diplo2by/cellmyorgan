@@ -79,7 +79,7 @@ contract Patient {
         patientDetails[patNumber].patientAge = age;
         patientDetails[patNumber].unixTime = block.timestamp;
         patientDetails[patNumber].allocated = false;
-        //patientDetails[patientAddress].patientNumber = patientIndex.length - 1;
+        patientDetails[patNumber].patientNumber = patientIndex.length - 1;
         patientDetails[patNumber].organType = organType;
 
         emit NewPatientListed(
