@@ -13,7 +13,7 @@ contract Patient {
         string organType;
     }
 
-    mapping(address => patientDetail) private patientDetails;
+    mapping(uint256 => patientDetail) private patientDetails;
 
     address[] private patientIndex;
 
@@ -28,7 +28,6 @@ contract Patient {
         string organType
     );
 
-
     // Yet to be implemented
     event UpdatePatientListing(
         address indexed patientAddress,
@@ -41,25 +40,25 @@ contract Patient {
         string organType
     );
 
-    function isPatient(
-        address patientAddress
-    ) public view returns (bool isIndeed) {
-        if (patientIndex.length == 0) {
-            return false;
-        }
-        return (patientIndex[patientDetails[patientAddress].patientNumber] ==
-            patientAddress);
-    }
+    // function isPatient(
+    //     address patientAddress
+    // ) public view returns (bool isIndeed) {
+    //     if (patientIndex.length == 0) {
+    //         return false;
+    //     }
+    //     return (patientIndex[patientDetails[patientAddress].patientNumber] ==
+    //         patientAddress);
+    // }
 
     function getPatientCount() public view returns (uint count) {
         return patientIndex.length;
     }
 
-    function getPatientAtIndex(
-        uint index
-    ) public view returns (address patientAddress) {
-        return patientIndex[index];
-    }
+    // function getPatientAtIndex(
+    //     uint index
+    // ) public view returns (address patientAddress) {
+    //     return patientIndex[index];
+    // }
 
     function listNewPatient(
         address patientAddress,
@@ -68,15 +67,16 @@ contract Patient {
         uint age,
         string memory organType
     ) public {
-        patientDetails[patientAddress].patientAddress = patientAddress;
-        patientDetails[patientAddress].url = url;
-        patientDetails[patientAddress].patientName = name;
-        patientDetails[patientAddress].patientAge = age;
-        patientDetails[patientAddress].unixTime = block.timestamp;
-        patientDetails[patientAddress].allocated = false;
         patientIndex.push(patientAddress);
-        patientDetails[patientAddress].patientNumber = patientIndex.length - 1;
-        patientDetails[patientAddress].organType = organType;
+        uint patNumber = patientIndex.length - 1;
+        patientDetails[patNumber].patientAddress = patientAddress;
+        patientDetails[patNumber].url = url;
+        patientDetails[patNumber].patientName = name;
+        patientDetails[patNumber].patientAge = age;
+        patientDetails[patNumber].unixTime = block.timestamp;
+        patientDetails[patNumber].allocated = false;
+        //patientDetails[patientAddress].patientNumber = patientIndex.length - 1;
+        patientDetails[patNumber].organType = organType;
 
         emit NewPatientListed(
             patientAddress,
@@ -90,42 +90,42 @@ contract Patient {
         );
     }
 
-    function getPatient(
-        address patientAddress
-    )
-        public
-        view
-        returns (
-            string memory url,
-            string memory patientName,
-            uint patientAge,
-            uint patientNumber,
-            uint256 unixTime,
-            bool allocated,
-            string memory
-        )
-    {
-        if (!isPatient(patientAddress)) {
-            revert("Patient Doesnt exist");
-        }
-        return (
-            patientDetails[patientAddress].url,
-            patientDetails[patientAddress].patientName,
-            patientDetails[patientAddress].patientAge,
-            patientDetails[patientAddress].patientNumber,
-            patientDetails[patientAddress].unixTime,
-            patientDetails[patientAddress].allocated,
-            patientDetails[patientAddress].organType
-        );
-    }
+    // function getPatient(
+    //     address patientAddress
+    // )
+    //     public
+    //     view
+    //     returns (
+    //         string memory url,
+    //         string memory patientName,
+    //         uint patientAge,
+    //         uint patientNumber,
+    //         uint256 unixTime,
+    //         bool allocated,
+    //         string memory
+    //     )
+    // {
+    //     if (!isPatient(patientAddress)) {
+    //         revert("Patient Doesnt exist");
+    //     }
+    //     return (
+    //         patientDetails[patientAddress].url,
+    //         patientDetails[patientAddress].patientName,
+    //         patientDetails[patientAddress].patientAge,
+    //         patientDetails[patientAddress].patientNumber,
+    //         patientDetails[patientAddress].unixTime,
+    //         patientDetails[patientAddress].allocated,
+    //         patientDetails[patientAddress].organType
+    //     );
+    // }
 
     function getAllPatients() public view returns (patientDetail[] memory) {
         uint patientCount = getPatientCount();
 
         patientDetail[] memory items = new patientDetail[](patientCount);
         for (uint i = 0; i < patientIndex.length; i++) {
-            address currentAddress = patientIndex[i];
-            items[i] = patientDetails[currentAddress];
+            //address currentAddress = patientIndex[i];
+            items[i] = patientDetails[i];
         }
 
         return items;
