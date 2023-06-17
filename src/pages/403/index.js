@@ -5,7 +5,7 @@ import React from "react";
 // const Custom403: NextPage = {};
 const Custom403 = () => {
   return (
-    <div className="container">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="grid place-content-center min-h-screen">
         <div className="flex flex-col items-center">
           <div className="my-4 text-center">
