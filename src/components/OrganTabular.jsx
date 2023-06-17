@@ -11,6 +11,7 @@ import { organAddress, organListingAddress } from "config";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import axios from "@/pages/api/axios";
+import Button from "./Button";
 
 function isAllocated(item) {
   if (item) {
@@ -106,16 +107,16 @@ const Tabular = () => {
                       </th>
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-center">
-                          Allocation
-                        </div>
-                      </th>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">
                           Organ Type
                         </div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-center">Report</div>
+                      </th>
+                      <th className="p-2 whitespace-nowrap">
+                        <div className="font-semibold text-center">
+                          Allocate
+                        </div>
                       </th>
                     </tr>
                   </thead>
@@ -164,20 +165,21 @@ const Tabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
-                            {isAllocated(item.allocated)}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center font-bold">
+                            {/* {isAllocated(item.allocated)} */}
                             {item.organType.toUpperCase()}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">
+                          <div className="text-sm text-center font-bold">
                             <a href={item.url} target="blank">
                               🗎
                             </a>
                           </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
+                            Allocate Organ
+                          </button>
                         </td>
                       </tr>
                     ))}
