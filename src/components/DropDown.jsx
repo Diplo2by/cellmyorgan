@@ -29,9 +29,9 @@ const DropDown = ({ options }) => {
                   aria-hidden="true"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </button>
@@ -42,12 +42,13 @@ const DropDown = ({ options }) => {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
-                tabindex="-1"
+                tabIndex="-1"
               >
                 <div className="py-1" role="none">
                   {options &&
                     options.map((option) => (
                       <Link
+                        key={option.id}
                         href={option.href}
                         className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                         role="menuitem"

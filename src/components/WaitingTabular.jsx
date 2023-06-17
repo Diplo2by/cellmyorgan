@@ -36,7 +36,8 @@ const WaitListTabular = () => {
           age: Number(i.patientAge),
           tokenId: Number(i.patientNumber),
           time: Date(i.unixTime),
-          allocated: Number(i.allocated)
+          allocated: Number(i.allocated),
+          organType : i.organType
         }
         return item;
 
@@ -103,7 +104,7 @@ const WaitListTabular = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {patients.map((item, index) => (
+                    {patients.sort((a,b)=>a.age-b.age).map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
@@ -152,7 +153,7 @@ const WaitListTabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center font-bold">
-                            {"kidney"}
+                            {item.organType}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
