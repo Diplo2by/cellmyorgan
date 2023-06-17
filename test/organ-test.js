@@ -12,16 +12,16 @@ describe("OrganDonation", function () {
     const Organ = await ethers.getContractFactory("Organ");
     const organ = await Organ.deploy(Listingaddress);
 
-    await organ.deployed();
+    await organ.deployed(); 
     const organContractAddress = organ.address;
 
     await organ.createToken("SellMyOrgan.org");
     await organ.createToken("SellMyOrgan.org2");
     await organ.createToken("SellMyOrgan.org3");
 
-    await dono.ListOrgan(organContractAddress, 1, "Kidney", "A+");
-    await dono.ListOrgan(organContractAddress, 2, "Liver", "B+");
-    await dono.ListOrgan(organContractAddress, 3, "Heart", "C+");
+    await dono.ListOrgan(organContractAddress, 1, "Kidney", "A+",".xyz");
+    await dono.ListOrgan(organContractAddress, 2, "Liver", "B+",".zzz");
+    await dono.ListOrgan(organContractAddress, 3, "Heart", "C+",".123");
 
     const [_, recepientAddress] = await ethers.getSigners();
 
