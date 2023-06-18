@@ -26,6 +26,14 @@ const options = [
     href: "/doctor"
   },
   {
+    name: "View Organ Bank",
+    href: "/organbank"
+  },
+  {
+    name: "View Waiting List",
+    href: "/waitinglist"
+  },
+  {
     name: "Login",
     href: "/login"
   },
