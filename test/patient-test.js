@@ -8,8 +8,8 @@ describe('PatientListing', () => {
 
         const [_,signer] = await ethers.getSigners()
         const senderAddress= await signer.address
-        await pat.listNewPatient(senderAddress, ".xyz", "Gopi", 69,"liver");
-        await pat.listNewPatient(senderAddress, ".yzo", "Dinesh", 99,"Kidney");
+        await pat.listNewPatient(senderAddress, ".xyz", "Gopi", 69,"liver","c+");
+        await pat.listNewPatient(senderAddress, ".yzo", "Dinesh", 99,"Kidney","b+");
 
         
         console.log(Number(await pat.getPatientCount()))

@@ -11,6 +11,7 @@ contract Patient {
         uint256 unixTime;
         bool allocated;
         string organType;
+        string bloodType;
     }
 
     mapping(uint256 => patientDetail) private patientDetails;
@@ -25,7 +26,8 @@ contract Patient {
         uint indexed patientNumber,
         uint256 unixTime,
         bool allocated,
-        string organType
+        string organType,
+        string bloodType
     );
 
     // Yet to be implemented
@@ -37,7 +39,8 @@ contract Patient {
         uint indexed patientNumber,
         uint256 unixTime,
         bool allocated,
-        string organType
+        string organType,
+        string bloodType
     );
 
     // Yet to be implemented
@@ -69,7 +72,8 @@ contract Patient {
         string memory url,
         string memory name,
         uint age,
-        string memory organType
+        string memory organType,
+        string memory bloodType
     ) public {
         patientIndex.push(patientAddress);
         uint patNumber = patientIndex.length - 1;
@@ -81,6 +85,7 @@ contract Patient {
         patientDetails[patNumber].allocated = false;
         patientDetails[patNumber].patientNumber = patientIndex.length - 1;
         patientDetails[patNumber].organType = organType;
+        patientDetails[patNumber].bloodType = bloodType;
 
         emit NewPatientListed(
             patientAddress,
@@ -90,7 +95,8 @@ contract Patient {
             patientIndex.length - 1,
             block.timestamp,
             false,
-            organType
+            organType,
+            bloodType
         );
     }
 
