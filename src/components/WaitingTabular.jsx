@@ -34,7 +34,8 @@ const WaitListTabular = ({ organfilter = "liver" }) => {
           tokenId: Number(i.patientNumber),
           time: Date(i.unixTime),
           allocated: Number(i.allocated),
-          organType: i.organType
+          organType: i.organType,
+          bloodType: i.bloodType
         }
         return item;
 
@@ -87,7 +88,7 @@ const WaitListTabular = ({ organfilter = "liver" }) => {
                       </th>
                       <th className="p-2 whitespace-nowrap">
                         <div className="font-semibold text-center">
-                          Allocation
+                          Blood Group
                         </div>
                       </th>
                       <th className="p-2 whitespace-nowrap">
@@ -145,7 +146,7 @@ const WaitListTabular = ({ organfilter = "liver" }) => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center">
-                            {isAllocated(item.allocated)}
+                            {item.bloodType}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
