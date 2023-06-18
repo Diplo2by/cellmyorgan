@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 // import faker from "@faker-js/faker";
 // import { getAllTransactions } from "../shared/Transaction";
 // import { useGlobalState } from "../store";
+import { useRef } from "react";
 
 import Organ from "../../artifacts/contracts/Organ.sol/Organ.json";
 import OrganListing from "../../artifacts/contracts/OrganListing.sol/OrganListing.json";
@@ -12,6 +13,7 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import axios from "@/pages/api/axios";
 import Button from "./Button";
+import WaitingTabular from "./WaitingTabular";
 
 function isAllocated(item) {
   if (item) {
@@ -20,6 +22,9 @@ function isAllocated(item) {
     return <div className="text-green-500">False</div>;
   }
 }
+
+
+
 
 const Tabular = () => {
   const [organs, setOrgans] = useState([]);
@@ -74,11 +79,30 @@ const Tabular = () => {
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
+  
+  const [suggestionBox, setSuggestionBox] = useState('');
 
+  const scrollRef = useRef(null);
+  const onAllocateClick = (organ, bloodtype) => {
+    scrollRef.current.style.display = "block";
+    setSuggestionBox(
+      <WaitingTabular organfilter={organ} bloodfilter={bloodtype} />
+    );
+    scrollRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  }  
+  
+  
   return (
     <>
       <section className="antialiased rounded-xl text-gray-600 p-5">
         <div className="flex flex-col justify-center h-screen">
+          <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
+            Organ Bank
+          </h1>
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
               <h2 className="font-semibold text-gray-800 text-center"></h2>
@@ -177,7 +201,12 @@ const Tabular = () => {
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
-                          <button className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg">
+                          <button
+                            className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
+                            onClick={(e) =>
+                              onAllocateClick(item.organType, item.bloodGroup)
+                            }
+                          >
                             Allocate Organ
                           </button>
                         </td>
@@ -192,6 +221,12 @@ const Tabular = () => {
         {/* <div>
           <button onClick={loadOrgans}> Show Organs</button>
         </div> */}
+        <div ref={scrollRef} className="hidden">
+          <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
+            Suggested matches
+          </h1>
+          {suggestionBox}
+        </div>
       </section>
     </>
   );

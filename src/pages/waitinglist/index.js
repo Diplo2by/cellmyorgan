@@ -7,7 +7,9 @@ function WaitingList() {
       <Head>
         <title>Waiting List</title>
       </Head>
-      <WaitingTabular/>
+      <div className="flex flex-col justify-center h-screen">
+        <WaitingTabular />
+      </div>
     </>
   );
 }

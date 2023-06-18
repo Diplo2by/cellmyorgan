@@ -59,7 +59,7 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
   return (
     <>
       <section className="antialiased rounded-xl text-gray-600 p-5">
-        <div className="flex flex-col justify-center h-screen">
+        <div className="flex flex-col justify-center h-auto">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
               <h2 className="font-semibold text-gray-800 text-center"></h2>
