@@ -8,7 +8,7 @@ import { redirect } from "next/dist/server/api-utils";
 import { getToken } from "next-auth/jwt";
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
+  // const router = useRouter();
   // const protectedRoutes = ['/admin'];
   // if (protectedRoutes.includes(router.route)) {
   //   const token = getToken()
@@ -22,15 +22,8 @@ export default function App({ Component, pageProps }) {
     <>
       <SessionProvider session={pageProps.session}>
         <Head />
-
-        {router.route == "/register" || router.route == "/doctor" ? (
-          <Nav showConnect />
-        ) : (
           <Nav />
-        )}
-
         <Component {...pageProps} />
-
         <Footer />
       </SessionProvider>
     </>

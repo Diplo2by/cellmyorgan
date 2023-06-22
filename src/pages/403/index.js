@@ -10,7 +10,7 @@ const Custom403 = () => {
         <div className="flex flex-col items-center">
           <div className="my-4 text-center">
             <h1 className="text-2xl">403 - Unauthorized</h1>
-            <p className="">Please login as admin</p>
+            <p className="">You are not authorized to view this page. Please login and try again</p>
           </div>
           <Link className="bg-black text-white p-6" href="/login">
             Login

@@ -1,7 +1,8 @@
 import WaitingListForm from "@/components/WaitingListForm";
 import Head from "next/head";
+import { getSession } from "next-auth/react";
 
-function WaitingList() {
+const WaitingList = () => {
   return (
     <>
       <Head>
@@ -10,6 +11,22 @@ function WaitingList() {
       <WaitingListForm />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session || session.user.role != "doctor") {
+    return {
+      redirect: {
+        destination: "/403",
+        permanent: false,
+      },
+    };
+  }
+  console.log(session);
+  return {
+    props: { session },
+  };
 }
 
 export default WaitingList;

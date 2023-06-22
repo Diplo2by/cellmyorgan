@@ -27,6 +27,7 @@ function isAllocated(item) {
 
 
 const Tabular = () => {
+  // const [showAllocate, setShowAllocate] = useState(false);
   const [organs, setOrgans] = useState([]);
   useEffect(() => {
     loadOrgans();

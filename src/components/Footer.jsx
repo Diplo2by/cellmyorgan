@@ -101,13 +101,13 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-600 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline ">
+                  <Link href="/" className="hover:underline ">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:underline">
-                    Register
+                  <Link href="/login" className="hover:underline">
+                    Login
                   </Link>
                 </li>
               </ul>
