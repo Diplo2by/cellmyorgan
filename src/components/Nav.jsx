@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import DropDown from "./DropDown";
+import { signOut, useSession } from "next-auth/react";
 
 async function connectWallet() {
   try {
@@ -16,30 +17,41 @@ async function connectWallet() {
   }
 }
 
-const options = [
-  {
-    name: "Add Patient Organ",
-    href: "/register"
-  },
-  {
-    name: "Add Waiting List",
-    href: "/doctor"
-  },
-  {
-    name: "View Organ Bank",
-    href: "/organbank"
-  },
-  {
-    name: "View Waiting List",
-    href: "/waitinglist"
-  },
-  {
-    name: "Login",
-    href: "/login"
-  },
-];
 
 const Nav = (showConnect = false) => {
+  let options = [
+    {
+      name: "View Organ Bank",
+      href: "/organbank"
+    },
+    {
+      name: "View Waiting List",
+      href: "/waitinglist"
+    },
+    {
+      name: "Login",
+      href: "/login"
+    },
+  ];
+  const { data: session } = useSession();
+  let showSignOut = false;
+
+  if(session?.user?.role == 'doctor') {
+    options.unshift(
+      {
+        name: "Add Patient Organ",
+        href: "/register",
+      },
+      {
+        name: "Add Waiting List",
+        href: "/doctor",
+      }
+    )
+    options = Array.from(new Set(options));
+    showSignOut = true;
+    // setShowSignOut(true);
+  } else showSignOut = false;
+
   let Links = [
     { name: "HOME", link: "/" },
     { name: "ABOUT", link: "/about" },
@@ -76,26 +88,20 @@ const Nav = (showConnect = false) => {
               </Link>
             </li>
           ))}
-          <li className="mx-7">
+          <li className="ml-7">
             <DropDown options={options} />
           </li>
-          {/* <button
-            onClick={connectWallet}
+          <button
+            onClick={signOut}
             className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
-            style={{ display: showConnect.showConnect ? "block" : "none" }}
+            style={{ display: showSignOut ? "block" : "none" }}
           >
-            Connect Wallet
-          </button> */}
+            Sign Out
+          </button>
         </ul>
       </div>
     </div>
   );
 };
-
-function showDropdownOptions() {
-  document.getElementById("options").classList.toggle("hidden");
-  document.getElementById("arrow-up").classList.toggle("hidden");
-  document.getElementById("arrow-down").classList.toggle("hidden");
-}
 
 export default Nav;

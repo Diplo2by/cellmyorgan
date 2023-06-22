@@ -10,6 +10,11 @@
     "role": "user"
   },
   {
+    "regid": "14512",
+    "name": "Darsh",
+    "role": "doctor"
+  },
+  {
     "regid": "696969",
     "name": "Samuel",
     "role": "admin"
