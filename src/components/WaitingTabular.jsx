@@ -17,9 +17,10 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
   async function loadPatients() {
-    const web3modal = new Web3Modal();
-    const conn = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(conn);
+
+    const rpc = "http://localhost:8545"; // make it local variable later 
+    const provider = new ethers.providers.JsonRpcProvider(rpc)
+
     const patientContract = new ethers.Contract(patientAddress, Patient.abi, provider);
 
     const data = await patientContract.getAllPatients();
@@ -109,68 +110,68 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
                       else if (bloodfilter == undefined) return params.organType == organfilter;
                       else return params.bloodType == bloodfilter && params.organType == organfilter;
                     })
-                    .sort((a, b) => a.age - b.age)
-                    .map((item, index) => (
-                      <tr key={index + 1}>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                              {/* <img
+                      .sort((a, b) => a.age - b.age)
+                      .map((item, index) => (
+                        <tr key={index + 1}>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="flex items-center">
+                              <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                                {/* <img
                                 className="rounded-full"
                                 src={makeImage(item.sender)}
                                 width="40"
                                 height="40"
                                 alt="Alex Shatov"
                               /> */}
+                              </div>
+                              <div className="font-medium text-gray-800">
+                                {/* {faker.name.findName()} */}
+                                {item.tokenId}
+                              </div>
                             </div>
-                            <div className="font-medium text-gray-800">
-                              {/* {faker.name.findName()} */}
-                              {item.tokenId}
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-left">
+                              {item.name}
+                              { }
                             </div>
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left">
-                            {item.name}
-                            { }
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left">
-                            {item.age}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex flex-row justify-center items-center text-left font-medium">
-                            <span className="text-green-500">
-                              {shortenAddress(item.address)}
-                            </span>
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">
-                            {item.time}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">
-                            {item.bloodType}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center font-bold">
-                            {item.organType}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">
-                            <a href={item.url} target="blank">
-                              🗎
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-left">
+                              {item.age}
+                            </div>
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="flex flex-row justify-center items-center text-left font-medium">
+                              <span className="text-green-500">
+                                {shortenAddress(item.address)}
+                              </span>
+                            </div>
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-sm text-center">
+                              {item.time}
+                            </div>
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-sm text-center">
+                              {item.bloodType}
+                            </div>
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-sm text-center font-bold">
+                              {item.organType}
+                            </div>
+                          </td>
+                          <td className="p-2 whitespace-nowrap">
+                            <div className="text-sm text-center">
+                              <a href={item.url} target="blank">
+                                🗎
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

@@ -34,10 +34,8 @@ const Tabular = () => {
   }, []);
 
   async function loadOrgans() {
-    const web3modal = new Web3Modal();
-    const conn = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(conn);
-    const signer = provider.getSigner();
+    const rpc = "http://localhost:8545"; // make it local variable later 
+    const provider = new ethers.providers.JsonRpcProvider(rpc)
 
     const organListingContract = new ethers.Contract(
       organListingAddress,
@@ -80,7 +78,7 @@ const Tabular = () => {
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
-  
+
   const [suggestionBox, setSuggestionBox] = useState('');
 
   const scrollRef = useRef(null);
@@ -94,9 +92,9 @@ const Tabular = () => {
       block: "start",
       inline: "nearest",
     });
-  }  
-  
-  
+  }
+
+
   return (
     <>
       <section className="antialiased rounded-xl text-gray-600 p-5">
