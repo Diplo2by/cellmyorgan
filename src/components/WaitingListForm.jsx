@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import taluk from "../../json/data.json";
 import { patientAddress } from "config";
 import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
+import toast, { Toaster } from "react-hot-toast";
 
 import {
   MainFormElement,
@@ -13,22 +14,33 @@ import {
 } from "./FormElements";
 
 let g_age = 0;
-async function listPatient(url,name,age,organType,bloodType) {
-  try {
-    const web3modal = new Web3Modal();
-    const conn = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(conn);
-    const signer = provider.getSigner();
-    const patientContract = new ethers.Contract(patientAddress, Patient.abi, signer)
-    let transaction = await patientContract.listNewPatient(signer.getAddress(), url,name,age,organType,bloodType)
-    await transaction.wait()
-    let txn = await patientContract.getAllAddress();
-    return (txn);
-  }
-  catch (e) {
-    console.log('Imma cri')
-    console.log(e)
-  }
+async function listPatient(url, name, age, organType, bloodType) {
+  // try {
+  const web3modal = new Web3Modal();
+  const conn = await web3modal.connect();
+  const provider = new ethers.providers.Web3Provider(conn);
+  const signer = provider.getSigner();
+  const patientContract = new ethers.Contract(
+    patientAddress,
+    Patient.abi,
+    signer
+  );
+  let transaction = await patientContract.listNewPatient(
+    signer.getAddress(),
+    url,
+    name,
+    age,
+    organType,
+    bloodType
+  );
+  await transaction.wait();
+  let txn = await patientContract.getAllAddress();
+  return (txn);
+  // }
+  // catch (e) {
+  //   console.log('Imma cri')
+  //   console.log(e)
+  // }
 }
 
 const togglePage = () => {
@@ -98,7 +110,7 @@ const WaitingListForm = () => {
     e.preventDefault();
     let age = await calculate_age(data.dob);
     g_age= age;
-    axios
+    const result = await axios
       .post("/api/form", {
         fname: data.fname,
         lname: data.lname,
@@ -125,18 +137,21 @@ const WaitingListForm = () => {
         aadhaar: data.aadhaar,
         age: age,
       })
-      .then(async (res) => {
-        console.log(res.data.url);
-        //console.log(signer.address)
-        const transac = await listPatient(
-          res.data.url,
-          data.fname +" "+ data.lname,
-          g_age,
-          data.organs,
-          data.bloodtype
-        );
-        console.log(transac);
-      });
+    console.log(result?.data?.url)
+    // .then(async (res) => {
+    //   console.log(res.data.url);
+    //   //console.log(signer.address)
+    const txnPromise = listPatient(result.data.url, data.fname + " " + data.lname, g_age, data.organs, data.bloodtype)
+    
+    toast.promise(txnPromise, {
+      loading: "Processing...",
+      success: "Transaction successful",
+      error: "Error when fetching",
+    });
+    
+    const txn = await txnPromise
+    console.log(txn);
+    // });
   }
 
   const [data, setData] = useState({
@@ -174,6 +189,30 @@ const WaitingListForm = () => {
 
   return (
     <div className="font-bold items-center flex flex-col h-auto my-auto mt-auto">
+      <div>
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            success: {
+              duration: 7000,
+            },
+            error: {
+              duration: 7000,
+            },
+            style: {
+              paddingTop: "40px",
+              paddingBottom: "40px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              minWidth: "30%",
+            },
+          }}
+          containerStyle={{
+            fontSize: "23px",
+          }}
+        />
+      </div>
       <h1 className="pt-10">Waiting List Form</h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
       <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">

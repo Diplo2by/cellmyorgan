@@ -7,6 +7,8 @@ import { resolve } from "styled-jsx/css"
 import { organAddress, organListingAddress } from 'config'
 import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
 import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
+import toast, { Toaster } from "react-hot-toast";
+
 
 import {
   MainFormElement,
@@ -15,31 +17,23 @@ import {
 } from "./FormElements"
 
 async function listOrgan(organs, url,bloodgroup) {
-  try {
-    const web3modal = new Web3Modal();
-    const conn = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(conn);
-    const signer = provider.getSigner();
-    let organ = new ethers.Contract(organAddress, Organ.abi, signer)
-    let transaction = await organ.createToken(url)
-    let tx = await transaction.wait()
+  const web3modal = new Web3Modal();
+  const conn = await web3modal.connect();
+  const provider = new ethers.providers.Web3Provider(conn);
+  const signer = provider.getSigner();
+  let organ = new ethers.Contract(organAddress, Organ.abi, signer)
+  let transaction = await organ.createToken(url)
+  let tx = await transaction.wait()
 
-    let event = tx.events[0]
-    let value = event.args[2]
-    let tokenId = Number(value)
-    console.log(bloodgroup)
+  let event = tx.events[0]
+  let value = event.args[2]
+  let tokenId = Number(value)
+  console.log(bloodgroup)
 
-    let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-    transaction = await contract.ListOrgan(organAddress, tokenId, organs, bloodgroup, url);
-    //await transaction.wait()
-    transaction = await contract.fetchOrganItems();
-    return (transaction)
-  }
-  catch (e) {
-    console.log('imma start cryin frfr')
-    console.log(e)
-  }
-
+  let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
+  transaction = await contract.ListOrgan(organAddress, tokenId, organs, bloodgroup, url);
+  transaction = await contract.fetchOrganItems();
+  return (transaction)
 }
 
 const RegistrationForm = () => {
@@ -101,7 +95,7 @@ const RegistrationForm = () => {
   async function handleSubmit(e) {
     e.preventDefault()
     var age = await calculate_age(data.dob); 
-    axios
+    const result = await axios
       .post("/api/form", {
         fname: data.fname,
         lname: data.lname,
@@ -120,11 +114,16 @@ const RegistrationForm = () => {
         bloodtype: data.bloodtype,
         age: age,
       })
-      .then(async (res) => {
-        // console.log(res.data.url)
-        const txn = await listOrgan(data.organs, res.data.url,data.bloodtype)
-        console.log(txn)
-      })
+    const txnPromise = listOrgan(data.organs, result.data.url, data.bloodtype)
+    
+    toast.promise(txnPromise, {
+      loading: "Processing...",
+      success: "Transaction successful",
+      error: "Error when fetching",
+    });
+    
+    const txn = await txnPromise 
+    console.log(txn)
   }
 
   const [data, setData] = useState({
@@ -154,7 +153,33 @@ const RegistrationForm = () => {
 
   return (
     <div className="font-bold items-center flex flex-col h-auto my-auto mb-auto">
-      <h1 className="pb-10">Patient Registration Card</h1>
+      <div>
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            success: {
+              duration: 7000,
+            },
+            error: {
+              duration: 7000,
+            },
+            style: {
+              paddingTop: "40px",
+              paddingBottom: "40px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              minWidth: "30%",
+            },
+          }}
+          containerStyle={{
+            fontSize: "23px",
+          }}
+        />
+      </div>
+      <h1 className="text-3xl mt-8 tracking-tight uppercase pb-10">
+        Patient Registration Card
+      </h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
       <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">
         <p className="text-2xl font-bold tracking-tight text-gray-900">
@@ -593,7 +618,7 @@ const RegistrationForm = () => {
             <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
           </div>
         </div>
-        
+
         <div className="flex flex-wrap -mx-3 mb-6 mt-10">
           <button
             className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded"
