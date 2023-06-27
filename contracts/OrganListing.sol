@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
+import "hardhat/console.sol";
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -19,7 +20,7 @@ contract OrganListing is ReentrancyGuard {
         bool allocated;
         string organType;
         string bloodGroup;
-        uint256 unixTime;
+        uint256 expiryTime;
         string url;
     }
 
@@ -34,7 +35,7 @@ contract OrganListing is ReentrancyGuard {
         bool allocated,
         string organType,
         string bloodGroup,
-        uint256 unixTime,
+        uint256 expiryTime,
         string url
     );
 
@@ -57,7 +58,7 @@ contract OrganListing is ReentrancyGuard {
             false,
             organType,
             bloodGroup,
-            block.timestamp,
+            block.timestamp + 18000,
             ipfsUrl
         );
         IERC721(cmoAddress).transferFrom(msg.sender, address(this), tokenId);
@@ -71,7 +72,7 @@ contract OrganListing is ReentrancyGuard {
             false,
             organType,
             bloodGroup,
-            block.timestamp,
+            block.timestamp + 18000,
             ipfsUrl
         );
     }
@@ -80,12 +81,15 @@ contract OrganListing is ReentrancyGuard {
         address cmoAddress,
         uint256 organId
     ) public nonReentrant {
+        //if (!(idToListedOrgan[organId].status)) return "Organ has expired";
+
         uint tokenId = idToListedOrgan[organId].tokenId;
 
         IERC721(cmoAddress).transferFrom(address(this), msg.sender, tokenId);
         idToListedOrgan[organId].recipient = msg.sender;
         idToListedOrgan[organId].allocated = true;
         _organsAllocated.increment();
+        //return "Organ allocated";
     }
 
     function fetchOrganItems() public view returns (ListedOrgan[] memory) {
@@ -105,14 +109,21 @@ contract OrganListing is ReentrancyGuard {
                 currentIndex++;
             }
         }
-        return items;
+        return (items);
     }
 
-    function Testfun() public pure returns (uint) {
-        uint num = 1;
-        return num;
-    }
-    
+    // function organTimer(uint256 expiry) public {
+    //     uint organCount = _organIds.current();
+
+    //     for (uint i = 0; i < organCount; i++) {
+    //         uint currentId = idToListedOrgan[i + 1].organId;
+    //         uint time = (block.timestamp -
+    //             idToListedOrgan[currentId].expiryTime) /
+    //             60 /
+    //             60;
+    //         if (time > expiry) idToListedOrgan[currentId].status = false;
+    //     }
+    // }
 
     //Fetch my Organ function is not required at this point of time
 
