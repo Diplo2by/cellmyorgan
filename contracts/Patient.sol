@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
+import "hardhat/console.sol";
 
 contract Patient {
     struct patientDetail {
@@ -12,6 +13,7 @@ contract Patient {
         bool allocated;
         string organType;
         string bloodType;
+        bool status;
     }
 
     mapping(uint256 => patientDetail) private patientDetails;
@@ -27,7 +29,8 @@ contract Patient {
         uint256 unixTime,
         bool allocated,
         string organType,
-        string bloodType
+        string bloodType,
+        bool status
     );
 
     // Yet to be implemented
@@ -40,7 +43,8 @@ contract Patient {
         uint256 unixTime,
         bool allocated,
         string organType,
-        string bloodType
+        string bloodType,
+        bool status
     );
 
     // Yet to be implemented
@@ -86,6 +90,7 @@ contract Patient {
         patientDetails[patNumber].patientNumber = patientIndex.length - 1;
         patientDetails[patNumber].organType = organType;
         patientDetails[patNumber].bloodType = bloodType;
+        patientDetails[patNumber].status = true;
 
         emit NewPatientListed(
             patientAddress,
@@ -96,7 +101,8 @@ contract Patient {
             block.timestamp,
             false,
             organType,
-            bloodType
+            bloodType,
+            true
         );
     }
 
@@ -132,13 +138,17 @@ contract Patient {
     // }
 
     function getAllPatients() public view returns (patientDetail[] memory) {
-        uint patientCount = getPatientCount();
+        uint patientCount = getAliveCount();
 
         patientDetail[] memory items = new patientDetail[](patientCount);
         for (uint i = 0; i < patientIndex.length; i++) {
             //address currentAddress = patientIndex[i];
-            items[i] = patientDetails[i];
+            if (patientDetails[i].status) {
+                //console.log(i);
+                items[i] = patientDetails[i];
+            }
         }
+        //console.log(items.length);
 
         return items;
     }
@@ -147,6 +157,28 @@ contract Patient {
         address[] memory items = new address[](patientIndex.length);
         for (uint i = 0; i < patientIndex.length; i++) {
             items[i] = patientIndex[i];
+        }
+        return items;
+    }
+
+    function patientDeceased(uint256 patNumber) public {
+        patientDetails[patNumber].status = false;
+    }
+
+    function getAliveCount() public view returns (uint256) {
+        uint256 patCount = 0;
+        for (uint i = 0; i < patientIndex.length; i++) {
+            if (patientDetails[i].status) patCount++;
+        }
+        return patCount;
+    }
+
+    function getAllRecords() public view returns (patientDetail[] memory) {
+        uint patientCount = getPatientCount();
+        patientDetail[] memory items = new patientDetail[](patientCount);
+
+        for (uint i = 0; i < patientIndex.length; i++) {
+            items[i] = patientDetails[i];
         }
         return items;
     }
