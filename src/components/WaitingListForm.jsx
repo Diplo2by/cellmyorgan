@@ -213,7 +213,9 @@ const WaitingListForm = () => {
           }}
         />
       </div>
-      <h1 className="pt-10">Waiting List Form</h1>
+      <h1 className="text-3xl mt-8 tracking-tight uppercase pb-10">
+        Waiting List Form
+      </h1>
       {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
       <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-lg">
         <div className="firstpage">
