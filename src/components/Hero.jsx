@@ -1,5 +1,7 @@
 import React from "react";
 import Typed from "react-typed";
+import Link from "next/link";
+
 
 const Hero = () => {
   return (
@@ -9,21 +11,19 @@ const Hero = () => {
           GROWING WITH DATA ANALYTICS
         </p> */}
         <h1 className="md:text-5xl sm:text-4xl text-3xl font-bold md:py-6">
-          Welcome to Indian Organ Procurement and Transplantaion portal(IOPTN)
+          Welcome to Indian Organ Procurement and Transplantaion portal - IOPTN
         </h1>
-        <div className="text-gray-700 flex justify-center items-center">
+        <div className="text-gray-700 flex justify-center items-center w-max mr-12">
           <p className="md:text-4xl sm:text-2xl text-xl font-bold py-4">
-            Donatable organs include :
+            IOPTN has so far facilitated : 
           </p>
           <Typed
-            className="md:text-4xl sm:text-2xl text-xl font-bold md:pl-4 pl-2"
+            className="md:text-4xl sm:text-2xl text-xl font-bold ml-2"
             strings={[
-              "LIVER",
-              "KIDNEY",
-              "HEART",
-              "LUNGS",
-              "PANCREAS",
-              "CORNEA",
+              '100+ Procurements.',
+              '85+ Transplantations.',
+              '100+ Registered hospitals',
+              'Countless Happy Patients.'
             ]}
             typeSpeed={120}
             backSpeed={140}
@@ -31,13 +31,13 @@ const Hero = () => {
           />
         </div>
         <p className="md:text-2xl text-xl font-bold text-gray-500 py-5">
-          More than 100,000 people are waiting for a lifesaving transplant.
-          Transplants rely on the generosity of organ, eye and tissue donors,
-          and there are not enough donors to meet the need. You can help.
+          Indian Organ Procurement and Transplantation Network is a unique public-private partnership that links all professionals involved in the Indian donation and transplantation system.
         </p>
-        <button className="bg-gray-800 w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white text-xl">
-          Get Started
-        </button>
+        <Link href='/login'>
+          <button className="bg-gray-800 w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white text-xl">
+            Doctor Login
+          </button>
+        </Link>
       </div>
     </div>
   );

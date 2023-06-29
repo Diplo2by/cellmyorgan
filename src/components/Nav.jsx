@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
 import DropDown from "./DropDown";
 import { signOut, useSession } from "next-auth/react";
 
-async function connectWallet() {
-  try {
-    const web3modal = new Web3Modal();
-    const conn = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(conn);
-    const signer = provider.getSigner();
-    console.log("Connection successfull Signer");
-  } catch (e) {
-    console.log(e);
-  }
-}
+// import { ethers } from "ethers";
+// import Web3Modal from "web3modal";
+// async function connectWallet() {
+//   try {
+//     const web3modal = new Web3Modal();
+//     const conn = await web3modal.connect();
+//     const provider = new ethers.providers.Web3Provider(conn);
+//     const signer = provider.getSigner();
+//     console.log("Connection successfull Signer");
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 
 
 const Nav = (showConnect = false) => {
