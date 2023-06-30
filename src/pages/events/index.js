@@ -5,13 +5,13 @@ import Article from "@/components/Article";
 const index = () => {
   return (
     <div>
-        <Head>
+      <Head>
         <title>Events and Updates</title>
       </Head>
       <div className="bg-white py-10 sm:py-15">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Events and Updates
             </h2>
             <p className="mt-2 text-lg leading-8 text-gray-600">
