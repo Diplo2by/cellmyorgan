@@ -8,7 +8,7 @@ import { organAddress, organListingAddress } from 'config'
 import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
 import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
 import toast, { Toaster } from "react-hot-toast";
-
+import Image from "next/image";
 
 import {
   MainFormElement,
@@ -16,7 +16,7 @@ import {
   InputFormElement,
 } from "./FormElements"
 
-async function listOrgan(organs, url,bloodgroup) {
+async function listOrgan(organs, url, bloodgroup) {
   const web3modal = new Web3Modal();
   const conn = await web3modal.connect();
   const provider = new ethers.providers.Web3Provider(conn);
@@ -94,7 +94,7 @@ const RegistrationForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    var age = await calculate_age(data.dob); 
+    var age = await calculate_age(data.dob);
     const result = await axios
       .post("/api/form", {
         fname: data.fname,
@@ -115,14 +115,14 @@ const RegistrationForm = () => {
         age: age,
       })
     const txnPromise = listOrgan(data.organs, result.data.url, data.bloodtype)
-    
+
     toast.promise(txnPromise, {
       loading: "Processing...",
       success: "Transaction successful",
       error: "Error when fetching",
     });
-    
-    const txn = await txnPromise 
+
+    const txn = await txnPromise
     console.log(txn)
   }
 
@@ -177,12 +177,12 @@ const RegistrationForm = () => {
           }}
         />
       </div>
-      <div className="flex w-[40%] justify-center">
-        <p>insert flow here</p>
+      <div className="flex w-[40%] justify-center ">
+        <img src='/images/dono.png' alt="Image of a heart being donated" className=" w-auto h-[50%]" />
       </div>
       <div className="font-bold w-[60%] flex flex-col justify-center">
         <h1 className="flex justify-center text-3xl tracking-tight uppercase pb-10 px-auto">
-          Patient Registration Card
+          Organ Registration Form
         </h1>
         {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
         <div className="flex justify-center">
