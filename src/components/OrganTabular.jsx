@@ -23,9 +23,6 @@ function isAllocated(item) {
   }
 }
 
-
-
-
 const Tabular = () => {
   // const [showAllocate, setShowAllocate] = useState(false);
   const [organs, setOrgans] = useState([]);
@@ -34,8 +31,8 @@ const Tabular = () => {
   }, []);
 
   async function loadOrgans() {
-    const rpc = "http://localhost:8545"; // make it local variable later 
-    const provider = new ethers.providers.JsonRpcProvider(rpc)
+    const rpc = "http://localhost:8545"; // make it local variable later
+    const provider = new ethers.providers.JsonRpcProvider(rpc);
 
     const organListingContract = new ethers.Contract(
       organListingAddress,
@@ -79,7 +76,7 @@ const Tabular = () => {
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
-  const [suggestionBox, setSuggestionBox] = useState('');
+  const [suggestionBox, setSuggestionBox] = useState("");
 
   const scrollRef = useRef(null);
   const onAllocateClick = (organ, bloodtype) => {
@@ -92,8 +89,7 @@ const Tabular = () => {
       block: "start",
       inline: "nearest",
     });
-  }
-
+  };
 
   return (
     <>
