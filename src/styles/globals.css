@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 html {
-  background-color: #f3f5f7;
+  background-color: #f4f7fb;
+  color: #021327;
+}
+
+
+.colpri {
+  color: #021327;
+}
+
+.colalt {
+  color: #f4f7fb;
 }

@@ -59,57 +59,70 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
 
   return (
     <>
-      <section className="antialiased rounded-xl text-gray-600 p-5">
-        <div className="flex flex-col justify-center h-auto">
+      <section className="antialiased rounded-xl text-gray-600 p-5 h-screen">
+        <div className="flex flex-col justify-center">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-semibold text-gray-800 text-center"></h2>
+              <h2 className="font-extrabold text-gray-700 text-center text-3xl">
+                Welcome to Dinesh's Waiting List
+              </h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
                 <table className="table-auto w-full">
                   <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                     <tr>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Token ID</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Name</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Age</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">
                           Wallet Address
                         </div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Timestamp</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">
                           Blood Group
                         </div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">
                           Organ Type
                         </div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">Report</div>
                       </th>
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {patients.filter(function (params) {
-                      console.log(bloodfilter, organfilter)
-                      if (organfilter == undefined && bloodfilter == undefined) return params;
-                      else if (organfilter == undefined) return params.bloodType == bloodfilter;
-                      else if (bloodfilter == undefined) return params.organType == organfilter;
-                      else return params.bloodType == bloodfilter && params.organType == organfilter;
-                    })
+                    {patients
+                      .filter(function (params) {
+                        console.log(bloodfilter, organfilter);
+                        if (
+                          organfilter == undefined &&
+                          bloodfilter == undefined
+                        )
+                          return params;
+                        else if (organfilter == undefined)
+                          return params.bloodType == bloodfilter;
+                        else if (bloodfilter == undefined)
+                          return params.organType == organfilter;
+                        else
+                          return (
+                            params.bloodType == bloodfilter &&
+                            params.organType == organfilter
+                          );
+                      })
                       .sort((a, b) => a.age - b.age)
                       .map((item, index) => (
                         <tr key={index + 1}>
@@ -133,13 +146,11 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
                           <td className="p-2 whitespace-nowrap">
                             <div className="text-left">
                               {item.name}
-                              { }
+                              {}
                             </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
-                            <div className="text-left">
-                              {item.age}
-                            </div>
+                            <div className="text-left">{item.age}</div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
                             <div className="flex flex-row justify-center items-center text-left font-medium">

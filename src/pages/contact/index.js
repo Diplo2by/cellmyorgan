@@ -15,7 +15,7 @@ const contact = () => {
           <div className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"></div>
         </div>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Contact Us
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
@@ -32,7 +32,7 @@ const contact = () => {
             <div>
               <label
                 htmlFor="first-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 First name
               </label>
@@ -42,14 +42,14 @@ const contact = () => {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div>
               <label
                 htmlFor="last-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 Last name
               </label>
@@ -59,14 +59,14 @@ const contact = () => {
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="company"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 {" "}
                 Transplant center, organ procurement organization, or other
@@ -78,14 +78,14 @@ const contact = () => {
                   name="company"
                   id="company"
                   autoComplete="organization"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 Email
               </label>
@@ -95,14 +95,14 @@ const contact = () => {
                   name="email"
                   id="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="phone-number"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 Phone number
               </label>
@@ -111,7 +111,7 @@ const contact = () => {
                   <label htmlFor="country" className="sr-only">
                     Country
                   </label>
-                  <div className="h-full rounded-md border-0 bg-transparent bg-none py-2 pl-4 pr-4 text-gray-900 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-l ">
+                  <div className="h-full rounded-md border-0 bg-transparent bg-none py-2 pl-4 pr-4 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-l ">
                     +91
                   </div>
                 </div>
@@ -120,14 +120,14 @@ const contact = () => {
                   name="phone-number"
                   id="phone-number"
                   autoComplete="tel"
-                  className="block w-full rounded-md border-0 px-2 py-2 pl-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-l sm:leading-6"
+                  className="block w-full rounded-md border-0 px-2 py-2 pl-14 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-l sm:leading-6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="message"
-                className="block text-sm font-semibold leading-6 text-gray-900"
+                className="block text-sm font-semibold leading-6"
               >
                 Message
               </label>
@@ -136,7 +136,7 @@ const contact = () => {
                   name="message"
                   id="message"
                   rows="4"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 ></textarea>
               </div>
             </div>
@@ -149,27 +149,10 @@ const contact = () => {
           <div className="mt-10">
             <button
               type="submit"
-              className="block w-full rounded-md bg-gray-400 px-3.5 py-2.5 text-center text-xl font-semibold text-gray-800 shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+              className="block w-full rounded-md bg-[#4b42f5] hover:bg-[#009AF3] colalt font-extrabold px-3.5 py-2.5 text-center text-xl shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               Write To Us
             </button>
-          </div>
-          <div className="mt-10 leading-9">
-            <p className="font-bold">donorblock</p>
-
-            <div className="leading-6">
-              123 Main Street
-              Cityville, State
-              Country-12345
-            </div>
-            <hr />
-            <div>
-              <p>Mobile: +91 98765 43210</p>
-              Ph: +1 (555) 123-4567
-              <br />
-              Ph: +1 (555) 123-4567
-              <br />E - mail ID : contact@IOPTNcom
-            </div>
           </div>
         </form>
       </div>

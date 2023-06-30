@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import axios from "@/pages/api/axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 
 const Login = () => {
@@ -23,8 +25,10 @@ const Login = () => {
     });
     if (result?.error) {
       setError(result.error);
+      toast.error(result.error);
     }
     if (result?.ok) {
+      toast.success("Logged in successfully");
       router.push(callbackUrl);
     }
   };
@@ -32,6 +36,30 @@ const Login = () => {
   return (
     <>
       <div className="flex items-center justify-center h-screen my-auto mb-auto">
+        <div>
+          <Toaster
+            position="bottom-right"
+            reverseOrder={false}
+            toastOptions={{
+              success: {
+                duration: 7000,
+              },
+              error: {
+                duration: 7000,
+              },
+              style: {
+                paddingTop: "40px",
+                paddingBottom: "40px",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                minWidth: "30%",
+              },
+            }}
+            containerStyle={{
+              fontSize: "23px",
+            }}
+          />
+        </div>
         {!success ? (
           <h1 className="flex md:text-4xl sm:text-3xl text-2xl font-bold px-4">
             You are already logged in. Redirecting...
@@ -84,12 +112,12 @@ const Login = () => {
                 >
                   Sign In
                 </button>
-                <a
+                <Link
                   className="inline-block align-baseline font-bold text-sm"
                   href="#"
                 >
                   Forgot Details?
-                </a>
+                </Link>
               </div>
             </form>
             {!!error && <p className="text-error">ERROR: {error}</p>}

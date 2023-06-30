@@ -62,9 +62,9 @@ const Nav = (showConnect = false) => {
   ];
   let [open, setOpen] = useState(false);
   return (
-    <div className="shadow-md w-full sticky top-0 left-0 z-9999">
-      <div className="md:flex items-center justify-between bg-gray-400 py-4 md:px-10 px-7">
-        <div className="font-bold text-3xl cursor-pointer flex items-center text-gray-800">
+    <div className="shadow-md w-full sticky top-0 left-0 z-9999 bg-[#f4f7fb]">
+      <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
+        <div className="font-bold text-3xl cursor-pointer flex items-center">
           <Link href="/">IOPTN</Link>
         </div>
         <div
@@ -75,15 +75,13 @@ const Nav = (showConnect = false) => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
-            }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 " : "top-[-490px]"
+          }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <Link
-                href={link.link}
-                className="text-gray-800 hover:text-gray-200 duration-500"
-              >
+              <Link href={link.link} className="hover:underline">
                 {link.name}
               </Link>
             </li>
@@ -93,7 +91,7 @@ const Nav = (showConnect = false) => {
           </li>
           <button
             onClick={signOut}
-            className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
+            className="bg-[#720ac7] py-2 px-6 rounded md:ml-8 hover:bg-[#C160FF] duration-200 font-bold text-lg text-[#f4f7fb]"
             style={{ display: showSignOut ? "block" : "none" }}
           >
             Sign Out

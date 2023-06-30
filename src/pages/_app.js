@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
 import { getToken } from "next-auth/jwt";
+import "./index.css";
 
 export default function App({ Component, pageProps }) {
   // const router = useRouter();

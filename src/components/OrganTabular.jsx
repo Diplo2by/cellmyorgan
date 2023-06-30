@@ -23,6 +23,9 @@ function isAllocated(item) {
   }
 }
 
+
+
+
 const Tabular = () => {
   // const [showAllocate, setShowAllocate] = useState(false);
   const [organs, setOrgans] = useState([]);
@@ -31,8 +34,8 @@ const Tabular = () => {
   }, []);
 
   async function loadOrgans() {
-    const rpc = "http://localhost:8545"; // make it local variable later
-    const provider = new ethers.providers.JsonRpcProvider(rpc);
+    const rpc = "http://localhost:8545"; // make it local variable later 
+    const provider = new ethers.providers.JsonRpcProvider(rpc)
 
     const organListingContract = new ethers.Contract(
       organListingAddress,
@@ -76,7 +79,7 @@ const Tabular = () => {
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
-  const [suggestionBox, setSuggestionBox] = useState("");
+  const [suggestionBox, setSuggestionBox] = useState('');
 
   const scrollRef = useRef(null);
   const onAllocateClick = (organ, bloodtype) => {
@@ -89,50 +92,53 @@ const Tabular = () => {
       block: "start",
       inline: "nearest",
     });
-  };
+  }
+
 
   return (
     <>
-      <section className="antialiased rounded-xl text-gray-600 p-5">
-        <div className="flex flex-col justify-center h-screen">
-          <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
+      <section className="antialiased rounded-xl text-gray-600 p-5 h-screen">
+        <div className="flex flex-col justify-center">
+          {/* <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
             Organ Bank
-          </h1>
-          <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
+          </h1> */}
+          <div className="max-w-5xl m-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-semibold text-gray-800 text-center"></h2>
+              <h2 className="font-extrabold text-gray-700 text-center text-3xl">
+                Welcome to Dinesh's Organ Bank
+              </h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
                 <table className="table-auto w-full">
                   <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                     <tr>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Token ID</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Donor</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Recipient</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">
                           Blood Type
                         </div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Timestamp</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">
                           Organ Type
                         </div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">Report</div>
                       </th>
-                      <th className="p-2 whitespace-nowrap">
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">
                           Allocate
                         </div>
@@ -212,16 +218,16 @@ const Tabular = () => {
               </div>
             </div>
           </div>
+          <div ref={scrollRef} className="hidden">
+            <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
+              Suggested matches
+            </h1>
+            {suggestionBox}
+          </div>
         </div>
         {/* <div>
           <button onClick={loadOrgans}> Show Organs</button>
         </div> */}
-        <div ref={scrollRef} className="hidden">
-          <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
-            Suggested matches
-          </h1>
-          {suggestionBox}
-        </div>
       </section>
     </>
   );
