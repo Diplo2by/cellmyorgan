@@ -109,7 +109,7 @@ const WaitingListForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     let age = await calculate_age(data.dob);
-    g_age= age;
+    g_age = age;
     const result = await axios
       .post("/api/form", {
         fname: data.fname,
@@ -142,13 +142,13 @@ const WaitingListForm = () => {
     //   console.log(res.data.url);
     //   //console.log(signer.address)
     const txnPromise = listPatient(result.data.url, data.fname + " " + data.lname, g_age, data.organs, data.bloodtype)
-    
+
     toast.promise(txnPromise, {
       loading: "Processing...",
       success: "Transaction successful",
       error: "Error when fetching",
     });
-    
+
     const txn = await txnPromise
     console.log(txn);
     // });
@@ -214,11 +214,71 @@ const WaitingListForm = () => {
         />
       </div>
       <div className="flex w-[40%] justify-center">
-        <p>insert flow here</p>
+        <div>
+          {/* <!-- component --> */}
+          <div className="flex mx-auto w-full h-full relative z-[-1]">
+            <div className="relative wrap overflow-hidden p-10 h-full"  >
+              <div className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-[50%]" ></div>
+              {/* <!-- 1st timeline --> */}
+              <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">1</h1>
+                </div>
+                <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4 ">
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">Doctor&apos;s Evaluation</h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">The process begins when a patient is referred to a transplant center by their healthcare provider.
+                    The patient undergoes a comprehensive evaluation, including medical tests, imaging scans,
+                    and consultations with various specialists, to determine their eligibility for transplantation.</p>
+                </div>
+              </div>
+
+              {/* <!-- 2nd timeline --> */}
+              <div className="mb-8 flex justify-between items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
+                </div>
+                <div className="order-1 bg-cyan-600 rounded-lg shadow-2xl w-5/12 px-6 py-4">
+                  <h3 className="mb-3 font-bold text-white text-lg">Add Patient to Waiting list</h3>
+                  <p className="text-sm leading-snug tracking-wide text-white text-opacity-100"> If the patient meets the criteria for transplantation,
+                    they are placed on the national or regional organ transplant waiting list.
+                    Organ allocation is determined based on factors such as medical urgency,
+                    blood type compatibility, organ size, and waiting time.</p>
+                </div>
+              </div>
+              {/* <!-- 3rd timeline --> */}
+
+              <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">3</h1>
+                </div>
+                <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4">
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">Priority List Generation</h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">When a suitable organ becomes available,
+                    the transplant center evaluates the offer based on compatibility and the patient&apos;s medical condition.
+                    A priority list is generated. </p>
+                </div>
+              </div>
+              {/* <!-- 4th timeline --> */}
+              <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div className="order-1 w-5/12"></div>
+                <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+                  <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
+                </div>
+                <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4">
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">Doctor authorizes transplant </h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100"> the patient undergoes pre-transplant preparations, which may include additional medical tests, preoperative consultations, and discussions about the procedure, risks, and post-transplant care</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="font-bold w-[60%] flex flex-col justify-center">
         <h1 className="flex justify-center text-3xl tracking-tight uppercase pb-10 px-auto">
-          Waiting List Form
+          Patient Waiting List Form
         </h1>
         {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
         <div className="flex justify-center">
