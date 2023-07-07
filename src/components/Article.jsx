@@ -10,19 +10,19 @@ const Article = ({ title, author, authorRole, date, category, link }) => {
           </time>
           <a
             href="#"
-            className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+            className="relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium hover:bg-gray-200"
           >
             {category}
           </a>
         </div>
         <div className="group relative">
-          <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+          <h3 className="mt-3 text-lg font-semibold leading-6">
             <a href={link}>
               <span className="absolute inset-0"></span>
               {title}
             </a>
           </h3>
-          <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+          <p className="mt-5 line-clamp-3 text-sm leading-6">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of
