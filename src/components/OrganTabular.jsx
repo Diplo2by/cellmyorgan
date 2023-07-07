@@ -145,9 +145,7 @@ const Tabular = () => {
                         <div className="font-semibold text-center">Report</div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
-                        <div className="font-semibold text-center">
-                          Allocate
-                        </div>
+                        <div className="font-semibold text-center"></div>
                       </th>
                     </tr>
                   </thead>
@@ -209,12 +207,12 @@ const Tabular = () => {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <button
-                            className="bg-gray-800 text-white py-2 px-6 rounded md:ml-8 hover:bg-gray-600 duration-200 font-bold text-lg"
+                            className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
                             onClick={(e) =>
                               onAllocateClick(item.organType, item.bloodGroup)
                             }
                           >
-                            Allocate Organ
+                            Allocate
                           </button>
                         </td>
                       </tr>
