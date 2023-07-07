@@ -6,25 +6,32 @@ import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
 
 
 
-const WaitListTabular = ({ organfilter, bloodfilter }) => {
+const WaitListTabular = ({
+  organfilter,
+  bloodfilter,
+  title = "Welcome to Waiting List",
+}) => {
   const [patients, setPatients] = useState([]);
   useEffect(() => {
     loadPatients();
-  }, [])
+  }, []);
   const [loadingState, setLoadingState] = useState("not-loaded");
 
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
   async function loadPatients() {
+    const rpc = "http://localhost:8545"; // make it local variable later
+    const provider = new ethers.providers.JsonRpcProvider(rpc);
 
-    const rpc = "http://localhost:8545"; // make it local variable later 
-    const provider = new ethers.providers.JsonRpcProvider(rpc)
-
-    const patientContract = new ethers.Contract(patientAddress, Patient.abi, provider);
+    const patientContract = new ethers.Contract(
+      patientAddress,
+      Patient.abi,
+      provider
+    );
 
     const data = await patientContract.getAllPatients();
-    
+
     const formatDate = (dt) => {
       var dateArray = dt.split("");
       dateArray.splice(dt.indexOf("GMT") - 4);
@@ -42,16 +49,13 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
           time: formatDate(Date(i.unixTime)),
           allocated: Number(i.allocated),
           organType: i.organType,
-          bloodType: i.bloodType
-        }
+          bloodType: i.bloodType,
+        };
         return item;
-
       })
-    )
+    );
     setPatients(items);
     setLoadingState("loaded");
-
-
   }
   function isAllocated(item) {
     if (item) {
@@ -61,17 +65,13 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
     }
   }
 
-
-
   return (
     <>
       <section className="antialiased rounded-xl p-5 max-h-screen">
         <div className="flex flex-col justify-center">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-extrabold text-center text-3xl">
-                Welcome to Waiting List
-              </h2>
+              <h2 className="font-extrabold text-center text-3xl">{title}</h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
@@ -156,7 +156,7 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
                             </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
-                            <div className="text-left">{item.age}</div>
+                            <div className="text-center">{item.age}</div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
                             <div className="flex flex-row justify-center items-center text-left font-medium">
@@ -176,7 +176,7 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
                             </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
-                            <div className="text-sm text-center font-bold">
+                            <div className="text-sm text-center font-bold uppercase">
                               {item.organType}
                             </div>
                           </td>

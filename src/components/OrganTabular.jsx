@@ -91,7 +91,11 @@ const Tabular = () => {
   const onAllocateClick = (organ, bloodtype) => {
     scrollRef.current.style.display = "block";
     setSuggestionBox(
-      <WaitingTabular organfilter={organ} bloodfilter={bloodtype} />
+      <WaitingTabular
+        organfilter={organ}
+        bloodfilter={bloodtype}
+        title="Suggested Matches"
+      />
     );
     scrollRef.current.scrollIntoView({
       behavior: "smooth",
@@ -193,9 +197,9 @@ const Tabular = () => {
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
-                          <div className="text-sm text-center">
+                          <div className="text-sm text-center font-bold uppercase">
                             {/* {isAllocated(item.allocated)} */}
-                            {item.organType.toUpperCase()}
+                            {item.organType}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
@@ -222,10 +226,10 @@ const Tabular = () => {
               </div>
             </div>
           </div>
-          <div ref={scrollRef} className="hidden">
-            <h1 className="font-extrabold text-6xl py-3 pl-24 pt-16">
+          <div ref={scrollRef} className="hidden pt-12 mt-5">
+            {/* <h1 className="font-extrabold text-6xl py-3 pl-24 pt-16">
               Suggested matches
-            </h1>
+            </h1> */}
             {suggestionBox}
           </div>
         </div>
