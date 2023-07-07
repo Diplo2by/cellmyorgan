@@ -102,10 +102,10 @@ const Tabular = () => {
           {/* <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
             Organ Bank
           </h1> */}
-          <div className="max-w-5xl m-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
+          <div className="max-w-[90%] m-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
               <h2 className="font-extrabold text-gray-700 text-center text-3xl">
-                Welcome to Dinesh's Organ Bank
+                Welcome to Organ Bank
               </h2>
             </header>
             <div className="p-3">
