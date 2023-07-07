@@ -217,19 +217,28 @@ const WaitingListForm = () => {
         <div>
           {/* <!-- component --> */}
           <div className="flex mx-auto w-full h-full relative z-[-1]">
-            <div className="relative wrap overflow-hidden p-10 h-full"  >
-              <div className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-[50%]" ></div>
+            <div className="relative wrap overflow-hidden p-10 h-full">
+              <div className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border left-[50%]"></div>
               {/* <!-- 1st timeline --> */}
               <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                 <div className="order-1 w-5/12"></div>
                 <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 className="mx-auto text-white font-semibold text-lg">1</h1>
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    1
+                  </h1>
                 </div>
                 <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4 ">
-                  <h3 className="mb-3 font-bold text-gray-100 text-l">Doctor&apos;s Evaluation</h3>
-                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">The process begins when a patient is referred to a transplant center by their healthcare provider.
-                    The patient undergoes a comprehensive evaluation, including medical tests, imaging scans,
-                    and consultations with various specialists, to determine their eligibility for transplantation.</p>
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">
+                    Doctor&apos;s Evaluation
+                  </h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">
+                    The process begins when a patient is referred to a
+                    transplant center by their healthcare provider. The patient
+                    undergoes a comprehensive evaluation, including medical
+                    tests, imaging scans, and consultations with various
+                    specialists, to determine their eligibility for
+                    transplantation.
+                  </p>
                 </div>
               </div>
 
@@ -237,14 +246,22 @@ const WaitingListForm = () => {
               <div className="mb-8 flex justify-between items-center w-full left-timeline">
                 <div className="order-1 w-5/12"></div>
                 <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    2
+                  </h1>
                 </div>
                 <div className="order-1 bg-cyan-600 rounded-lg shadow-2xl w-5/12 px-6 py-4">
-                  <h3 className="mb-3 font-bold text-white text-lg">Add Patient to Waiting list</h3>
-                  <p className="text-sm leading-snug tracking-wide text-white text-opacity-100"> If the patient meets the criteria for transplantation,
-                    they are placed on the national or regional organ transplant waiting list.
-                    Organ allocation is determined based on factors such as medical urgency,
-                    blood type compatibility, organ size, and waiting time.</p>
+                  <h3 className="mb-3 font-bold text-white text-lg">
+                    Add Patient to Waiting list
+                  </h3>
+                  <p className="text-sm leading-snug tracking-wide text-white text-opacity-100">
+                    {" "}
+                    If the patient meets the criteria for transplantation, they
+                    are placed on the national or regional organ transplant
+                    waiting list. Organ allocation is determined based on
+                    factors such as medical urgency, blood type compatibility,
+                    organ size, and waiting time.
+                  </p>
                 </div>
               </div>
               {/* <!-- 3rd timeline --> */}
@@ -252,24 +269,41 @@ const WaitingListForm = () => {
               <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                 <div className="order-1 w-5/12"></div>
                 <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 className="mx-auto text-white font-semibold text-lg">3</h1>
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    3
+                  </h1>
                 </div>
                 <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4">
-                  <h3 className="mb-3 font-bold text-gray-100 text-l">Priority List Generation</h3>
-                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">When a suitable organ becomes available,
-                    the transplant center evaluates the offer based on compatibility and the patient&apos;s medical condition.
-                    A priority list is generated. </p>
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">
+                    Priority List Generation
+                  </h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">
+                    When a suitable organ becomes available, the transplant
+                    center evaluates the offer based on compatibility and the
+                    patient&apos;s medical condition. A priority list is
+                    generated.{" "}
+                  </p>
                 </div>
               </div>
               {/* <!-- 4th timeline --> */}
               <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                 <div className="order-1 w-5/12"></div>
                 <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-                  <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
+                  <h1 className="mx-auto text-white font-semibold text-lg">
+                    4
+                  </h1>
                 </div>
                 <div className="order-1 bg-gray-800 rounded-lg shadow-2xl w-5/12 px-6 py-4">
-                  <h3 className="mb-3 font-bold text-gray-100 text-l">Doctor authorizes transplant </h3>
-                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100"> the patient undergoes pre-transplant preparations, which may include additional medical tests, preoperative consultations, and discussions about the procedure, risks, and post-transplant care</p>
+                  <h3 className="mb-3 font-bold text-gray-100 text-l">
+                    Doctor authorizes transplant{" "}
+                  </h3>
+                  <p className="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">
+                    {" "}
+                    the patient undergoes pre-transplant preparations, which may
+                    include additional medical tests, preoperative
+                    consultations, and discussions about the procedure, risks,
+                    and post-transplant care
+                  </p>
                 </div>
               </div>
             </div>
@@ -639,7 +673,7 @@ const WaitingListForm = () => {
               </div>
               <div className="flex flex-wrap -mx-3 mb-6 mt-10">
                 <button
-                  className="appearance-none block w-full py-3 px-4 leading-tight bg-cyan-600 hover:bg-cyan-900 text-white font-bold text-2xl rounded"
+                  className="appearance-none block w-full py-3 px-4 leading-tight bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] font-extrabold text-2xl rounded"
                   type="button"
                   onClick={togglePage}
                 >
@@ -897,7 +931,9 @@ const WaitingListForm = () => {
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
                     value="hiv"
                   />
-                  <label className="ml-2 mb-0.5 text-base font-medium">HIV</label>
+                  <label className="ml-2 mb-0.5 text-base font-medium">
+                    HIV
+                  </label>
                 </div>
               </div>
               <div className="flex">
@@ -939,7 +975,7 @@ const WaitingListForm = () => {
               <div className="flex">
                 <div className="mb-6 mt-10 w-1/2 mr-0.5">
                   <button
-                    className="appearance-none block w-full py-3 px-4 leading-tight bg-cyan-600 hover:bg-cyan-900 text-white font-bold text-2xl rounded"
+                    className="appearance-none block w-full py-3 px-4 leading-tight bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] font-extrabold text-2xl rounded duration-200"
                     type="button"
                     onClick={togglePage}
                   >
@@ -948,7 +984,7 @@ const WaitingListForm = () => {
                 </div>
                 <div className="mb-6 mt-10 w-1/2 ml-0.5">
                   <button
-                    className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded"
+                    className="appearance-none block w-full py-3 px-4 leading-tight bg-green-500 hover:bg-green-400 text-[#f4f7fb] font-extrabold text-2xl rounded duration-200"
                     type="submit"
                   >
                     Submit

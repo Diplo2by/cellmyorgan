@@ -16,7 +16,7 @@ const DropDown = ({ options }) => {
               <button
                 type="button"
                 onClick={toggle}
-                className="inline-flex w-full justify-center gap-x-1.5 rounded bg-[#4b42f5] px-3 py-2 text-lg font-bold hover:bg-[#009AF3] duration-200 text-[#f3e7fe]"
+                className="inline-flex w-full justify-center gap-x-1.5 rounded bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] px-3 py-2 text-lg font-extrabold duration-200"
                 id="menu-button"
                 aria-expanded="true"
                 aria-haspopup="true"

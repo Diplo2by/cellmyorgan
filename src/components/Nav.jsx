@@ -91,7 +91,7 @@ const Nav = (showConnect = false) => {
           </li>
           <button
             onClick={signOut}
-            className="bg-[#720ac7] py-2 px-6 rounded md:ml-8 hover:bg-[#C160FF] duration-200 font-bold text-lg text-[#f4f7fb]"
+            className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
             style={{ display: showSignOut ? "block" : "none" }}
           >
             Sign Out
