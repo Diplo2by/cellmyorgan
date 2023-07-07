@@ -15,6 +15,7 @@ import axios from "@/pages/api/axios";
 import Button from "./Button";
 import WaitingTabular from "./WaitingTabular";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 // function isAllocated(item) {
 //   if (item) {
@@ -95,6 +96,7 @@ import { useSession } from "next-auth/react";
         organfilter={organ}
         bloodfilter={bloodtype}
         title="Suggested Matches"
+        showConfirm
       />
     );
     scrollRef.current.scrollIntoView({
@@ -204,9 +206,9 @@ import { useSession } from "next-auth/react";
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-sm text-center font-bold">
-                            <a href={item.url} target="blank">
+                            <Link href={item.url} target="blank">
                               🗎
-                            </a>
+                            </Link>
                           </div>
                         </td>
                         {session?.user?.role == "doctor" && (

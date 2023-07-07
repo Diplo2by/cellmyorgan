@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { patientAddress } from "config";
 import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
 
 const WaitListTabular = ({
   organfilter,
@@ -12,6 +12,7 @@ const WaitListTabular = ({
   title = "Welcome to Waiting List",
   showConfirm = false,
 }) => {
+  const { data: session } = useSession();
   const [patients, setPatients] = useState([]);
   useEffect(() => {
     loadPatients();
@@ -21,7 +22,7 @@ const WaitListTabular = ({
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
-  async function loadPatients() {
+  const loadPatients = async() => {
     const rpc = "http://localhost:8545"; // make it local variable later
     const provider = new ethers.providers.JsonRpcProvider(rpc);
 
@@ -58,13 +59,18 @@ const WaitListTabular = ({
     setPatients(items);
     setLoadingState("loaded");
   }
-  function isAllocated(item) {
-    if (item) {
-      return <div className="text-red-500">True</div>;
-    } else {
-      return <div className="text-green-500">False</div>;
-    }
-  }
+  // function isAllocated(item) {
+  //   if (item) {
+  //     return <div className="text-red-500">True</div>;
+  //   } else {
+  //     return <div className="text-green-500">False</div>;
+  //   }
+  // }
+  const [patientChosen, setPatientChosen] = useState('')
+  const onRadioChange = (e) => {
+    setPatientChosen(e.target.value)
+    console.log(patientChosen);
+  };
 
   return (
     <>
@@ -188,12 +194,46 @@ const WaitListTabular = ({
                               </Link>
                             </div>
                           </td>
+                          {session?.user?.role == "doctor" && showConfirm && (
+                            <td className="p-2 whitespace-nowrap">
+                              {/* <button
+                                className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
+                                onClick={(e) =>
+                                  onAllocateClick(
+                                    item.organType,
+                                    item.bloodGroup
+                                  )
+                                }
+                              >
+                                Allocate
+                              </button> */}
+                              <input
+                                onChange={onRadioChange}
+                                type="radio"
+                                className="w-4 h-4 text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-300"
+                                value={item.tokenId}
+                                name="allocation"
+                              />
+                            </td>
+                          )}
                         </tr>
                       ))}
                   </tbody>
                 </table>
               </div>
             </div>
+            {session?.user?.role == "doctor" && showConfirm && (
+              <div className="w-full py-2 pb-6 flex justify-center">
+                <button
+                  className="bg-green-500 hover:bg-green-400 text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
+                  onClick={(e) =>
+                   alert('THE FINAL CHOSEN PATIENT IS : ' + patientChosen) 
+                  }
+                >
+                  Confirm Allocation
+                </button>
+              </div>
+            )}
           </div>
         </div>
         {/* <div>
