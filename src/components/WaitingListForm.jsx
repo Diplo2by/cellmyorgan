@@ -681,7 +681,7 @@ const WaitingListForm = () => {
               </div>
               <div className="flex flex-wrap -mx-3 mb-6 mt-10">
                 <button
-                  className="appearance-none block w-full py-3 px-4 leading-tight bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] font-extrabold text-2xl rounded"
+                  className="appearance-none block w-full py-3 px-4 leading-tight bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] duration-200 font-extrabold text-2xl rounded"
                   type="button"
                   onClick={togglePage}
                 >
