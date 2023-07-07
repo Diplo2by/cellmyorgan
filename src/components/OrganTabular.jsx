@@ -103,21 +103,21 @@ const Tabular = () => {
 
   return (
     <>
-      <section className="antialiased rounded-xl text-gray-600 p-5 h-screen">
+      <section className="antialiased rounded-xl p-5 h-screen">
         <div className="flex flex-col justify-center">
           {/* <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
             Organ Bank
           </h1> */}
           <div className="max-w-[90%] m-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-extrabold text-gray-700 text-center text-3xl">
+              <h2 className="font-extrabold text-center text-3xl">
                 Welcome to Organ Bank
               </h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
                 <table className="table-auto w-full">
-                  <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                  <thead className="text-xs font-semibold uppercase text-gray-500 bg-gray-50">
                     <tr>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Token ID</div>
@@ -225,7 +225,7 @@ const Tabular = () => {
             </div>
           </div>
           <div ref={scrollRef} className="hidden">
-            <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
+            <h1 className="font-extrabold text-6xl py-3 pl-24 pt-16">
               Suggested matches
             </h1>
             {suggestionBox}

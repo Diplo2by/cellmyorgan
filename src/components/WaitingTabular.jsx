@@ -65,18 +65,18 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
 
   return (
     <>
-      <section className="antialiased rounded-xl text-gray-600 p-5 max-h-screen">
+      <section className="antialiased rounded-xl p-5 max-h-screen">
         <div className="flex flex-col justify-center">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
-              <h2 className="font-extrabold text-gray-700 text-center text-3xl">
+              <h2 className="font-extrabold text-center text-3xl">
                 Welcome to Waiting List
               </h2>
             </header>
             <div className="p-3">
               <div className="overflow-x-auto">
                 <table className="table-auto w-full">
-                  <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                  <thead className="text-xs font-semibold uppercase text-gray-500 bg-gray-50">
                     <tr>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Token ID</div>
