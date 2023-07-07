@@ -24,6 +24,12 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
     const patientContract = new ethers.Contract(patientAddress, Patient.abi, provider);
 
     const data = await patientContract.getAllPatients();
+    
+    const formatDate = (dt) => {
+      var dateArray = dt.split("");
+      dateArray.splice(dt.indexOf("GMT") - 4);
+      return dateArray.join("");
+    };
 
     const items = await Promise.all(
       data.map(async (i) => {
@@ -33,7 +39,7 @@ const WaitListTabular = ({ organfilter, bloodfilter }) => {
           name: i.patientName,
           age: Number(i.patientAge),
           tokenId: Number(i.patientNumber),
-          time: Date(i.unixTime),
+          time: formatDate(Date(i.unixTime)),
           allocated: Number(i.allocated),
           organType: i.organType,
           bloodType: i.bloodType

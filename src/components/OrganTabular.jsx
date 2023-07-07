@@ -49,6 +49,12 @@ const Tabular = () => {
     );
     const data = await organListingContract.fetchOrganItems();
 
+    const formatDate = (dt) => {
+      var dateArray = dt.split("");
+      dateArray.splice(dt.indexOf("GMT") - 4);
+      return dateArray.join("");                 
+    }
+
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await organContract.tokenURI(i.tokenId);
@@ -61,8 +67,8 @@ const Tabular = () => {
           organType: i.organType,
           tokenId: Number(i.tokenId),
           bloodGroup: i.bloodGroup,
-          timeExtracted: Date(i.unixTime),
-          dateExtracted: Date(i.unixTime),
+          timeExtracted: formatDate(Date(i.unixTime)),
+          dateExtracted: formatDate(Date(i.unixTime)),
           donor: i.donor,
           recipient: i.recipient,
           url: i.url,
