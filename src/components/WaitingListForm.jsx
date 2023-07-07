@@ -6,6 +6,7 @@ import taluk from "../../json/data.json";
 import { patientAddress } from "config";
 import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 import {
   MainFormElement,
@@ -15,6 +16,8 @@ import {
 
 let g_age = 0;
 async function listPatient(url, name, age, organType, bloodType) {
+  const router = useRouter();
+
   // try {
   const web3modal = new Web3Modal();
   const conn = await web3modal.connect();
@@ -106,6 +109,11 @@ const WaitingListForm = () => {
     return ~~((Date.now() - birthday) / 31557600000);
   }
 
+  const redirectOnSuccess = () => {
+    router.push("/waitinglist");
+    return "";
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
     let age = await calculate_age(data.dob);
@@ -145,7 +153,7 @@ const WaitingListForm = () => {
 
     toast.promise(txnPromise, {
       loading: "Processing...",
-      success: "Transaction successful",
+      success: () => `Transaction successful` + redirectOnSuccess(),
       error: "Error when fetching",
     });
 

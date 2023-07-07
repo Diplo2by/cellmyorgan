@@ -109,7 +109,7 @@ import Link from "next/link";
 
   return (
     <>
-      <section className="antialiased rounded-xl p-5 h-screen">
+      <section className="antialiased rounded-xl p-5 min-h-screen h-auto">
         <div className="flex flex-col justify-center">
           {/* <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
             Organ Bank

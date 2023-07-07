@@ -9,6 +9,7 @@ import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
 import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import {
   MainFormElement,
@@ -37,11 +38,13 @@ async function listOrgan(organs, url, bloodgroup) {
 }
 
 const RegistrationForm = () => {
-  const [districtValue, setDistrictValue] = React.useState("Belagavi")
+  const router = useRouter();
+
+  const [districtValue, setDistrictValue] = React.useState("Belagavi");
   const onDistrictChange = (event) => {
-    const value = event.target.value
-    setDistrictValue(value)
-  }
+    const value = event.target.value;
+    setDistrictValue(value);
+  };
   // const onOrganChange = (e) => {
   //   const copy = { ...data }
   //   if (e.target.checked) {
@@ -65,65 +68,70 @@ const RegistrationForm = () => {
 
   // const [photo, setImage] = useState('')
   const onImageChange = async (e) => {
-    let base64 = await convertBase64(e.target.files[0])
+    let base64 = await convertBase64(e.target.files[0]);
     // setImage(base64);
-    const copy = { ...data }
-    copy.photo = base64
-    setData(copy)
+    const copy = { ...data };
+    copy.photo = base64;
+    setData(copy);
     // console.log(photo);
-  }
+  };
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
       fileReader.onload = () => {
-        resolve(fileReader.result)
-      }
+        resolve(fileReader.result);
+      };
 
       fileReader.onerror = (err) => {
-        reject(err)
-      }
-    })
-  }
+        reject(err);
+      };
+    });
+  };
 
-  function calculate_age(dateString) {
+  const calculate_age = (dateString) => {
     var birthday = +new Date(dateString);
     return ~~((Date.now() - birthday) / 31557600000);
   }
 
+  const redirectOnSuccess = () => {
+    router.push("/organbank");
+    return "";
+  }
+
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     var age = await calculate_age(data.dob);
-    const result = await axios
-      .post("/api/form", {
-        fname: data.fname,
-        lname: data.lname,
-        address: data.address,
-        sex: data.sex,
-        dob: data.dob,
-        city: data.city,
-        zip: data.zip,
-        district: data.district,
-        taluk: data.taluk,
-        email: data.email,
-        emgmob: data.emgmob,
-        mob: data.mob,
-        photo: data.photo,
-        organ: data.organs,
-        bloodtype: data.bloodtype,
-        age: age,
-      })
-    const txnPromise = listOrgan(data.organs, result.data.url, data.bloodtype)
+    const result = await axios.post("/api/form", {
+      fname: data.fname,
+      lname: data.lname,
+      address: data.address,
+      sex: data.sex,
+      dob: data.dob,
+      city: data.city,
+      zip: data.zip,
+      district: data.district,
+      taluk: data.taluk,
+      email: data.email,
+      emgmob: data.emgmob,
+      mob: data.mob,
+      photo: data.photo,
+      organ: data.organs,
+      bloodtype: data.bloodtype,
+      age: age,
+    });
+    const txnPromise = listOrgan(data.organs, result.data.url, data.bloodtype);
 
     toast.promise(txnPromise, {
       loading: "Processing...",
-      success: "Transaction successful",
+      success: () => `Transaction successful` + redirectOnSuccess(),
       error: "Error when fetching",
     });
 
-    const txn = await txnPromise
-    console.log(txn)
+    const txn = await txnPromise;
+
+    console.log(txn);
   }
 
   const [data, setData] = useState({
@@ -142,13 +150,13 @@ const RegistrationForm = () => {
     photo: "",
     organs: "",
     bloodtype: "",
-  })
+  });
 
   async function handle(e) {
-    const newData = { ...data }
-    newData[e.target.id] = e.target.value
-    setData(newData)
-    console.log(newData)
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
   }
 
   return (
