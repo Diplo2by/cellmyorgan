@@ -36,7 +36,7 @@ const Hero = () => {
           the Indian donation and transplantation system.
         </p>
         <Link href="/login">
-          <button className="bg-[#4b42f5] hover:bg-[#009AF3] w-[200px] rounded-md font-extrabold my-6 mx-auto py-3 text-[#f3e7fe] text-xl">
+          <button className="bg-[#4b42f5] hover:bg-[#009AF3] text-[#f4f7fb] w-[200px] rounded-md font-extrabold my-6 mx-auto py-3 text-xl duration-200">
             Doctor Login
           </button>
         </Link>
