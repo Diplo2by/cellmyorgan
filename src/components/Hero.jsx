@@ -18,7 +18,7 @@ const Hero = () => {
             IOPTN has so far facilitated :
           </p>
           <Typed
-            className="md:text-4xl sm:text-2xl text-xl font-bold ml-2 text-[#720ac7]"
+            className="md:text-4xl sm:text-2xl text-xl font-extrabold ml-2 text-[#720ac7]"
             strings={[
               "100+ Procurements.",
               "85+ Transplantations.",

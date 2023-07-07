@@ -81,7 +81,10 @@ const Nav = (showConnect = false) => {
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <Link href={link.link} className="hover:underline">
+              <Link
+                href={link.link}
+                className="link-underline link-underline-black"
+              >
                 {link.name}
               </Link>
             </li>

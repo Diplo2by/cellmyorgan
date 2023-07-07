@@ -27,12 +27,12 @@ const Footer = () => {
               </h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
+                  <Link href="#" className="link-underline link-underline-small">
                     Get Started
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:underline">
+                  <Link href="#" className="link-underline link-underline-small">
                     Guidelines
                   </Link>
                 </li>
@@ -42,12 +42,12 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold uppercase">Other</h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="/" className="hover:underline ">
+                  <Link href="/" className="link-underline link-underline-small ">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/login" className="hover:underline">
+                  <Link href="/login" className="link-underline link-underline-small">
                     Login
                   </Link>
                 </li>
@@ -57,12 +57,12 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold uppercase">Legal</h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
+                  <Link href="#" className="link-underline link-underline-small">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:underline">
+                  <Link href="#" className="link-underline link-underline-small">
                     Terms &amp; Conditions
                   </Link>
                 </li>
@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm sm:text-center">
             © 2023{" "}
-            <Link href="#" className="hover:underline">
+            <Link href="#" className="link-underline link-underline-small">
               IOPTN
             </Link>
             . All Rights Reserved.
