@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-[#021327]">
-      <div className="text-[#cfe3fc] mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div className="text-[#f4f7fb] mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link className="flex items-center" href="#">
