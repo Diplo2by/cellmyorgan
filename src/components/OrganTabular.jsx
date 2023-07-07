@@ -14,19 +14,19 @@ import { ethers } from "ethers";
 import axios from "@/pages/api/axios";
 import Button from "./Button";
 import WaitingTabular from "./WaitingTabular";
+import { useSession } from "next-auth/react";
 
-function isAllocated(item) {
-  if (item) {
-    return <div className="text-red-500">True</div>;
-  } else {
-    return <div className="text-green-500">False</div>;
-  }
-}
+// function isAllocated(item) {
+//   if (item) {
+//     return <div className="text-red-500">True</div>;
+//   } else {
+//     return <div className="text-green-500">False</div>;
+//   }
+// }
 
+  const Tabular = () => {
 
-
-
-const Tabular = () => {
+  const { data: session } = useSession();
   // const [showAllocate, setShowAllocate] = useState(false);
   const [organs, setOrgans] = useState([]);
   useEffect(() => {
@@ -209,16 +209,18 @@ const Tabular = () => {
                             </a>
                           </div>
                         </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <button
-                            className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
-                            onClick={(e) =>
-                              onAllocateClick(item.organType, item.bloodGroup)
-                            }
-                          >
-                            Allocate
-                          </button>
-                        </td>
+                        {session?.user?.role == "doctor" && (
+                          <td className="p-2 whitespace-nowrap">
+                            <button
+                              className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
+                              onClick={(e) =>
+                                onAllocateClick(item.organType, item.bloodGroup)
+                              }
+                            >
+                              Allocate
+                            </button>
+                          </td>
+                        )}
                       </tr>
                     ))}
                   </tbody>

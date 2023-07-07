@@ -3,13 +3,14 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { patientAddress } from "config";
 import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
-
+import Link from "next/link";
 
 
 const WaitListTabular = ({
   organfilter,
   bloodfilter,
   title = "Welcome to Waiting List",
+  showConfirm = false,
 }) => {
   const [patients, setPatients] = useState([]);
   useEffect(() => {
@@ -182,9 +183,9 @@ const WaitListTabular = ({
                           </td>
                           <td className="p-2 whitespace-nowrap">
                             <div className="text-sm text-center">
-                              <a href={item.url} target="blank">
+                              <Link href={item.url} target="blank">
                                 🗎
-                              </a>
+                              </Link>
                             </div>
                           </td>
                         </tr>
