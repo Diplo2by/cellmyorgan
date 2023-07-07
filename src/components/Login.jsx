@@ -66,12 +66,12 @@ const Login = () => {
           </h1>
         ) : (
           <>
-            <h1 className="flex md:text-4xl sm:text-3xl text-2xl font-bold px-4">
+            <h1 className="flex md:text-4xl sm:text-3xl text-2xl font-extrabold px-4">
               Doctor Login
             </h1>
             <div className="h-[120px]  bg-gray-800 w-[6px]"></div>
             <form
-              className="bg-[#798478ad] shadow-md rounded px-8 pt-6 pb-8 font-bold flex flex-col mx-4"
+              className="bg-[#ddd8c4] shadow-md rounded px-8 pt-6 pb-8 font-bold flex flex-col mx-4"
               onSubmit={handleSubmit}
             >
               <div className="mb-4">
@@ -107,7 +107,7 @@ const Login = () => {
           </div> */}
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-gray-800 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
+                  className="bg-[#5c5552] hover:bg-[#8f857d] duration-200 text-[#f4f7fb] font-extrabold py-2 px-4 rounded"
                   type="submit"
                 >
                   Sign In
