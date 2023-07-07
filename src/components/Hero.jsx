@@ -6,7 +6,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <div className="">
-      <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center lg:pt-[150px]">
+      <div className="max-w-[800px] mt-[-96px] w-full h-[103vh] mx-auto text-center flex flex-col justify-center lg:pt-[150px]">
         {/* <p className="text-[#00df9a] font-bold p-2">
           GROWING WITH DATA ANALYTICS
         </p> */}
