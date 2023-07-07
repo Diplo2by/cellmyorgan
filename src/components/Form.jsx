@@ -498,7 +498,7 @@ const RegistrationForm = () => {
                   </label> */}
                 <button
                   disabled
-                  className="appearance-none block w-full py-3 px-4 leading-tight bg-gray-500 hover:bg-slate-800 text-white font-base rounded"
+                  className="appearance-none block w-full py-3 px-4 leading-tight duration-200 bg-slate-800 hover:bg-gray-500 text-[#f4f7fb] font-base rounded"
                 >
                   Get OTP
                 </button>
