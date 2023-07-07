@@ -178,7 +178,11 @@ const RegistrationForm = () => {
         />
       </div>
       <div className="flex w-[40%] justify-center ">
-        <img src='/images/dono.png' alt="Image of a heart being donated" className=" w-auto h-[50%]" />
+        <img
+          src="/images/dono.png"
+          alt="Image of a heart being donated"
+          className=" w-auto h-[50%]"
+        />
       </div>
       <div className="font-bold w-[60%] flex flex-col justify-center">
         <h1 className="flex justify-center text-3xl tracking-tight uppercase pb-10 px-auto">
@@ -186,10 +190,7 @@ const RegistrationForm = () => {
         </h1>
         {/* <form action='/api/form' method='post' className="w-full max-w-lg"> */}
         <div className="flex justify-center">
-          <form
-            onSubmit={(e) => handleSubmit(e)}
-            className="w-full max-w-2xl"
-          >
+          <form onSubmit={(e) => handleSubmit(e)} className="w-full max-w-2xl">
             <p className="text-2xl font-bold tracking-tight text-gray-900">
               Personal Details
             </p>
@@ -593,7 +594,9 @@ const RegistrationForm = () => {
                   value="liver"
                   name="organs"
                 />
-                <label className="ml-2 mb-0.5 text-base font-medium">Liver</label>
+                <label className="ml-2 mb-0.5 text-base font-medium">
+                  Liver
+                </label>
               </div>
               <div className="w-full md:w-1/3 px-3 md:mb-0">
                 <input
@@ -603,7 +606,9 @@ const RegistrationForm = () => {
                   value="lung"
                   name="organs"
                 />
-                <label className="ml-2 mb-0.5 text-base font-medium">Lungs</label>
+                <label className="ml-2 mb-0.5 text-base font-medium">
+                  Lungs
+                </label>
               </div>
               <div className="w-full md:w-1/3 px-3 md:mb-0">
                 <input
@@ -625,13 +630,15 @@ const RegistrationForm = () => {
                   value="heart"
                   name="organs"
                 />
-                <label className="ml-2 mb-0.5 text-base font-medium">Heart</label>
+                <label className="ml-2 mb-0.5 text-base font-medium">
+                  Heart
+                </label>
               </div>
             </div>
 
             <div className="flex flex-wrap -mx-3 mb-6 mt-10">
               <button
-                className="appearance-none block w-full py-3 px-4 leading-tight bg-green-600 hover:bg-green-900 text-white font-bold text-2xl rounded"
+                className="appearance-none block w-full py-3 px-4 leading-tight bg-green-500 hover:bg-green-400 text-[#f4f7fb] font-extrabold text-2xl rounded duration-200"
                 type="submit"
               >
                 Submit
