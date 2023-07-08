@@ -16,8 +16,6 @@ import {
 
 let g_age = 0;
 async function listPatient(url, name, age, organType, bloodType) {
-  const router = useRouter();
-
   // try {
   const web3modal = new Web3Modal();
   const conn = await web3modal.connect();
@@ -54,6 +52,7 @@ const togglePage = () => {
 }
 
 const WaitingListForm = () => {
+  const router = useRouter();
   const [districtValue, setDistrictValue] = React.useState("Belagavi");
 
   const onDistrictChange = (event) => {
