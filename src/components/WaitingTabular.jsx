@@ -12,6 +12,7 @@ const WaitListTabular = ({
   organfilter,
   bloodfilter,
   title = "Welcome to Waiting List",
+  organId,
   showConfirm = false,
 }) => {
   const { data: session } = useSession();
@@ -244,7 +245,7 @@ const WaitListTabular = ({
                   className="bg-green-500 hover:bg-green-400 text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
                   onClick={(e) => {
                     let hash = "done"
-                    allocateOrgans(patientAddress).then((msg) => alert('THE FINAL CHOSEN PATIENT IS : ' + e));
+                    allocateOrgans(patientAddress).then((msg) => alert('THE FINAL CHOSEN PATIENT IS : ' + patientChosen + ' ORGAN ID IS : ' + organId));
                     
                   }
                   }

@@ -89,13 +89,14 @@ import Link from "next/link";
   const [suggestionBox, setSuggestionBox] = useState('');
 
   const scrollRef = useRef(null);
-  const onAllocateClick = (organ, bloodtype) => {
+  const onAllocateClick = (organ, bloodtype, organId) => {
     scrollRef.current.style.display = "block";
     setSuggestionBox(
       <WaitingTabular
         organfilter={organ}
         bloodfilter={bloodtype}
         title="Suggested Matches"
+        organId={organId}
         showConfirm
       />
     );
@@ -216,7 +217,7 @@ import Link from "next/link";
                             <button
                               className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
                               onClick={(e) =>
-                                onAllocateClick(item.organType, item.bloodGroup)
+                                onAllocateClick(item.organType, item.bloodGroup, item.tokenId)
                               }
                             >
                               Allocate
