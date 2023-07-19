@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
-import { patientAddress } from "config";
+import { patientAddress, organListingAddress, organAddress } from "config";
 import Patient from "../../artifacts/contracts/Patient.sol/Patient.json"
+import OrganListing from '../../artifacts/contracts/OrganListing.sol/OrganListing.json'
+import Organ from '../../artifacts/contracts/Organ.sol/Organ.json'
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
@@ -22,7 +24,7 @@ const WaitListTabular = ({
   const shortenAddress = (address) =>
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
-  const loadPatients = async() => {
+  const loadPatients = async () => {
     const rpc = "http://localhost:8545"; // make it local variable later
     const provider = new ethers.providers.JsonRpcProvider(rpc);
 
@@ -71,6 +73,20 @@ const WaitListTabular = ({
     setPatientChosen(e.target.value)
     console.log(patientChosen);
   };
+
+  async function allocateOrgans(organ_id) {
+    const web3modal = new Web3Modal();
+    const conn = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(conn);
+    const signer = provider.getSigner();
+    let organ = new ethers.Contract(organAddress, Organ.abi, signer)
+
+    let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
+    let txn = await contract.AllocateOrgan(organAddress , 2);
+    await txn.wait()
+    return (String(await signer.getAddress() ) )
+
+  }
 
   return (
     <>
@@ -159,7 +175,7 @@ const WaitListTabular = ({
                           <td className="p-2 whitespace-nowrap">
                             <div className="text-left">
                               {item.name}
-                              {}
+                              { }
                             </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
@@ -226,8 +242,11 @@ const WaitListTabular = ({
               <div className="w-full py-2 pb-6 flex justify-center">
                 <button
                   className="bg-green-500 hover:bg-green-400 text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
-                  onClick={(e) =>
-                   alert('THE FINAL CHOSEN PATIENT IS : ' + patientChosen) 
+                  onClick={(e) => {
+                    let hash = "done"
+                    allocateOrgans(patientAddress).then((msg) => alert('THE FINAL CHOSEN PATIENT IS : ' + e));
+                    
+                  }
                   }
                 >
                   Confirm Allocation
