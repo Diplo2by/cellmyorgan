@@ -10,12 +10,14 @@ describe('PatientListing', () => {
         const senderAddress = await signer.address
         await pat.listNewPatient(senderAddress, ".xyz", "Gopi", 69, "liver", "c+");
         await pat.listNewPatient(senderAddress, ".yzo", "Dinesh", 99, "Kidney", "b+");
+        await pat.listNewPatient(senderAddress, ".yya", "Chandru", 73, "heart", "d+");
 
 
         console.log(Number(await pat.getPatientCount()))
         console.log(await pat.getAllAddress())
         console.log(await pat.getAllPatients())
-        await pat.patientDeceased(1)
+        await pat.organReceived(1)
+        await pat.organReceived(2)
         console.log(await pat.getAllPatients())
         console.log(await pat.getAllRecords())
 

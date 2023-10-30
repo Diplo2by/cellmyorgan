@@ -138,9 +138,7 @@ contract Patient {
     // }
 
     function getAllPatients() public view returns (patientDetail[] memory) {
-        uint patientCount = getAliveCount();
-
-        patientDetail[] memory items = new patientDetail[](patientCount);
+        patientDetail[] memory items = new patientDetail[](patientIndex.length);
         for (uint i = 0; i < patientIndex.length; i++) {
             //address currentAddress = patientIndex[i];
             if (patientDetails[i].status) {
@@ -176,10 +174,13 @@ contract Patient {
     function getAllRecords() public view returns (patientDetail[] memory) {
         uint patientCount = getPatientCount();
         patientDetail[] memory items = new patientDetail[](patientCount);
-
         for (uint i = 0; i < patientIndex.length; i++) {
             items[i] = patientDetails[i];
         }
         return items;
+    }
+
+    function organReceived(uint256 patNumber) public {
+        patientDetails[patNumber].status = false;
     }
 }

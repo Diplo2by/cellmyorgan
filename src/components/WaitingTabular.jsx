@@ -36,7 +36,7 @@ const WaitListTabular = ({
     );
 
     const data = await patientContract.getAllPatients();
-
+    console.log(data)
     const formatDate = (dt) => {
       var dateArray = dt.split("");
       dateArray.splice(dt.indexOf("GMT") - 4);
@@ -44,20 +44,23 @@ const WaitListTabular = ({
     };
 
     const items = await Promise.all(
-      data.map(async (i) => {
-        let item = {
-          address: i.patientAddress,
-          url: i.url,
-          name: i.patientName,
-          age: Number(i.patientAge),
-          tokenId: Number(i.patientNumber),
-          time: formatDate(Date(i.unixTime)),
-          allocated: Number(i.allocated),
-          organType: i.organType,
-          bloodType: i.bloodType,
-        };
-        return item;
+      data.filter((filteredData) => {
+        if (filteredData.patientName) return filteredData
       })
+        .map(async (i) => {
+          let item = {
+            address: i.patientAddress,
+            url: i.url,
+            name: i.patientName,
+            age: Number(i.patientAge),
+            tokenId: Number(i.patientNumber),
+            time: formatDate(Date(i.unixTime)),
+            allocated: Number(i.allocated),
+            organType: i.organType,
+            bloodType: i.bloodType,
+          };
+          return item;
+        })
     );
     setPatients(items);
     setLoadingState("loaded");
@@ -75,17 +78,24 @@ const WaitListTabular = ({
     console.log(patientChosen);
   };
 
-  async function allocateOrgans(organ_id) {
+  async function allocateOrgans(organ_id, pat_id) {
     const web3modal = new Web3Modal();
     const conn = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(conn);
     const signer = provider.getSigner();
-    let organ = new ethers.Contract(organAddress, Organ.abi, signer)
 
     let contract = new ethers.Contract(organListingAddress, OrganListing.abi, signer);
-    let txn = await contract.AllocateOrgan(organAddress , 2);
+    let txn = await contract.AllocateOrgan(organAddress, organ_id);
+    let patientContract = new ethers.Contract(
+      patientAddress,
+      Patient.abi,
+      signer
+    );
     await txn.wait()
-    return (String(await signer.getAddress() ) )
+    let txn2 = await patientContract.organReceived(pat_id)
+    await txn2.wait()
+    console.log(pat_id)
+    return (String(await signer.getAddress()))
 
   }
 
@@ -245,8 +255,8 @@ const WaitListTabular = ({
                   className="bg-green-500 hover:bg-green-400 text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
                   onClick={(e) => {
                     let hash = "done"
-                    allocateOrgans(patientAddress).then((msg) => alert('THE FINAL CHOSEN PATIENT IS : ' + patientChosen + ' ORGAN ID IS : ' + organId));
-                    
+                    allocateOrgans(organId, patientChosen).then((msg) => alert('THE FINAL CHOSEN PATIENT IS : ' + patientChosen + ' ORGAN ID IS : ' + organId + 'Organ allocated to ' + msg));
+
                   }
                   }
                 >
