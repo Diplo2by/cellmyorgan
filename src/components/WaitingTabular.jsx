@@ -26,7 +26,7 @@ const WaitListTabular = ({
     `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
 
   const loadPatients = async () => {
-    const rpc = "http://localhost:8545"; // make it local variable later
+    const rpc = process.env.SEPOLIA_URL; // make it local variable later
     const provider = new ethers.providers.JsonRpcProvider(rpc);
 
     const patientContract = new ethers.Contract(
