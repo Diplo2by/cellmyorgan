@@ -132,9 +132,6 @@ import Link from "next/link";
                         <div className="font-semibold text-left">Donor</div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
-                        <div className="font-semibold text-left">Recipient</div>
-                      </th>
-                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">
                           Blood Type
                         </div>
@@ -179,11 +176,6 @@ import Link from "next/link";
                           <div className="text-left">
                             {/* {shortenAddress(item.sender)} */}
                             {shortenAddress(item.donor)}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left">
-                            {shortenAddress(item.recipient)}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
