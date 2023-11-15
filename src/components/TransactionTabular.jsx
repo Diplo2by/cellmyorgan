@@ -1,38 +1,21 @@
-import { useEffect, useState } from "react";
-// import ethLogo from "../assets/ethlogo.png";
-// import Identicon from "identicon.js";
-// import faker from "@faker-js/faker";
-// import { getAllTransactions } from "../shared/Transaction";
-// import { useGlobalState } from "../store";
-import { useRef } from "react";
-
+import React, { useState, useEffect } from "react";
+import { ethers } from "ethers";
+import { organListingAddress, organAddress } from "config";
 import Organ from "../../artifacts/contracts/Organ.sol/Organ.json";
 import OrganListing from "../../artifacts/contracts/OrganListing.sol/OrganListing.json";
-import { organAddress, organListingAddress } from "config";
-import Web3Modal from "web3modal";
-import { ethers } from "ethers";
-import axios from "@/pages/api/axios";
-import Button from "./Button";
-import WaitingTabular from "./WaitingTabular";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
+import axios from "axios";
 
-// function isAllocated(item) {
-//   if (item) {
-//     return <div className="text-red-500">True</div>;
-//   } else {
-//     return <div className="text-green-500">False</div>;
-//   }
-// }
-
-  const Tabular = () => {
-
-  const { data: session } = useSession();
-  // const [showAllocate, setShowAllocate] = useState(false);
+const TransactionTabular = () => {
   const [organs, setOrgans] = useState([]);
   useEffect(() => {
     loadOrgans();
   }, []);
+
+
+  const [loadingState, setLoadingState] = useState("not-loaded");
+  const shortenAddress = (address) =>
+    `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
   async function loadOrgans() {
     const rpc = process.env.SEPOLIA_URL; // make it local variable later 
     const provider = new ethers.providers.JsonRpcProvider(rpc)
@@ -47,12 +30,12 @@ import Link from "next/link";
       Organ.abi,
       provider
     );
-    const data = await organListingContract.fetchOrganItems();
-
+    const data = await organListingContract.fetchAllOrgans();
+    console.log(data)
     const formatDate = (dt) => {
       var dateArray = dt.split("");
       dateArray.splice(dt.indexOf("GMT") - 4);
-      return dateArray.join("");                 
+      return dateArray.join("");
     }
 
     const items = await Promise.all(
@@ -80,44 +63,15 @@ import Link from "next/link";
     setLoadingState("loaded");
   }
 
-  const [loadingState, setLoadingState] = useState("not-loaded");
-
-  const shortenAddress = (address) =>
-    `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
-
-  const [suggestionBox, setSuggestionBox] = useState('');
-
-  const scrollRef = useRef(null);
-  const onAllocateClick = (organ, bloodtype, organId) => {
-    scrollRef.current.style.display = "block";
-    setSuggestionBox(
-      <WaitingTabular
-        organfilter={organ}
-        bloodfilter={bloodtype}
-        title="Suggested Matches"
-        organId={organId}
-        showConfirm
-      />
-    );
-    scrollRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-  }
-
 
   return (
     <>
       <section className="antialiased rounded-xl p-5 min-h-screen h-auto">
         <div className="flex flex-col justify-center">
-          {/* <h1 className="font-bold text-6xl py-3 pl-24 text-gray-800">
-            Organ Bank
-          </h1> */}
           <div className="max-w-[90%] m-auto px-4 sm:px-6 lg:px-8 bg-white shadow-2xl rounded-xl">
             <header className="px-5 py-4">
               <h2 className="font-extrabold text-center text-3xl">
-                Welcome to Organ Bank
+                Recent Transactions
               </h2>
             </header>
             <div className="p-3">
@@ -126,10 +80,17 @@ import Link from "next/link";
                   <thead className="text-xs font-semibold uppercase text-gray-500 bg-gray-50">
                     <tr>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
-                        <div className="font-semibold text-left">Token ID</div>
+                        <div className="font-semibold text-left">
+                          Token ID
+                        </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">Donor</div>
+                      </th>
+                      <th className="p-2 pl-6 pr-6 whitespace-nowrap">
+                        <div className="font-semibold text-left">
+                          Recipient
+                        </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-left">
@@ -137,7 +98,9 @@ import Link from "next/link";
                         </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
-                        <div className="font-semibold text-left">Timestamp</div>
+                        <div className="font-semibold text-left">
+                          Timestamp
+                        </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center">
@@ -145,7 +108,9 @@ import Link from "next/link";
                         </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
-                        <div className="font-semibold text-center">Report</div>
+                        <div className="font-semibold text-center">
+                          Report
+                        </div>
                       </th>
                       <th className="p-2 pl-6 pr-6 whitespace-nowrap">
                         <div className="font-semibold text-center"></div>
@@ -153,7 +118,8 @@ import Link from "next/link";
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {organs.map((item, index) => (
+                    {/* MAP ORGANS OBJECT HERE */}
+                    {organs?.map((item, index) => (
                       <tr key={index + 1}>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
@@ -163,7 +129,7 @@ import Link from "next/link";
                                 src={makeImage(item.sender)}
                                 width="40"
                                 height="40"
-                                alt="Alex Shatov"
+                                alt="Imtooz"
                               /> */}
                             </div>
                             <div className="font-medium text-gray-800">
@@ -176,6 +142,11 @@ import Link from "next/link";
                           <div className="text-left">
                             {/* {shortenAddress(item.sender)} */}
                             {shortenAddress(item.donor)}
+                          </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">
+                            {shortenAddress(item.recipient)}
                           </div>
                         </td>
                         <td className="p-2 whitespace-nowrap">
@@ -203,18 +174,6 @@ import Link from "next/link";
                             </Link>
                           </div>
                         </td>
-                        {session?.user?.role == "doctor" && (
-                          <td className="p-2 whitespace-nowrap">
-                            <button
-                              className="bg-[#720ac7] hover:bg-[#C160FF] text-[#f4f7fb] py-2 px-6 rounded md:ml-8 duration-200 font-extrabold text-lg"
-                              onClick={(e) =>
-                                onAllocateClick(item.organType, item.bloodGroup, item.tokenId)
-                              }
-                            >
-                              Allocate
-                            </button>
-                          </td>
-                        )}
                       </tr>
                     ))}
                   </tbody>
@@ -222,19 +181,10 @@ import Link from "next/link";
               </div>
             </div>
           </div>
-          <div ref={scrollRef} className="hidden pt-12 mt-5">
-            {/* <h1 className="font-extrabold text-6xl py-3 pl-24 pt-16">
-              Suggested matches
-            </h1> */}
-            {suggestionBox}
-          </div>
         </div>
-        {/* <div>
-          <button onClick={loadOrgans}> Show Organs</button>
-        </div> */}
       </section>
     </>
   );
 };
 
-export default Tabular;
+export default TransactionTabular;

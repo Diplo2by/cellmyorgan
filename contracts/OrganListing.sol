@@ -112,6 +112,21 @@ contract OrganListing is ReentrancyGuard {
         return (items);
     }
 
+    function fetchAllOrgans() public view returns (ListedOrgan[] memory) {
+        uint organCount = _organIds.current();
+        uint currentIndex = 0;
+
+        ListedOrgan[] memory items = new ListedOrgan[](organCount);
+
+        for (uint i = 0; i < organCount; i++) {
+            uint currentId = idToListedOrgan[i + 1].organId;
+            ListedOrgan storage currentItem = idToListedOrgan[currentId];
+            items[currentIndex] = currentItem;
+            currentIndex++;
+        }
+        return (items);
+    }
+
     // function organTimer(uint256 expiry) public {
     //     uint organCount = _organIds.current();
 
