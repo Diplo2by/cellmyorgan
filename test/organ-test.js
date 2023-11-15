@@ -29,7 +29,7 @@ describe("OrganDonation", function () {
     await dono.connect(recepientAddress).AllocateOrgan(organContractAddress, 2);
     // await dono.connect(recepientAddress).AllocateOrgan(organContractAddress, 3);
 
-    const items = await dono.fetchOrganItems();
+    const items = await dono.fetchAllOrgans();
     console.log("items: ", items);
     
   });
