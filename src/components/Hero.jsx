@@ -11,7 +11,7 @@ const Hero = () => {
           GROWING WITH DATA ANALYTICS
         </p> */}
         <h1 className="md:text-5xl sm:text-4xl text-3xl font-bold md:py-6">
-          Welcome to Indian Organ Procurement and Transplantaion portal - IOPTN
+          Welcome to Indian Organ Procurement and Transplantation Network - IOPTN
         </h1>
         <div className="flex justify-center items-center w-max relative -left-9">
           <p className="md:text-4xl sm:text-2xl text-xl font-bold py-4">
