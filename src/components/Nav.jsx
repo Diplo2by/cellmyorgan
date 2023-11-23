@@ -62,7 +62,7 @@ const Nav = (showConnect = false) => {
   ];
   let [open, setOpen] = useState(false);
   return (
-    <div className="shadow-md w-full sticky top-0 left-0 z-9999 bg-[#f4f7fb]">
+    <div className="shadow-md w-full sticky top-0 left-0 z-50 bg-[#f4f7fb]">
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-3xl cursor-pointer flex items-center">
           <Link href="/">IOPTN</Link>
