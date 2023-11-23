@@ -27,12 +27,18 @@ const Footer = () => {
               </h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="#" className="link-underline link-underline-small">
+                  <Link
+                    href="#"
+                    className="link-underline link-underline-small"
+                  >
                     Get Started
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="link-underline link-underline-small">
+                  <Link
+                    href="#"
+                    className="link-underline link-underline-small"
+                  >
                     Guidelines
                   </Link>
                 </li>
@@ -42,12 +48,18 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold uppercase">Other</h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="/" className="link-underline link-underline-small ">
+                  <Link
+                    href="/"
+                    className="link-underline link-underline-small "
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/login" className="link-underline link-underline-small">
+                  <Link
+                    href="/login"
+                    className="link-underline link-underline-small"
+                  >
                     Login
                   </Link>
                 </li>
@@ -57,12 +69,18 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold uppercase">Legal</h2>
               <ul className="font-medium">
                 <li className="mb-4">
-                  <Link href="#" className="link-underline link-underline-small">
+                  <Link
+                    href="#"
+                    className="link-underline link-underline-small"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="link-underline link-underline-small">
+                  <Link
+                    href="#"
+                    className="link-underline link-underline-small"
+                  >
                     Terms &amp; Conditions
                   </Link>
                 </li>
@@ -77,7 +95,9 @@ const Footer = () => {
             <Link href="#" className="link-underline link-underline-small">
               IOPTN
             </Link>
-            . All Rights Reserved.
+            . . This work is supported by a financial grant from the Department
+            of Science and Technology, Govt. of India under grant: 
+            SEED/TIASN/2019/87(G)
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <Link href="#" className="hover:text-blue-300">

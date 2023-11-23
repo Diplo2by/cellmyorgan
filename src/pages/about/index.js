@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 const About = () => {
   return (
     <>
@@ -14,24 +15,14 @@ const About = () => {
               About IOPTN
             </h2>
             <div className="mb-6 text-md font-normal">
-              <b>Indian Organ Procurement and Transplantation
-              Network</b>
-              <br/>
-              <br/>
+              <b>Indian Organ Procurement and Transplantation Network</b>
+              <br />
+              <br />
               At IOPTN, we believe in the incredible power of organ donation to
               transform lives and create a lasting impact in society. Our
               mission is to raise awareness, educate, and facilitate the organ
               donation process in India, fostering a culture of giving and
-              saving lives. About IOPTN: At IOPTN, we understand that organ
-              transplantation is a life-saving procedure that can provide hope
-              and a second chance to those in need. Unfortunately, in India, the
-              demand for organs far outweighs the supply, leading to a
-              significant gap and prolonged waiting periods for patients in
-              need. Our platform aims to bridge this gap by connecting organ
-              donors with individuals awaiting transplantation. Through our
-              comprehensive and user-friendly website, we strive to simplify and
-              streamline the organ donation process, making it easier for
-              individuals to become donors and save lives.
+              saving lives.
             </div>
 
             <p className="font-bold text-lg mb-2">What sets IOPTN apart:</p>
@@ -56,19 +47,25 @@ const About = () => {
                 data protection protocols and maintain confidentiality
                 throughout the registration and donation process.
               </li>
-              <li className="mb-4">
-                <b>Community Engagement</b>: IOPTN aims to build a strong and
-                supportive community of donors, recipients, and their families.
-                We organize awareness campaigns, support groups, and events to
-                foster connections and encourage dialogue around organ donation.
-              </li>
-              <li className="mb-4">
-                <b>Collaboration</b>: We actively collaborate with hospitals,
-                medical professionals, and NGOs to ensure a smooth and efficient
-                organ donation process. By fostering partnerships, we can
-                maximize the impact of our platform and create a network that
-                benefits all stakeholders.
-              </li>
+              <div className="border-gray-500 border-4 p-2 mb-4">
+                <p className="font-bold text-lg mb-2 text-center">CREDITS</p>
+                <b>Project mentor:</b> Dr. Nimrita Koul, Assistant Professor,
+                REVA University
+                <br />
+                <b>Project developers:</b>
+                <Link
+                  href={"https://heydarsh.co/"}
+                  className="block px-4 py-2 text-sm hover:bg-gray-200"
+                >
+                  Mr. Darshan V, Student, REVA University
+                </Link>
+                <Link
+                  href={"https://github.com/Mr-DJ/"}
+                  className="block px-4 py-2 text-sm hover:bg-gray-200"
+                >
+                  Mr. Samuel D Jonathan, Student, REVA University
+                </Link>
+              </div>
             </ul>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
