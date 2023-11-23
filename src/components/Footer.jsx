@@ -95,7 +95,7 @@ const Footer = () => {
             <Link href="#" className="link-underline link-underline-small">
               IOPTN
             </Link>
-            . . This work is supported by a financial grant from the Department
+            . This work is supported by a financial grant from the Department
             of Science and Technology, Govt. of India under grant: 
             SEED/TIASN/2019/87(G)
           </span>
