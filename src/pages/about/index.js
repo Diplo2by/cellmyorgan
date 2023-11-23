@@ -54,7 +54,7 @@ const About = () => {
                 <br />
                 <b>Project developers:</b>
                 <Link
-                  href={"https://heydarsh.co/"}
+                  href={"https://heydarsh.xyz"}
                   className="block px-4 py-2 text-sm hover:bg-gray-200"
                 >
                   Mr. Darshan V, Student, REVA University
