@@ -1,22 +1,17 @@
 [
   {
     "regid": "14511",
-    "name": "Chandru",
+    "name": "Norman Gordon",
     "role": "admin"
   },
   {
     "regid": "14500",
-    "name": "Chimpoo",
+    "name": "Default",
     "role": "user"
   },
   {
     "regid": "14512",
-    "name": "Darsh",
+    "name": "Will Barrow",
     "role": "doctor"
-  },
-  {
-    "regid": "696969",
-    "name": "Samuel",
-    "role": "admin"
   }
 ]

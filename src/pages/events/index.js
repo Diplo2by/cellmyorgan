@@ -22,7 +22,7 @@ const index = () => {
           <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             <Article
               title={"Donors for Kidney required"}
-              author={"Samwell Dinesh"}
+              author={"Desmond Eagle"}
               authorRole={"Health Minister Karnataka"}
               date={"March 28 2023"}
               category={"Announcements"}
@@ -30,7 +30,7 @@ const index = () => {
             />
             <Article
               title={"Number of donations reach an all time high"}
-              author={"Dr. Gopal"}
+              author={"Dr. Joss Sticks"}
               authorRole={"Senior Surgeon"}
               date={"April 1 2023"}
               category={"News & Updates"}
@@ -38,7 +38,7 @@ const index = () => {
             />
             <Article
               title={"Campaigns to Increase Organ donation awareness"}
-              author={"Dr. Ramesh"}
+              author={"Dr. Ramesh Guju"}
               authorRole={"Medical Consultant"}
               date={"May 10 2023"}
               category={"News & Updates"}
@@ -48,7 +48,7 @@ const index = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default index
