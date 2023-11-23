@@ -216,7 +216,7 @@ const RegistrationForm = () => {
                   value={data.fname}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                   type="text"
-                  placeholder="Sinwan"
+                  placeholder="Alan"
                 />
                 {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
               </div>
@@ -233,7 +233,7 @@ const RegistrationForm = () => {
                   value={data.lname}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   type="text"
-                  placeholder="Imtiaz"
+                  placeholder="Fresco"
                 />
               </div>
             </div>
