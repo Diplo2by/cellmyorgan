@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "launch": "chmod +x build.sh ;./build.sh"
+    "launch": "chmod +x build.sh ;./build.sh",
+    "launch-windows": "build.bat"
   },
   "dependencies": {
     "@material-tailwind/react": "^1.4.2",
